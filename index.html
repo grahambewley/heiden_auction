@@ -13,33 +13,37 @@
     <title>Heiden Auction &mdash; The last auction site you'll ever need</title>
 </head>
 
-<body>
+<body class="container">
     
     <div class="banner">
         <img class="banner__logo" src="img/Heiden.png">
         <h1 class="banner__sub-title">Auction House</h1>
     </div>
     
-    <div class="auctionInfo">
-        <div id="auctionName">August 2019 Auction</div>
-        <div id="startDateTime" class="date">sDT</div>
-        <div id="endDateTime" class="date">eDT</div>
-        <div id="userInfo">
-            <input type="text" id="userName" placeholder="enter first name"/>
-            <input type="password" id="userPassword" placeholder="enter password"/>
+    <div class="auction-info">
+        <div class="auction-info__meta">
+            <h2 class="auction-info__name">August 2019 Auction</h2>
+            <h3 class="auction-info__date-span">01/15/2019 &mdash; 01/16/2019</h3>
+        </div>
+        
+        <div class="auction-info__user">
+            <input type="text" class="auction-info__user-name" id="userName" placeholder="First Name"/>
+            <input type="password" class="auction-info__password" id="userPassword" placeholder="Password"/>
         </div>
     </div>
     
-    <div class="choices">
-        <div class="items" id="itemA">
+    <div class="items">
+       
+        <div class="item" id="itemA">
             <div><img></div>
-            <div id="itemDescription">HP ProBook Desktop - i5 8GB RAM</div>
+            <div id="itemDescription">HP ProBook Desktop</div>
             <div id="bidInfo">
                 <input type="number" id="userBid" placholder="enter your bid"/>
                 <button id="submitBid">Bid</button>
             </div>
         </div>
-        <div class="items" id="itemB">
+        <!--
+        <div class="item" id="itemB">
             <div><img></div>
             <div id="itemDescription">HP ShitBox Desktop - i2 1GB RAM</div>
             <div id="bidInfo">
@@ -47,7 +51,7 @@
                 <button id="submitBid">Bid</button>
             </div>  
         </div>
-        <div class="items" id="itemC">
+        <div class="item" id="itemC">
             <div><img></div>
             <div id="itemDescription">Lenovo Baller Laptop - i7 8GB RAM</div>
             <div id="bidInfo">
@@ -55,6 +59,7 @@
                 <button id="submitBid">Bid</button>
             </div>
         </div>
+        -->
     </div>
 
 </body>

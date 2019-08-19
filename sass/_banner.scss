@@ -1,10 +1,12 @@
 .banner {
-
+    
+    grid-column: full-start / full-end;
     background-color: $color-grey-light-1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 1rem 2rem rgba(#000, 0.05);
+    //box-shadow: 0 .5rem .5rem rgba(#444, 0.05);
+    margin-bottom: 6rem;
 
     &__logo {
         width: 22rem;
@@ -13,6 +15,7 @@
     }
 
     &__sub-title {
+        margin-bottom: 2rem;
         font-size: 3rem;
         font-weight: 400;
         text-transform: uppercase;
