@@ -1,6 +1,9 @@
 <?php
 
-include('secrets.inc');
+$servername = "localhost";
+$database = "u870899072_auctn";
+$username = "u870899072_admin";
+$password = "HTS4auctio";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
