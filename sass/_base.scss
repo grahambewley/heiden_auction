@@ -6,6 +6,15 @@ $color-grey-light-2: #aaa;
 $color-grey-dark-1: #222;
 $color-grey-dark-2: #5D5D5D;
 
+$color-heiden-orange: #F9AF5E;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;      // 1200px
+$bp-large: 62.5em;      // 1000px
+$bp-medium: 50em;       // 800px
+$bp-small: 37.5em;      // 600px
+
+
 *,
 *::after,
 *::before {
