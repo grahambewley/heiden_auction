@@ -1,3 +1,8 @@
-//Script stuff here
+//on-load stuff:
+//Check for stored token 
+//  -- if not present, redirect to login.html
+//  -- if present, load index.html like normal and trigger auction query
 
-//TODO: Check localstorage for user's name / secret -- fill these fields in if available
+function checkLoginCredentials(username, password) {
+    
+}
