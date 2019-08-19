@@ -8,7 +8,8 @@
 
 .item {
     box-shadow: 0 1rem 2rem rgba(black, 0.1);
-
+    border-radius: 2px;
+    overflow: hidden;
     display: grid;
     //grid-row-gap: 1rem;
 
@@ -21,7 +22,7 @@
 
     &__data {
         padding: 2rem 1.5rem;
-        background-color: $color-grey-light-1;
+        background-color: rgba($color-heiden-orange, 0.15);
     }
 
     &__name {  
@@ -37,7 +38,7 @@
 
 .bid {
 
-    background-color: rgba($color-heiden-orange, 0.1);
+    background-color: rgba($color-heiden-orange, 0.4);
     padding: 1.5rem 1rem;
     display: flex;
     justify-content: space-between;
@@ -62,6 +63,7 @@
 
         &:hover {
             transform: scale(1.1);
+            background-color: $color-heiden-orange-dark;
         }
     }
 }

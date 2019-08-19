@@ -19,7 +19,7 @@ body {
 
 .banner {
   grid-column: full-start / full-end;
-  background-color: #f1f1f1;
+  background-color: #ddd;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,6 +74,8 @@ body {
 
 .item {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
   display: grid; }
   .item__img {
     grid-row: 1 / 2;
@@ -82,7 +84,7 @@ body {
     z-index: 1; }
   .item__data {
     padding: 2rem 1.5rem;
-    background-color: #f1f1f1; }
+    background-color: rgba(249, 175, 94, 0.15); }
   .item__name {
     font-size: 2rem;
     margin-bottom: 1rem; }
@@ -91,7 +93,7 @@ body {
     font-weight: 400; }
 
 .bid {
-  background-color: rgba(249, 175, 94, 0.1);
+  background-color: rgba(249, 175, 94, 0.4);
   padding: 1.5rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -110,4 +112,5 @@ body {
     cursor: pointer;
     transition: all .2s; }
     .bid__button:hover {
-      transform: scale(1.1); }
+      transform: scale(1.1);
+      background-color: #e09e55; }
