@@ -3,10 +3,11 @@
 //  -- if not present, redirect to login.html
 //  -- if present, load index.html like normal and trigger auction query
 
-
+// onload function for Login page
 window.onload = function() {
     if (localStorage.getItem("token") !== 'undefined') {
         // >> If token was generated then we should redirect them (auto auth) to the index.html.  How do we do this?
+        window.location.href = "http://heiden.tech/auction/index.html";
     } else {
         checkLoginCreds();
         // >> go straight to function call so they can AUTH and gen token.
