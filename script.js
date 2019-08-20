@@ -31,9 +31,8 @@ getCurrentAuctionMetadata = function() {
     
     $.ajax({      
     
-        url: "/auction/resources/checkLoginCreds.php",
+        url: "/auction/resources/getCurrentAuctionMetadata.php",
         type: "POST",
-        data: { "user": inputUsername, "pw": inputPassword }
     
     }).done(function(result) {
         console.log("Data returned from getCurrentAuctionMetadata: " + result);
