@@ -13,7 +13,7 @@ checkLoginCreds = function() {
         type: "POST",
         url: 'resources/checkLoginCreds.php',
         data: { user: inputUsername, pw: inputPassword },
-        datatype: "html",
+        datatype: "json",
         success: function(result){
             
             //Here you can do whatever with the result
