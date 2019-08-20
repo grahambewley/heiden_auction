@@ -42,15 +42,13 @@ checkLoginCreds = function() {
 
             // -- Then redirect to index.html
             window.location.href = "http://heiden.tech/auction/index.html";
-            // >> I think the URL is correct on this - I was getting 405 error when trying to test.
-
         }
         else if (result == 'FALSE') {
             alert("Whoops, credentials are INVALID!");
             // LOGIC FOR UNSUCCESSFUL LOGIN GOES HERE
             // -- Blank out the input filds? Display some sort of "Invalid login" message?
-            inputUsername = "";
-            inputPassword = "";
+            inputUsername.value = "";
+            inputPassword.value = "";
 
             // >> I was looking a way to do input validation - maybe the alert is good enough for now....
 
