@@ -9,7 +9,8 @@ window.onload = function() {
         // >> If token was generated then we should redirect them (auto auth) to the index.html.  How do we do this? (-- SEE BELOW)
         window.location.href = "http://heiden.tech/auction/index.html";
     } else {
-        checkLoginCreds();
+        
+        //checkLoginCreds();
         // >> go straight to function call so they can AUTH and gen token.
     }
 }
