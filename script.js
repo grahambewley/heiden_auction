@@ -17,6 +17,9 @@ window.onload = function() {
     getUserName();
 
     getCurrentAuctionMetadata();
+
+    // NEXT UP
+    //getCurrentAuctionItems();
 }
 
 // Gets user's name from localStorage and displays it on screen
