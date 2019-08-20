@@ -15,6 +15,8 @@ window.onload = function() {
     */
 
     getUserName();
+
+    getCurrentAuctionMetadata();
 }
 
 // Gets user's name from localStorage and displays it on screen
@@ -25,6 +27,15 @@ getUserName = function() {
     document.getElementById('auction-info__welcome').innerHTML = "Welcome, " + name;
 }
 
-loadAuctionData = function() {
-
+getCurrentAuctionMetadata = function() {
+    
+    $.ajax({      
+    
+        url: "/auction/resources/checkLoginCreds.php",
+        type: "POST",
+        data: { "user": inputUsername, "pw": inputPassword }
+    
+    }).done(function(result) {
+        console.log("Data returned from getCurrentAuctionMetadata: " + result);
+    });
 }
