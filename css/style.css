@@ -51,20 +51,20 @@ body {
     text-transform: uppercase;
     color: #5D5D5D;
     margin-bottom: 1rem; }
+    @media only screen and (max-width: 75em) {
+      .auction-info__name {
+        font-size: 3rem; } }
   .auction-info__date-span {
     font-size: 2.5rem;
     font-weight: 300;
     color: #5D5D5D; }
-  .auction-info__user {
-    display: flex;
-    flex-direction: column; }
-  .auction-info__user-name {
-    margin-bottom: .4rem;
+    @media only screen and (max-width: 75em) {
+      .auction-info__date-span {
+        font-size: 2rem; } }
+  .auction-info__welcome {
     font-size: 1.6rem;
-    padding: .5rem; }
-  .auction-info__password {
-    font-size: 1.6rem;
-    padding: .5rem; }
+    font-style: italic;
+    font-weight: 300; }
 
 .items {
   grid-column: center-start / center-end;

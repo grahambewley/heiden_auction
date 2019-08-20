@@ -8,37 +8,31 @@
     padding-bottom: 2rem;
     margin-bottom: 8rem;
 
-    &__meta {
-        
-    }
-
     &__name {
         font-size: 4rem;
         font-weight: 400;
         text-transform: uppercase;
         color: $color-grey-dark-2;
         margin-bottom: 1rem;
+
+        @media only screen and (max-width: $bp-largest) {
+            font-size: 3rem;
+        }
     }
 
     &__date-span {
         font-size: 2.5rem;
         font-weight: 300;
         color: $color-grey-dark-2;
+
+        @media only screen and (max-width: $bp-largest) {
+            font-size: 2rem;
+        }
     }
 
-    &__user {
-        display: flex;
-        flex-direction: column;
-    }
-
-    &__user-name {
-        margin-bottom: .4rem;
+    &__welcome {
         font-size: 1.6rem;
-        padding: .5rem;
-    }
-
-    &__password {
-        font-size: 1.6rem;
-        padding: .5rem;
+        font-style: italic;
+        font-weight: 300;
     }
 }
