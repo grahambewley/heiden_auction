@@ -19,11 +19,13 @@ checkLoginCreds = function() {
             //TRUE means the login was successful and the credentials are legit
             //FALSE means the login was unsuccessful
 
+            console.log(result);
+
             if(result == 'TRUE') {
-                //
+                
                 alert("Nice, credentials are VALID!");
             }
-            else if(result == 'FALSE') {
+            else if (result == 'FALSE') {
                 alert("Whoops, credentials are INVALID!");
             }
         }
