@@ -9,12 +9,11 @@ checkLoginCreds = function() {
     const inputPassword = document.getElementById('loginPassword').value;
 
     // AJAX request -- check if the entered credentials are valid
-    $.ajax({
-        type: "POST",
-        url: 'resources/checkLoginCreds.php',
-        data: { user: inputUsername, pw: inputPassword },
-        datatype: "json",
-        success: function(result){
+    $.ajax({      
+        "crossDomain": true,
+        "url": "/resources/checkLoginCreds?user="+inputUsername+"&pw="+inputPassword,
+        "method": "POST",
+        "success": function(result){
             
             //Here you can do whatever with the result
             //TRUE means the login was successful and the credentials are legit
