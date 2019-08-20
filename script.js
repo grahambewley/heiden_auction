@@ -4,7 +4,14 @@
 //  -- if present, load index.html like normal and trigger auction query
 
 
-
+window.onload(){
+    if (localStorage.getItem("token") !== 'undefined') {
+        // >> If token was generated then we should redirect them (auto auth) to the index.html.  How do we do this?
+    } else {
+        checkLoginCreds;
+        // >> go straight to function call so they can AUTH and gen token.
+    }
+}
 
 // Function triggered by login button on login.html
 checkLoginCreds = function() {
@@ -30,12 +37,22 @@ checkLoginCreds = function() {
             alert("Nice, credentials are VALID!");
             // LOGIC FOR SUCCESSFUL LOGIN GOES HERE
             // -- Create and store some sort of token, maybet just the username or something
+
+            localStorage.setItem("token", inputUsername);
+
             // -- Then redirect to index.html
+            window.location.href = "http://auction.heiden.tech/index.html";
+            // >> I think the URL is correct on this - I was getting 405 error when trying to test.
         }
         else if (result == 'FALSE') {
             alert("Whoops, credentials are INVALID!");
             // LOGIC FOR UNSUCCESSFUL LOGIN GOES HERE
             // -- Blank out the input filds? Display some sort of "Invalid login" message?
+            inputUsername = "";
+            inputPassword = "";
+
+            // >> I was looking a way to do input validation - maybe the alert is good enough for now....
+
         }
     });
       
