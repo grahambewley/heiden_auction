@@ -45,6 +45,10 @@ body {
   border-bottom: 1px solid #aaa;
   padding-bottom: 2rem;
   margin-bottom: 8rem; }
+  @media only screen and (max-width: 62.5em) {
+    .auction-info {
+      flex-direction: column;
+      align-items: flex-start; } }
   .auction-info__name {
     font-size: 4rem;
     font-weight: 400;
@@ -61,6 +65,9 @@ body {
     @media only screen and (max-width: 75em) {
       .auction-info__date-span {
         font-size: 2rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .auction-info__date-span {
+        margin-bottom: 1rem; } }
   .auction-info__welcome {
     font-size: 1.6rem;
     font-style: italic;
