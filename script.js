@@ -28,13 +28,19 @@ getUserName = function() {
 }
 
 getCurrentAuctionMetadata = function() {
-    
     $.ajax({      
     
         url: "/auction/resources/getCurrentAuctionMetadata.php",
         type: "POST",
     
     }).done(function(result) {
+
         console.log("Data returned from getCurrentAuctionMetadata: " + result);
+        // Convert the result returned from PHP, from JSON to JavaScript object
+        let resultObject = JSON.parse(result);
+
+        document.getElementById('auction-info__name').innerHTML = resultObject.name;
+        document.getElementById('auction-info__date-span').innerHTML = resultObject.start_date_time + " &mdash; " + resultObject.end_date_time;
+
     });
 }
