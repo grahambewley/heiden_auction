@@ -11,7 +11,7 @@ checkLoginCreds = function() {
     // AJAX request -- check if the entered credentials are valid
     $.ajax({      
         "crossDomain": true,
-        "url": "/resources/checkLoginCreds?user="+inputUsername+"&pw="+inputPassword,
+        "url": "/resources/checkLoginCreds.php?user="+inputUsername+"&pw="+inputPassword,
         "method": "POST",
         "success": function(result){
             
