@@ -4,7 +4,7 @@
 include('dbConnect.php');
 
 // SQL query for largest (latest) start_date_time in auctions table 
-$result = mysqli_query($conn, "SELECT * from auctions WHERE ORDER BY start_date_time DESC LIMIT 1");
+$result = mysqli_query($conn, "SELECT * from auctions ORDER BY start_date_time DESC LIMIT 1");
 
 if ($result->num_rows > 0) {
 
