@@ -1,6 +1,6 @@
 // onload function for index.html page
 window.onload = function() {
-
+    /*  -- This is causing a loop with the window.onload script from the login page... commenting out for now
     // If no token is stored, boot to login screen
     if (localStorage.getItem("token") === null) {
         window.location.href = "http://heiden.tech/auction/login.html";
@@ -12,6 +12,8 @@ window.onload = function() {
 
         loadAuctionData();
     }
+
+    */
 }
 
 // Gets user's name from localStorage and displays it on screen

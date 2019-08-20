@@ -5,7 +5,7 @@
 
 // onload function for Login page
 window.onload = function() {
-    /* This is causing a loop with the window.onload script from the main index page... commenting out for now
+    /* -- This is causing a loop with the window.onload script from the main index page... commenting out for now
     if (localStorage.getItem("token") !== null) {
         // >> If token was generated then we should redirect them (auto auth) to the index.html.  How do we do this? (-- SEE BELOW)
         window.location.href = "http://heiden.tech/auction/index.html";
