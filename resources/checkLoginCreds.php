@@ -4,8 +4,8 @@
 include('dbConnect.php');
 
 // Get variables passed over from JavaScript file
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['user'];
+$password = $_POST['pw'];
 
 // SQL query for credentials in users table 
 //  -- BINARY keyword makes this query compare the exact bytes -- thus making the query case-sensitive
