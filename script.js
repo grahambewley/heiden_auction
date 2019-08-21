@@ -71,6 +71,8 @@ getSelectedAuctionItems = function() {
 
         console.log("Items from the selected Auction: " + result);
         
+        const items = document.getElementById('items');
+
         resultArray.forEach(function(element) {
 
             // Create item container div
@@ -117,9 +119,8 @@ getSelectedAuctionItems = function() {
             item.appendChild(itemData);
             item.appendChild(bid);
 
-
-
-
+            // Append item card to items
+            items.appendChild(item);
         });
         
     });
