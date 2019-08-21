@@ -34,7 +34,7 @@ checkLoginCreds = function() {
         //      TRUE means the login attempt was successful 
         //      FALSE means the login attempt was unsuccessful
 
-        if(result !== null) {
+        if(result !== '') {
             console.log("Result from user query is: " + result);
             localStorage.setItem("userID", result.id);
             alert("Nice, credentials are VALID!");
