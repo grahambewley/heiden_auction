@@ -18,6 +18,7 @@ window.onload = function() {
 
     getCurrentAuctionMetadata();
 
+    //This needs some async/await
     getSelectedAuctionItems();
 }
 
