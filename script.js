@@ -96,7 +96,7 @@ getSelectedAuctionItems = function() {
             itemDescription.innerHTML = element.description;
 
             itemData.appendChild(itemName);
-            itemData.appendChild(itemDesciption);
+            itemData.appendChild(itemDescription);
 
             // Create bid container, plus the input and button that go within
             let bid = document.createElement('div');
