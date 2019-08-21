@@ -67,10 +67,10 @@ getSelectedAuctionItems = function() {
         data: { "id": selectedAuctionId }
     
     }).done(function(result) {
-        let resultObject = JSON.parse(result);
+        //let resultObject = JSON.parse(result);
 
         console.log("Items from the selected Auction: " + result);
-        console.log("Resulting JS Object after conversion");
+        //console.log("Resulting JS Object after conversion");
 
         
     });
