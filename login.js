@@ -34,15 +34,16 @@ checkLoginCreds = function() {
         //      TRUE means the login attempt was successful 
         //      FALSE means the login attempt was unsuccessful
 
-        if(result == 'TRUE') {
+        if(result !== null) {
             alert("Nice, credentials are VALID!");
+            console.log(result);
             // LOGIC FOR SUCCESSFUL LOGIN GOES HERE
             localStorage.setItem("token", inputUsername);
 
             // -- Then redirect to index.html
             window.location.href = "http://heiden.tech/auction/index.html";
         }
-        else if (result == 'FALSE') {
+        else {
             alert("Whoops, credentials are INVALID!");
             // LOGIC FOR UNSUCCESSFUL LOGIN GOES HERE
             // -- Blank out the input filds? Display some sort of "Invalid login" message?
@@ -50,7 +51,6 @@ checkLoginCreds = function() {
             inputPassword.value = "";
 
             // >> I was looking a way to do input validation - maybe the alert is good enough for now....
-
         }
     });
       

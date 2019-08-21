@@ -3,6 +3,7 @@
 // Include a file hidden from Github that contains database connection settings and connects to the database
 include('dbConnect.php');
 
+
 // Get variables passed over from JavaScript file
 $username = $_REQUEST['user'];
 $password = $_REQUEST['pw'];
@@ -19,4 +20,26 @@ if (mysqli_num_rows($result)) {
 else {      
     echo 'FALSE';     
 }
+$conn->close();
+
+
+
+/////////// NEW VERSION THAT RETURNS FULL USER OBJECT
+
+// Get variables passed over from JavaScript file
+$username = $_REQUEST['user'];
+$password = $_REQUEST['pw'];
+
+$result = mysqli_query($conn, "SELECT * from users WHERE user='".$username."' AND BINARY pw='".$password."'");
+
+if ($result->num_rows > 0) {
+
+    while($row = $result->fetch_assoc()) {
+        $jsonResult = json_encode($row);
+        echo $jsonResult;
+    }
+} else {
+    echo "0 results";
+}
+
 $conn->close();
