@@ -22,6 +22,8 @@ window.onload = function() {
     //getCurrentAuctionItems();
 }
 
+const selectedAuctionId;
+
 // Gets user's name from localStorage and displays it on screen
 getUserName = function() {
     const name = localStorage.getItem('token');
@@ -37,12 +39,25 @@ getCurrentAuctionMetadata = function() {
         type: "POST",
     
     }).done(function(result) {
-
         console.log("Data returned from getCurrentAuctionMetadata: " + result);
+
         // Convert the result returned from PHP, from JSON to JavaScript object
         let resultObject = JSON.parse(result);
 
-        document.getElementById('auction-info__name').innerHTML = resultObject.name;
+        const selectedAuctionName = resultObject.name;
+
+        //Convert the start_date_time epoch time from the database into a JavaScript Date object
+        var startUtcSeconds = resultObject.start_date_time;
+        // Use moment.js to convert Epoch times to readable date
+        console.log(moment.unix(startUtcSecods).format('DD/MM/YYYY HH:mm'));
+
+
+        //Convert the end_date_time epoch time from the database into a JavaScript Date object
+        var endUtcSeconds = resultObject.end_date_time;
+        // Use moment.js to convert Epoch times to readable date
+        console.log(moment.unix(endUtcSeconds).format('DD/MM/YYYY HH:mm'));
+
+        document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = resultObject.start_date_time + " &mdash; " + resultObject.end_date_time;
 
     });
