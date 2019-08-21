@@ -1,5 +1,2 @@
-# heiden_auction
-Heiden Silent Auction Website
-
-Graham's comments are // -- 
-Stan's comments are // >> 
+# Heiden Auction Website
+Website for use at Heiden Technology Solutions for internal auctions of available equipment.
