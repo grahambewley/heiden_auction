@@ -6,7 +6,7 @@
 // onload function for Login page
 window.onload = function() {
         // -- This is causing a loop with the window.onload script from the main index page... commenting out for now
-    if (localStorage.getItem("token") !== null) {
+    if (localStorage.getItem("user_id") !== null) {
         // >> If token was generated then we should redirect them (auto auth) to the index.html.  How do we do this? (-- SEE BELOW)
         window.location.href = "http://heiden.tech/auction/index.html";
     } else {
@@ -36,14 +36,14 @@ checkLoginCreds = function() {
 
         if(result != 0) {
             console.log("Result from user query is: " + result);
-            localStorage.setItem("userID", result.id);
-            alert(result);
-            alert("Nice, credentials are VALID!");
-            
-            // LOGIC FOR SUCCESSFUL LOGIN GOES HERE
-            localStorage.setItem("token", inputUsername);
+            // Parse JSON into JavaScript object
+            let resultObject = JSON.parse(result);
+            // Store id and name of this user in localStorage for use later
+            localStorage.setItem("user_id", resultObject.id);
+            localStorage.setItem("name", resultObject.name);
+            //alert("Nice, credentials are VALID!");
 
-            // -- Then redirect to index.html
+            // Redirect to index.html
             window.location.href = "http://heiden.tech/auction/index.html";
         }
         else {
