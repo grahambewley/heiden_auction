@@ -38,11 +38,8 @@ if ($result->num_rows > 0) {
         $jsonResult = json_encode($row);
         echo $jsonResult;
     }
-} 
-
-/*
-else {
-    echo "0 results";
+} else {
+    echo 0;
 }
-*/
+
 $conn->close();

@@ -34,7 +34,7 @@ checkLoginCreds = function() {
         //      TRUE means the login attempt was successful 
         //      FALSE means the login attempt was unsuccessful
 
-        if(result !== '') {
+        if(result != 0) {
             console.log("Result from user query is: " + result);
             localStorage.setItem("userID", result.id);
             alert(result);
