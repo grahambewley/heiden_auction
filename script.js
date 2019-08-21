@@ -64,9 +64,9 @@ getCurrentAuctionMetadata = function() {
 }
 
 getSelectedAuctionItems = function() {
+    console.log('selectedAuctionId = ' + selectedAuctionId);
 
     $.ajax({      
-    
         url: "/auction/resources/getSelectedAuctionItems.php",
         type: "POST",
         data: { "id": selectedAuctionId }
