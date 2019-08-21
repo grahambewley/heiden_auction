@@ -19,12 +19,27 @@ let selectedAuctionId = '';
 getUserName = function() {
     const name = localStorage.getItem('token');
 
-    if(name === null)
-        console.log("Doesn't look like you're logged in");
-    else
-        console.log("Name found in localStorage is " + name);
+    const auctionInfo = document.getElementById('auction-info');
 
-    document.getElementById('auction-info__welcome').innerHTML = "Welcome, " + name;
+    if(name === null) {
+        console.log("Doesn't look like you're logged in");
+        
+        let loginButton = document.createElement('a');
+        loginButton.setAttribute('href', '/login.html');
+        loginButton.setAttribute('class', 'btn');
+        loginButton.innerHTML = "Login";
+
+        auctionInfo.appendChild(loginButton);
+    }
+    else {
+        console.log("Name found in localStorage is " + name);
+        
+        let welcomeText = document.createElement('h3');
+        welcomeText.setAttribute('class', 'auction-info__welcome');
+        welcomeText.innerHTML = "Welcome, " + name;
+    }
+
+    //document.getElementById('auction-info__welcome').innerHTML = "Welcome, " + name;
 }
 
 getCurrentAuctionMetadata = function() {
