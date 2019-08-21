@@ -15,7 +15,8 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+}
 
 .banner {
   grid-column: full-start / full-end;
@@ -121,3 +122,41 @@ body {
     .bid__button:hover {
       transform: scale(1.1);
       background-color: #e09e55; }
+
+#login {
+    grid-column: full-start / full-end;
+    background-color: $color-grey-light-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+/*    box-shadow: 0 .5rem .5rem rgba(#444, 0.05);*/
+/*    margin-bottom: 6rem;*/
+    padding:  1rem;
+}
+
+.loginInput {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 2rem;
+    background: rgb(250,175,94);
+    color: rgb(86,161,213);
+    box-shadow: 5px 5px 10px #888888;
+}
+
+#checkCredentials {
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 15rem;
+    font-size: 2rem;
+    border-radius: 5px;
+}
+
+#checkCredentials:hover {
+    animation: pulse 1s alternate infinite;
+}
+
+@keyframes pulse {
+    100% {
+        background-color: #00FF00;
+    }
+}
