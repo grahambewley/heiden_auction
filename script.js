@@ -17,11 +17,11 @@ let selectedAuctionId = '';
 
 // Gets user's name from localStorage and displays it on screen OR display Login button
 getUserName = function() {
-    const name = localStorage.getItem('token');
+    const name = localStorage.getItem('name');
 
     const auctionInfo = document.getElementById('auction-info');
 
-    //If name token is set to null then create Login button and append it
+    //If name in localStorage is set to null then create Login button and append it
     if(name === null) {        
         let loginButton = document.createElement('a');
         loginButton.setAttribute('href', '/auction/login.html');
@@ -30,7 +30,7 @@ getUserName = function() {
 
         auctionInfo.appendChild(loginButton);
     }
-    // Or if name token is set, display a "Welcome" message instead
+    // Or if name is set (user is logged in), display a "Welcome" message instead
     else {        
         let welcomeText = document.createElement('h3');
         welcomeText.setAttribute('class', 'auction-info__welcome');
