@@ -18,7 +18,11 @@ let selectedAuctionId = '';
 // Gets user's name from localStorage and displays it on screen
 getUserName = function() {
     const name = localStorage.getItem('token');
-    console.log("Name found in localStorage is " + name);
+
+    if(name === null)
+        console.log("Doesn't look like you're logged in");
+    else
+        console.log("Name found in localStorage is " + name);
 
     document.getElementById('auction-info__welcome').innerHTML = "Welcome, " + name;
 }
