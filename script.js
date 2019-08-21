@@ -115,8 +115,11 @@ getSelectedAuctionItems = function() {
             itemDescription.setAttribute('class', 'item__description');
             itemDescription.innerHTML = element.description;
 
+            // THIS IS WHERE THE STARTING / CURRENT BID STUFF WOULD GO
+
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
+            // APPEND STARTING / CURRENT BIDS HERE
 
             // Create bid container, plus the input and button that go within
             let bid = document.createElement('div');
