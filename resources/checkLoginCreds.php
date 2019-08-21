@@ -3,7 +3,7 @@
 // Include a file hidden from Github that contains database connection settings and connects to the database
 include('dbConnect.php');
 
-
+/*
 // Get variables passed over from JavaScript file
 $username = $_REQUEST['user'];
 $password = $_REQUEST['pw'];
@@ -21,7 +21,7 @@ else {
     echo 'FALSE';     
 }
 $conn->close();
-
+*/
 
 
 /////////// NEW VERSION THAT RETURNS FULL USER OBJECT
