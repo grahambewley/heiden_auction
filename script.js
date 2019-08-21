@@ -18,8 +18,7 @@ window.onload = function() {
 
     getCurrentAuctionMetadata();
 
-    // NEXT UP
-    //getCurrentAuctionItems();
+    getSelectedAuctionItems();
 }
 
 const selectedAuctionId = '';
@@ -45,6 +44,7 @@ getCurrentAuctionMetadata = function() {
         let resultObject = JSON.parse(result);
 
         const selectedAuctionName = resultObject.name;
+        selectedAuctionId = resultObject.id;
 
         //Convert the start_date_time epoch time from the database into a JavaScript Date object
         var startUtcSeconds = resultObject.start_date_time;
@@ -60,5 +60,18 @@ getCurrentAuctionMetadata = function() {
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
 
+    });
+}
+
+getSelectedAuctionItems = function() {
+
+    $.ajax({      
+    
+        url: "/auction/resources/getSelectedAuctionItems.php",
+        type: "POST",
+        data: { "id": selectedAuctionId }
+    
+    }).done(function(result) {
+        console.log("Items from the selected Auction: " + result);
     });
 }

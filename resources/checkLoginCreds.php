@@ -9,7 +9,7 @@ $password = $_REQUEST['pw'];
 
 // SQL query for credentials in users table 
 //  -- BINARY keyword makes this query compare the exact bytes -- thus making the query case-sensitive
-$result = mysqli_query($conn, "SELECT * FROM users WHERE BINARY user='".$username."' AND BINARY pw='".$password."'");
+$result = mysqli_query($conn, "SELECT * FROM users WHERE user='".$username."' AND BINARY pw='".$password."'");
 
 // If the number of rows returned equals 1 (or greater), this means a matching user was found -- return TRUE
 if (mysqli_num_rows($result)) {
