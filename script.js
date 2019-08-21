@@ -49,13 +49,13 @@ getCurrentAuctionMetadata = function() {
         //Convert the start_date_time epoch time from the database into a JavaScript Date object
         var startUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
-        let formattedStartDateTime = moment.unix(startUtcSeconds).format('MM/DD/YYYY h:mm a');
+        let formattedStartDateTime = moment.unix(startUtcSeconds).format('MM/DD/YY h:mm A');
 
 
         //Convert the end_date_time epoch time from the database into a JavaScript Date object
         var endUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
-        let formattedEndDateTime = moment.unix(endUtcSeconds).format('MM/DD/YYYY h:mm a');
+        let formattedEndDateTime = moment.unix(endUtcSeconds).format('MM/DD/YY h:mm A');
         
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
