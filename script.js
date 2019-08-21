@@ -22,7 +22,7 @@ window.onload = function() {
     //getCurrentAuctionItems();
 }
 
-const selectedAuctionId;
+const selectedAuctionId = '';
 
 // Gets user's name from localStorage and displays it on screen
 getUserName = function() {
