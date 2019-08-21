@@ -8,10 +8,15 @@ $result = mysqli_query($conn, "SELECT * from items WHERE auction_id = ".$_REQUES
 
 if ($result->num_rows > 0) {
 
+    $resultArray = [];
+
     while($row = $result->fetch_assoc()) {
-        $jsonResult = json_encode($row);
-        echo $jsonResult;
+        array_push($resultArray, $result);
     }
+
+    $jsonResult = json_encode($resultArray);
+    echo $jsonResult;
+
 } else {
     echo "0 results";
 }
