@@ -53,7 +53,7 @@ getCurrentAuctionMetadata = function() {
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
 
-
+        //Once we've got the correct auction selected we can fill in the auction items
         getSelectedAuctionItems();
     });
 }
@@ -67,6 +67,11 @@ getSelectedAuctionItems = function() {
         data: { "id": selectedAuctionId }
     
     }).done(function(result) {
+        let resultObject = JSON.parse(result);
+
         console.log("Items from the selected Auction: " + result);
+        console.log("Resulting JS Object after conversion");
+
+        
     });
 }
