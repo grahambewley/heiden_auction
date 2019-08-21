@@ -72,7 +72,54 @@ getSelectedAuctionItems = function() {
         console.log("Items from the selected Auction: " + result);
         
         resultArray.forEach(function(element) {
-            console.log("Here's one result: " + element.name);
+
+            // Create item container div
+            let item = document.createElement('div');
+            item.setAttribute('class', 'item')
+            
+            // Create image that goes at the top of the item card
+            let itemImg = document.createElement('img');
+            itemImg.setAttribute('src', 'img/'+element.image_filename);
+            
+            // Create item__data container, plus the name and description that go within
+            let itemData = document.createElement('div');
+            itemData.setAttribute('class', 'item__data');
+
+            let itemName = document.createElement('p');
+            itemName.setAttribute('class', 'item__name');
+            itemName.innerHTML = element.name;
+
+            let itemDescription = document.createElement('p');
+            itemDescription.setAttribute('class', 'item__description');
+            itemDescription.innerHTML = element.description;
+
+            itemData.appendChild(itemName);
+            itemData.appendChild(itemDesciption);
+
+            // Create bid container, plus the input and button that go within
+            let bid = document.createElement('div');
+            bid.setAttribute('class', 'bid');
+
+            let bidAmount = document.createElement('input');
+            bidAmount.setAttribute('type', 'text');
+            bidAmount.setAttribute('class', 'bid__amount');
+            bidAmount.setAttribute('id', 'bidAmount');
+            bidAmount.setAttribute('placeholder', 'Your bid');
+
+            let bidButton = document.createElement('button');
+            bidButton.setAttribute('class', 'bid__button');
+
+            bid.appendChild(bidAmount);
+            bid.appendChild(bidButton);
+
+            // Append all the stuff we made to the item card
+            item.appendChild(itemImg);
+            item.appendChild(itemData);
+            item.appendChild(bid);
+
+
+
+
         });
         
     });
