@@ -112,6 +112,7 @@ getSelectedAuctionItems = function() {
 
             let bidButton = document.createElement('button');
             bidButton.setAttribute('class', 'bid__button');
+            bidButton.innerHTML = "Bid";
 
             bid.appendChild(bidAmount);
             bid.appendChild(bidButton);
