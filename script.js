@@ -72,7 +72,7 @@ getSelectedAuctionItems = function() {
         console.log("Items from the selected Auction: " + result);
         
         resultArray.forEach(function(element) {
-            console.log("Here's one result: " + element);
+            console.log("Here's one result: " + element.name);
         });
         
     });
