@@ -28,12 +28,9 @@ checkLoginCreds = function() {
         data: { "user": inputUsername, "pw": inputPassword }
     
     }).done(function(result) {
-    
-        //Here you can really do *whatever* with the result
-        //  'result' will either be the string 'TRUE' or 'FALSE'
-        //      TRUE means the login attempt was successful 
-        //      FALSE means the login attempt was unsuccessful
-
+        
+        // PHP script returns 0 if no result was found
+        // If result is not zero, parse the returned user object and store some stuff, redirect to index page
         if(result != 0) {
             console.log("Result from user query is: " + result);
             // Parse JSON into JavaScript object
@@ -41,19 +38,18 @@ checkLoginCreds = function() {
             // Store id and name of this user in localStorage for use later
             localStorage.setItem("user_id", resultObject.id);
             localStorage.setItem("name", resultObject.name);
-            //alert("Nice, credentials are VALID!");
 
             // Redirect to index.html
             window.location.href = "http://heiden.tech/auction/index.html";
         }
-        else {
-            alert("Whoops, credentials are INVALID!");
-            // LOGIC FOR UNSUCCESSFUL LOGIN GOES HERE
-            // -- Blank out the input filds? Display some sort of "Invalid login" message?
+        // ...If PHP returns 0 then no matching user was found, invalid login
+        else { 
+            alert("Sorry, those credentials are invalid. Please try again.");
+            
+            // Blank out the input fields
             inputUsername.value = "";
             inputPassword.value = "";
-
-            // >> I was looking a way to do input validation - maybe the alert is good enough for now....
+           
         }
     });
       
