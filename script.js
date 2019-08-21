@@ -49,7 +49,7 @@ getCurrentAuctionMetadata = function() {
         //Convert the start_date_time epoch time from the database into a JavaScript Date object
         var startUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
-        console.log(moment.unix(startUtcSecods).format('DD/MM/YYYY HH:mm'));
+        console.log(moment.unix(startUtcSeconds).format('DD/MM/YYYY HH:mm'));
 
 
         //Convert the end_date_time epoch time from the database into a JavaScript Date object
