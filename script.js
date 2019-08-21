@@ -24,7 +24,7 @@ getUserName = function() {
     //If name token is set to null then create Login button and append it
     if(name === null) {        
         let loginButton = document.createElement('a');
-        loginButton.setAttribute('href', '/login.html');
+        loginButton.setAttribute('href', '/auction/login.html');
         loginButton.setAttribute('class', 'btn');
         loginButton.innerHTML = "Login";
 
