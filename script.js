@@ -45,6 +45,7 @@ getCurrentAuctionMetadata = function() {
 
         const selectedAuctionName = resultObject.name;
         selectedAuctionId = resultObject.id;
+        console.log('Just set selectedAuctionId to ' + selectedAuctionId);
 
         //Convert the start_date_time epoch time from the database into a JavaScript Date object
         var startUtcSeconds = resultObject.start_date_time;
