@@ -115,7 +115,9 @@ getSelectedAuctionItems = function() {
             itemDescription.setAttribute('class', 'item__description');
             itemDescription.innerHTML = element.description;
 
+            // STAN:
             // THIS IS WHERE THE STARTING / CURRENT BID STUFF WOULD GO
+            // letItemStartingBid = ......... AND SO ON
 
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
