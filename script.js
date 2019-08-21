@@ -82,6 +82,8 @@ getSelectedAuctionItems = function() {
             // Create image that goes at the top of the item card
             let itemImg = document.createElement('img');
             itemImg.setAttribute('src', 'img/'+element.image_filename);
+            itemImg.setAttribute('alt', 'Auction item image');
+            itemImg.setAttribute('class', 'item__img');
             
             // Create item__data container, plus the name and description that go within
             let itemData = document.createElement('div');
