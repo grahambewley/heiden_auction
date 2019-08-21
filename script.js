@@ -15,15 +15,14 @@ window.onload = function() {
 
 let selectedAuctionId = '';
 
-// Gets user's name from localStorage and displays it on screen
+// Gets user's name from localStorage and displays it on screen OR display Login button
 getUserName = function() {
     const name = localStorage.getItem('token');
 
     const auctionInfo = document.getElementById('auction-info');
 
-    if(name === null) {
-        console.log("Doesn't look like you're logged in");
-        
+    //If name token is set to null then create Login button and append it
+    if(name === null) {        
         let loginButton = document.createElement('a');
         loginButton.setAttribute('href', '/login.html');
         loginButton.setAttribute('class', 'btn');
@@ -31,15 +30,15 @@ getUserName = function() {
 
         auctionInfo.appendChild(loginButton);
     }
-    else {
-        console.log("Name found in localStorage is " + name);
-        
+    // Or if name token is set, display a "Welcome" message instead
+    else {        
         let welcomeText = document.createElement('h3');
         welcomeText.setAttribute('class', 'auction-info__welcome');
         welcomeText.innerHTML = "Welcome, " + name;
+
+        auctionInfo.appendChild(welcomeText);
     }
 
-    //document.getElementById('auction-info__welcome').innerHTML = "Welcome, " + name;
 }
 
 getCurrentAuctionMetadata = function() {
