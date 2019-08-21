@@ -5,21 +5,12 @@ window.onload = function() {
     if (localStorage.getItem("token") === null) {
         window.location.href = "http://heiden.tech/auction/login.html";
     }
-    // Otherwise, begin loading auction data
-    else {
-        // Gets user's name from localStorage and displays it on screen
-        getUserName();
-
-        loadAuctionData();
-    }
     */
 
     getUserName();
 
     getCurrentAuctionMetadata();
-
-    //This needs some async/await
-    getSelectedAuctionItems();
+    
 }
 
 let selectedAuctionId = '';
@@ -62,6 +53,8 @@ getCurrentAuctionMetadata = function() {
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
 
+
+        getSelectedAuctionItems();
     });
 }
 
