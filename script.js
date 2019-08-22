@@ -134,8 +134,10 @@ getSelectedAuctionItems = function() {
             bidAmount.setAttribute('class', 'bid__amount');
             bidAmount.setAttribute('id', 'bidAmount');
             bidAmount.setAttribute('placeholder', 'Your bid');
+            bidAmount.setAttribute('required', 'true');
 
-            let bidButton = document.createElement('button');
+            let bidButton = document.createElement('input');
+            bidButton.setAttribute('type', 'submit');
             bidButton.setAttribute('class', 'bid__button');
             // Set custom attribute that holds this auction item's unique id
             bidButton.setAttribute('item_id', element.id);
