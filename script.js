@@ -130,7 +130,7 @@ getSelectedAuctionItems = function() {
             bid.setAttribute('class', 'bid');
             // Set custom attribute that holds this auction item's unique id
             bid.setAttribute('item_type', element.id);
-            bid.setAttribute('onsubmit', 'placeBid(this)');
+            bid.setAttribute('onsubmit', 'placeBid(e, this)');
 
             let bidAmount = document.createElement('input');
             bidAmount.setAttribute('type', 'number');
@@ -160,6 +160,7 @@ getSelectedAuctionItems = function() {
 }
 
 placeBid = function(item) {
+    e.preventDefault();
     console.log("Bid button clicked! Item ID passed over was " + item.getAttribute('item_id'));
     console.log("Current User ID is " + localStorage.getItem('user_id'));
     console.log("Bid value entered is " + item.previousSibling.value);
