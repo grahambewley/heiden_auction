@@ -126,7 +126,7 @@ getSelectedAuctionItems = function() {
             // APPEND STARTING / CURRENT BIDS HERE
 
             // Create bid container, plus the input and button that go within
-            let bid = document.createElement('div');
+            let bid = document.createElement('form');
             bid.setAttribute('class', 'bid');
 
             let bidAmount = document.createElement('input');
