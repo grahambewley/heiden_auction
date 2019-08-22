@@ -136,7 +136,7 @@ getSelectedAuctionItems = function() {
             bidButton.setAttribute('class', 'bid__button');
             // Set custom attribute that holds this auction item's unique id
             bidButton.setAttribute('item_id', element.id);
-            bidButton.setAttribute('onclick', 'placeBid(this.item_id)');
+            bidButton.setAttribute('onclick', 'placeBid(this)');
             bidButton.innerHTML = "Bid";
 
             bid.appendChild(bidAmount);
@@ -154,6 +154,6 @@ getSelectedAuctionItems = function() {
     });
 }
 
-placeBid = function(itemId) {
-    console.log("Bid button clicked! Item ID passed over was " + itemId);
+placeBid = function(item) {
+    console.log("Bid button clicked! Item ID passed over was " + item.getAttribute('item_id'));
 }
