@@ -175,6 +175,8 @@ checkBid = function(item) {
         type: "POST",
         data: { "id": biddingItemId }
     }).done(function(result) {
+
+        // Get data on this item after clicking the bid button
         let resultObject = JSON.parse(result);
         console.log("Starting price we got for this item: " + resultObject.starting_price);
         console.log("Current high_bid_id we got for this item: " + resultObject.high_bid_id);
@@ -185,24 +187,28 @@ checkBid = function(item) {
             // If the value entered by the user is greater than the starting price of the item
             if(biddingValue > resultObject.starting_price) {
                 console.log("Bid beats starting price, so this is a good bid");
-                // Place bid into bids table -- returns bid id
-                const newHighBidId = placeBid(biddingItemId, biddingUserId, biddingValue);
-
-                // Add high_bid_id to this item
-
+                // Place bid into bids table
+                placeBid(biddingItemId, biddingUserId, biddingValue);
+            }
+            // If the value entered is not greater than the starting price, let the user know
+            else {
+                alert("You must enter a bid greater than the starting price of $" + resultObject.starting_price);
             }
         }
+        
+        // Otherwise, this is not the first bid on this item
+        else {
+            console.log("This is NOT the first bid on this item");
+            
+            // Get the amount associated with the current high_bid_id 
+            // (AJAX HERE)
+
+            // If biddingValue > [highBidAmount] -- MAKE SURE NOT TO USE "resultObject" since that was used earlier
+                // placeBid(... ... ...) 
+            // Else
+                // alert('You must enter a value greater than then current bid of $' + [highBidAmount])
+        }
     });
-
-    // IF result.high_bid_id == null
-        // Add bid to bids -- amount, item_id, user_id
-        // Get id from the bid we just made (https://stackoverflow.com/questions/7917695/sql-server-return-value-after-insert)
-        // Add high_bid_id to this item
-
-    // IF result.high_bid_id != null && amount > result.high_bid_id
-        // Add bid to bids -- amount, item_id, user_id
-        // Get id from the bid we just made (https://stackoverflow.com/questions/7917695/sql-server-return-value-after-insert)
-        // Add high_bid_id to this item
 }
 
 placeBid = function(biddingItemId, biddingUserId, biddingValue) {
