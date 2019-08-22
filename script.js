@@ -176,6 +176,10 @@ checkBid = function(item) {
         let resultObject = JSON.parse(result);
         console.log("This item's Starting Price: " + resultObject.starting_price);
         console.log("This item's current High Bid ID: " + resultObject.high_bid_id);
+        console.log("TYPEOF resultObject.starting_price = " + typeof resultObject.starting_price);
+        console.log("TYPEOF resultObject.high_bid_id = " + typeof resultObject.high_bid_id);
+        console.log("and TYPEOF biddingValue = " + typeof biddingValue);
+
 
         // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
         if(resultObject.high_bid_id === null) {
