@@ -8,7 +8,7 @@ window.onload = function() {
         // -- This is causing a loop with the window.onload script from the main index page... commenting out for now
     if (localStorage.getItem("user_id") !== null) {
         // >> If token was generated then we should redirect them (auto auth) to the index.html.  How do we do this? (-- SEE BELOW)
-        window.location.href = "http://heiden.tech/auction/index.html";
+        window.location.href = "/auction/index.html";
     } else {
         checkLoginCreds;
     }
@@ -40,7 +40,7 @@ checkLoginCreds = function() {
             localStorage.setItem("name", resultObject.name);
 
             // Redirect to index.html
-            window.location.href = "http://heiden.tech/auction/index.html";
+            window.location.href = "/auction/index.html";
         }
         // ...If PHP returns 0 then no matching user was found, invalid login
         else { 
@@ -49,7 +49,6 @@ checkLoginCreds = function() {
             // Blank out the input fields
             inputUsername.value = "";
             inputPassword.value = "";
-           
         }
     });
       
