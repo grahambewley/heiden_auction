@@ -129,7 +129,7 @@ getSelectedAuctionItems = function() {
             let bid = document.createElement('form');
             bid.setAttribute('class', 'bid');
             // Set custom attribute that holds this auction item's unique id
-            bid.setAttribute('item_type', element.id);
+            bid.setAttribute('item_id', element.id);
             bid.setAttribute('onsubmit', 'placeBid(this);return false');
 
             let bidAmount = document.createElement('input');
