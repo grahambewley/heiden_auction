@@ -13,8 +13,6 @@ window.onload = function() {
     
 }
 
-let selectedAuctionId = '';
-
 // Gets user's name from localStorage and displays it on screen OR display Login button
 getUserName = function() {
     const name = localStorage.getItem('name');
@@ -54,7 +52,7 @@ getCurrentAuctionMetadata = function() {
         let resultObject = JSON.parse(result);
 
         const selectedAuctionName = resultObject.name;
-        selectedAuctionId = resultObject.id;
+        const selectedAuctionId = resultObject.id;
         console.log('Just set selectedAuctionId to ' + selectedAuctionId);
 
         //Convert the start_date_time epoch time from the database into a JavaScript Date object
@@ -71,11 +69,11 @@ getCurrentAuctionMetadata = function() {
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
 
         //Once we've got the correct auction selected we can fill in the auction items
-        getSelectedAuctionItems();
+        getSelectedAuctionItems(selectedAuctionId);
     });
 }
 
-getSelectedAuctionItems = function() {
+getSelectedAuctionItems = function(selectedAuctionId) {
     console.log('selectedAuctionId = ' + selectedAuctionId);
 
     $.ajax({      
