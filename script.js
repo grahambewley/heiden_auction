@@ -130,7 +130,7 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
             // Set custom attribute that holds this auction item's unique id
             bid.setAttribute('item_id', element.id);
             // The 'return false' acts like an event.preventDefuault(), which keeps the page from reloading
-            bid.setAttribute('onsubmit', 'placeBid(this);return false');
+            bid.setAttribute('onsubmit', 'checkBid(this);return false');
 
             let bidAmount = document.createElement('input');
             bidAmount.setAttribute('type', 'number');
@@ -159,22 +159,39 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
     });
 }
 
-placeBid = function(item) {
+checkBid = function(item) {
 
-    console.log("Bid button clicked! Item ID passed over was " + item.getAttribute('item_id'));
-    console.log("Current User ID is " + localStorage.getItem('user_id'));
-    console.log("Bid value entered is " + item.firstElementChild.value);
+    const biddingItemId = item.getAttribute('item_id');
+    const biddingUserId = localStorage.getItem('user_id');
+    const biddingValue = item.firstElementChild.value;
 
-    console.log("Getting item data");
+    console.log("Attempting to bid on item ID " + biddingItemId);
+    console.log("Current User ID is " + biddingUserId);
+    console.log("Bid value entered is " + biddingValue);
+
     // Query item based on item id -- return result
     $.ajax({      
         url: "/auction/resources/getItemBidData.php",
         type: "POST",
-        data: { "id": item.getAttribute('item_id') }
+        data: { "id": biddingItemId }
     }).done(function(result) {
         let resultObject = JSON.parse(result);
         console.log("Starting price we got for this item: " + resultObject.starting_price);
         console.log("Current high_bid_id we got for this item: " + resultObject.high_bid_id);
+
+        // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
+        if(resultObject.high_bid_id === null) {
+            console.log("This is the first bid on this item");
+            // If the value entered by the user is greater than the starting price of the item
+            if(biddingValue > resultObject.starting_price) {
+                console.log("Bid beats starting price, so this is a good bid");
+                // Place bid into bids table -- returns bid id
+                const newHighBidId = placeBid(biddingItemId, biddingUserId, biddingValue);
+
+                // Add high_bid_id to this item
+
+            }
+        }
     });
 
     // IF result.high_bid_id == null
@@ -186,4 +203,15 @@ placeBid = function(item) {
         // Add bid to bids -- amount, item_id, user_id
         // Get id from the bid we just made (https://stackoverflow.com/questions/7917695/sql-server-return-value-after-insert)
         // Add high_bid_id to this item
+}
+
+placeBid = function(biddingItemId, biddingUserId, biddingValue) {
+    $.ajax({      
+        url: "/auction/resources/getItemBidData.php",
+        type: "POST",
+        data: { "biddingItemId": biddingItemId, "biddingUserId": biddingUserId, "biddingValue": biddingValue }
+    }).done(function(result) {
+        let resultObject = JSON.parse(result);
+        console.log("Bid result: " + result);
+    });
 }
