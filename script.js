@@ -207,7 +207,7 @@ checkBid = function(item) {
 
 placeBid = function(biddingItemId, biddingUserId, biddingValue) {
     $.ajax({      
-        url: "/auction/resources/getItemBidData.php",
+        url: "/auction/resources/addBidToBids.php",
         type: "POST",
         data: { "biddingItemId": biddingItemId, "biddingUserId": biddingUserId, "biddingValue": biddingValue }
     }).done(function(result) {
