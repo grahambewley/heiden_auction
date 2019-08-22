@@ -125,11 +125,13 @@ getSelectedAuctionItems = function() {
             itemData.appendChild(itemDescription);
             // APPEND STARTING / CURRENT BIDS HERE
 
+
             // Create bid container form, plus the input and button that go within
             let bid = document.createElement('form');
             bid.setAttribute('class', 'bid');
             // Set custom attribute that holds this auction item's unique id
             bid.setAttribute('item_id', element.id);
+            // The 'return false' acts like an event.preventDefuault(), which keeps the page from reloading
             bid.setAttribute('onsubmit', 'placeBid(this);return false');
 
             let bidAmount = document.createElement('input');
@@ -160,6 +162,7 @@ getSelectedAuctionItems = function() {
 }
 
 placeBid = function(item) {
+
     console.log("Bid button clicked! Item ID passed over was " + item.getAttribute('item_id'));
     console.log("Current User ID is " + localStorage.getItem('user_id'));
     console.log("Bid value entered is " + item.firstElementChild.value);
