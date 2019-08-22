@@ -211,7 +211,7 @@ placeBid = function(biddingItemId, biddingUserId, biddingValue) {
         type: "POST",
         data: { "biddingItemId": biddingItemId, "biddingUserId": biddingUserId, "biddingValue": biddingValue }
     }).done(function(result) {
-        let resultObject = JSON.parse(result);
+        //let resultObject = JSON.parse(result);
         console.log("Bid result: " + result);
     });
 }
