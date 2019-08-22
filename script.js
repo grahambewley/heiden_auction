@@ -125,9 +125,12 @@ getSelectedAuctionItems = function() {
             itemData.appendChild(itemDescription);
             // APPEND STARTING / CURRENT BIDS HERE
 
-            // Create bid container, plus the input and button that go within
+            // Create bid container form, plus the input and button that go within
             let bid = document.createElement('form');
             bid.setAttribute('class', 'bid');
+            // Set custom attribute that holds this auction item's unique id
+            bid.setAttribute('item_type', element.id);
+            bid.setAttribute('onclick', 'placeBid(this)');
 
             let bidAmount = document.createElement('input');
             bidAmount.setAttribute('type', 'text');
@@ -139,9 +142,6 @@ getSelectedAuctionItems = function() {
             let bidButton = document.createElement('input');
             bidButton.setAttribute('type', 'submit');
             bidButton.setAttribute('class', 'bid__button');
-            // Set custom attribute that holds this auction item's unique id
-            bidButton.setAttribute('item_id', element.id);
-            bidButton.setAttribute('onclick', 'placeBid(this)');
             bidButton.innerHTML = "Bid";
 
             bid.appendChild(bidAmount);
