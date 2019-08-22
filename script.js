@@ -162,7 +162,7 @@ getSelectedAuctionItems = function() {
 placeBid = function(item) {
     console.log("Bid button clicked! Item ID passed over was " + item.getAttribute('item_id'));
     console.log("Current User ID is " + localStorage.getItem('user_id'));
-    console.log("Bid value entered is " + item.previousSibling.value);
+    console.log("Bid value entered is " + item.firstElementChild.value);
 
     // Query item based on item id -- return result
 
