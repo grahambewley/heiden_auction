@@ -133,7 +133,7 @@ getSelectedAuctionItems = function() {
             bid.setAttribute('onsubmit', 'placeBid(this)');
 
             let bidAmount = document.createElement('input');
-            bidAmount.setAttribute('type', 'text');
+            bidAmount.setAttribute('type', 'number');
             bidAmount.setAttribute('class', 'bid__amount');
             bidAmount.setAttribute('id', 'bidAmount');
             bidAmount.setAttribute('placeholder', 'Your bid');
