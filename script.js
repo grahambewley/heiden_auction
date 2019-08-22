@@ -158,7 +158,7 @@ checkBid = function(item) {
 
     const biddingItemId = item.getAttribute('item_id');
     const biddingUserId = localStorage.getItem('user_id');
-    const biddingValue = item.firstElementChild.value;
+    const biddingValue = parseInt(item.firstElementChild.value);
 
     console.log("Attempting to bid on item ID " + biddingItemId);
     console.log("My User ID is " + biddingUserId);
@@ -174,10 +174,14 @@ checkBid = function(item) {
 
         // Get data on this item after clicking the bid button
         let resultObject = JSON.parse(result);
-        console.log("This item's Starting Price: " + resultObject.starting_price);
-        console.log("This item's current High Bid ID: " + resultObject.high_bid_id);
-        console.log("TYPEOF resultObject.starting_price = " + typeof resultObject.starting_price);
-        console.log("TYPEOF resultObject.high_bid_id = " + typeof resultObject.high_bid_id);
+
+        let startingPrice = parseInt(resultObject.starting_price);
+        let highBidIid = resultObject.high_bid_id;
+
+        console.log("This item's Starting Price: " + startingPrice);
+        console.log("This item's current High Bid ID: " + highBidIid);
+        console.log("TYPEOF startingPrice = " + typeof startingPrice);
+        console.log("TYPEOF resultObject.high_bid_id = " + typeof highBidIid);
         console.log("and TYPEOF biddingValue = " + typeof biddingValue);
 
 
