@@ -165,6 +165,7 @@ placeBid = function(item) {
     console.log("Current User ID is " + localStorage.getItem('user_id'));
     console.log("Bid value entered is " + item.firstElementChild.value);
 
+    console.log("Getting item data");
     // Query item based on item id -- return result
     $.ajax({      
         url: "/auction/resources/getItemBidData.php",
