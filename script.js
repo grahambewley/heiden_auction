@@ -176,12 +176,12 @@ checkBid = function(item) {
         let resultObject = JSON.parse(result);
 
         let startingPrice = parseInt(resultObject.starting_price);
-        let highBidIid = resultObject.high_bid_id;
+        let highBidId = resultObject.high_bid_id;
 
         console.log("This item's Starting Price: " + startingPrice);
         console.log("This item's current High Bid ID: " + highBidIid);
         console.log("TYPEOF startingPrice = " + typeof startingPrice);
-        console.log("TYPEOF resultObject.high_bid_id = " + typeof highBidIid);
+        console.log("TYPEOF highBidId = " + typeof highBidId);
         console.log("and TYPEOF biddingValue = " + typeof biddingValue);
 
 
@@ -189,7 +189,7 @@ checkBid = function(item) {
         if(resultObject.high_bid_id === null) {
             console.log('high_bid_id is set to null on this item, so this is the first bid');
             // If the value entered by the user is greater than the starting price of the item
-            if(biddingValue > resultObject.starting_price) {
+            if(biddingValue > startingPrice) {
                 console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
                 // Place bid into bids table
                 placeBid(biddingItemId, biddingUserId, biddingValue);
@@ -197,7 +197,7 @@ checkBid = function(item) {
             // If the value entered is not greater than the starting price, let the user know
             else {
                 console.log("Bid value not greater than starting price --- Invalid bid");
-                alert("You must enter a bid greater than the starting price of $" + resultObject.starting_price);
+                alert("You must enter a bid greater than the starting price of $" + startingPrice);
             }
         }
         
