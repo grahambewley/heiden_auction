@@ -179,7 +179,7 @@ checkBid = function(item) {
         let highBidId = resultObject.high_bid_id;
 
         console.log("This item's Starting Price: " + startingPrice);
-        console.log("This item's current High Bid ID: " + highBidIid);
+        console.log("This item's current High Bid ID: " + highBidId);
         console.log("TYPEOF startingPrice = " + typeof startingPrice);
         console.log("TYPEOF highBidId = " + typeof highBidId);
         console.log("and TYPEOF biddingValue = " + typeof biddingValue);
