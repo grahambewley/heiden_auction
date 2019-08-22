@@ -62,7 +62,6 @@ getCurrentAuctionMetadata = function() {
         // Use moment.js to convert Epoch times to readable date
         let formattedStartDateTime = moment.unix(startUtcSeconds).format('MM/DD/YY h:mm A');
 
-
         //Convert the end_date_time epoch time from the database into a JavaScript Date object
         var endUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
@@ -95,7 +94,7 @@ getSelectedAuctionItems = function() {
 
             // Create item container div
             let item = document.createElement('div');
-            item.setAttribute('class', 'item')
+            item.setAttribute('class', 'item');
             
             // Create image that goes at the top of the item card
             let itemImg = document.createElement('img');
@@ -135,6 +134,9 @@ getSelectedAuctionItems = function() {
 
             let bidButton = document.createElement('button');
             bidButton.setAttribute('class', 'bid__button');
+            // Set custom attribute that holds this auction item's unique id
+            bidButton.setAttribute('item_id', element.id);
+            bidButton.setAttribute('onclick', 'placeBid(this.id)');
             bidButton.innerHTML = "Bid";
 
             bid.appendChild(bidAmount);
@@ -150,4 +152,8 @@ getSelectedAuctionItems = function() {
         });
         
     });
+}
+
+placeBid = function(itemId) {
+    console.log("Bid button clicked! Item ID passed over was " + itemId);
 }
