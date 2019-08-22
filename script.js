@@ -161,9 +161,10 @@ checkBid = function(item) {
     const biddingValue = item.firstElementChild.value;
 
     console.log("Attempting to bid on item ID " + biddingItemId);
-    console.log("Current User ID is " + biddingUserId);
-    console.log("Bid value entered is " + biddingValue);
+    console.log("My User ID is " + biddingUserId);
+    console.log("Bid amount entered is " + biddingValue);
 
+    console.log("Getting bid data on this item...");
     // Query item based on item id -- return result
     $.ajax({      
         url: "/auction/resources/getItemBidData.php",
@@ -173,20 +174,21 @@ checkBid = function(item) {
 
         // Get data on this item after clicking the bid button
         let resultObject = JSON.parse(result);
-        console.log("Starting price we got for this item: " + resultObject.starting_price);
-        console.log("Current high_bid_id we got for this item: " + resultObject.high_bid_id);
+        console.log("This item's Starting Price: " + resultObject.starting_price);
+        console.log("This item's current High Bid ID: " + resultObject.high_bid_id);
 
         // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
         if(resultObject.high_bid_id === null) {
-            console.log("This is the first bid on this item");
+            console.log('high_bid_id is set to null on this item, so this is the first bid');
             // If the value entered by the user is greater than the starting price of the item
-            if(biddingValue > parseInt(resultObject.starting_price)) {
-                console.log("Bid beats starting price, so this is a good bid");
+            if(biddingValue > resultObject.starting_price) {
+                console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
                 // Place bid into bids table
                 placeBid(biddingItemId, biddingUserId, biddingValue);
             }
             // If the value entered is not greater than the starting price, let the user know
             else {
+                console.log("Bid value not greater than starting price --- Invalid bid");
                 alert("You must enter a bid greater than the starting price of $" + resultObject.starting_price);
             }
         }
