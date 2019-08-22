@@ -180,7 +180,7 @@ checkBid = function(item) {
         if(resultObject.high_bid_id === null) {
             console.log("This is the first bid on this item");
             // If the value entered by the user is greater than the starting price of the item
-            if(biddingValue > resultObject.starting_price) {
+            if(biddingValue > parseInt(resultObject.starting_price)) {
                 console.log("Bid beats starting price, so this is a good bid");
                 // Place bid into bids table
                 placeBid(biddingItemId, biddingUserId, biddingValue);
