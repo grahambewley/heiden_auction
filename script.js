@@ -46,14 +46,12 @@ getCurrentAuctionMetadata = function() {
         type: "POST",
     
     }).done(function(result) {
-        console.log("Data returned from getCurrentAuctionMetadata: " + result);
 
         // Convert the result returned from PHP, from JSON to JavaScript object
         let resultObject = JSON.parse(result);
 
         const selectedAuctionName = resultObject.name;
         const selectedAuctionId = resultObject.id;
-        console.log('Just set selectedAuctionId to ' + selectedAuctionId);
 
         //Convert the start_date_time epoch time from the database into a JavaScript Date object
         var startUtcSeconds = resultObject.start_date_time;
@@ -74,7 +72,6 @@ getCurrentAuctionMetadata = function() {
 }
 
 getSelectedAuctionItems = function(selectedAuctionId ) {
-    console.log('selectedAuctionId = ' + selectedAuctionId);
 
     $.ajax({      
         url: "/auction/resources/getSelectedAuctionItems.php",
@@ -83,8 +80,6 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
     
     }).done(function(result) {
         let resultArray = JSON.parse(result);
-
-        console.log("Items from the selected Auction: " + result);
         
         const items = document.getElementById('items');
 
