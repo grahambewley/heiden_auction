@@ -115,8 +115,11 @@ getSelectedAuctionItems = function() {
             itemDescription.innerHTML = element.description;
 
             // STAN:
-            // THIS IS WHERE THE STARTING / CURRENT BID STUFF WOULD GO
+            // THIS IS WHERE THE "STARTING BID" STUFF WOULD GO
             // letItemStartingBid = ......... AND SO ON
+
+            // THIS IS WHERE THE "CURRENT BID" STUFF WILL GO??
+            // IF high_bid_id !== null then create + append "Current Bid"
 
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
@@ -156,4 +159,18 @@ getSelectedAuctionItems = function() {
 
 placeBid = function(item) {
     console.log("Bid button clicked! Item ID passed over was " + item.getAttribute('item_id'));
+    console.log("Current User ID is " + localStorage.getItem('user_id'));
+    console.log("Bid value entered is " + item.previousSibling.value);
+
+    // Query item based on item id -- return result
+
+    // IF result.high_bid_id == null
+        // Add bid to bids -- amount, item_id, user_id
+        // Get id from the bid we just made (https://stackoverflow.com/questions/7917695/sql-server-return-value-after-insert)
+        // Add high_bid_id to this item
+
+    // IF result.high_bid_id != null && amount > result.high_bid_id
+        // Add bid to bids -- amount, item_id, user_id
+        // Get id from the bid we just made (https://stackoverflow.com/questions/7917695/sql-server-return-value-after-insert)
+        // Add high_bid_id to this item
 }
