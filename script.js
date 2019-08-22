@@ -73,7 +73,7 @@ getCurrentAuctionMetadata = function() {
     });
 }
 
-getSelectedAuctionItems = function(selectedAuctionId) {
+getSelectedAuctionItems = function(selectedAuctionId ) {
     console.log('selectedAuctionId = ' + selectedAuctionId);
 
     $.ajax({      
@@ -166,6 +166,15 @@ placeBid = function(item) {
     console.log("Bid value entered is " + item.firstElementChild.value);
 
     // Query item based on item id -- return result
+    $.ajax({      
+        url: "/auction/resources/getItemBidData.php",
+        type: "POST",
+        data: { "id": item.getAttribute('item_id') }
+    }).done(function(result) {
+        let resultObject = JSON.parse(result);
+        console.log("Starting price we got for this item: " + resultObject.starting_price);
+        console.log("Current high_bid_id we got for this item: " + resultObject.high_bid_id);
+    });
 
     // IF result.high_bid_id == null
         // Add bid to bids -- amount, item_id, user_id
