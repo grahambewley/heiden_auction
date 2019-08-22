@@ -7,4 +7,4 @@ include('dbConnect.php');
 $result = mysqli_query($conn, 
 "INSERT INTO bids (item_id, user_id, amount) VALUES(".$_REQUEST['biddingItemId'].", ".$_REQUEST['biddingUserId'].", ".$_REQUEST['biddingValue']."); ");
 
-echo $mysqli->insert_id;
+echo mysqli_insert_id($conn);
