@@ -44,14 +44,8 @@ getCurrentAuctionMetadata = function () {
 
         url: "/auction/resources/getCurrentAuctionMetadata.php",
         type: "POST",
-<<<<<<< HEAD
-
-    }).done(function (result) {
-        console.log("Data returned from getCurrentAuctionMetadata: " + result);
-=======
 
     }).done(function(result) {
->>>>>>> origin/master
 
         // Convert the result returned from PHP, from JSON to JavaScript object
         let resultObject = JSON.parse(result);
@@ -77,12 +71,7 @@ getCurrentAuctionMetadata = function () {
     });
 }
 
-<<<<<<< HEAD
-getSelectedAuctionItems = function (selectedAuctionId) {
-    console.log('selectedAuctionId = ' + selectedAuctionId);
-=======
 getSelectedAuctionItems = function(selectedAuctionId ) {
->>>>>>> origin/master
 
     $.ajax({
         url: "/auction/resources/getSelectedAuctionItems.php",
@@ -93,13 +82,6 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
 
     }).done(function (result) {
         let resultArray = JSON.parse(result);
-<<<<<<< HEAD
-
-        console.log("Items from the selected Auction: " + result);
-
-=======
-
->>>>>>> origin/master
         const items = document.getElementById('items');
 
         resultArray.forEach(function (element) {
@@ -211,19 +193,11 @@ checkBid = function (item) {
 
 
         // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
-<<<<<<< HEAD
-        if (resultObject.high_bid_id === null) {
-            console.log("This is the first bid on this item");
-            // If the value entered by the user is greater than the starting price of the item
-            if (biddingValue > resultObject.starting_price) {
-                console.log("Bid beats starting price, so this is a good bid");
-=======
         if(resultObject.high_bid_id === null) {
             console.log('high_bid_id is set to null on this item, so this is the first bid');
             // If the value entered by the user is greater than the starting price of the item
             if(biddingValue > startingPrice) {
                 console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
->>>>>>> origin/master
                 // Place bid into bids table
                 placeBid(biddingItemId, biddingUserId, biddingValue);
             }
