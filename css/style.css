@@ -119,6 +119,9 @@ body {
   .item__description {
     font-size: 1.4rem;
     font-weight: 400; }
+  .item__starting-price {
+    font-size: 1.6rem;
+    font-weight: 700; }
 
 .bid {
   background-color: rgba(249, 175, 94, 0.4);

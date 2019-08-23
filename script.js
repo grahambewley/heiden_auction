@@ -111,8 +111,8 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
             // >> I used startingPrice as it's the same name as the property
             // >> in the items table...
             let itemStartingPrice = document.createElement('div');
-            itemStartingPrice.setAttribute('class', 'starting__price');
-            itemStartingPrice.innerHTML = element.startingPrice;
+            itemStartingPrice.setAttribute('class', 'item__starting-price');
+            itemStartingPrice.innerHTML = "Starting Bid: $" + element.starting_price;
 
             // >> GRAHAM
             // >> This is all you my friend!
