@@ -115,12 +115,12 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemStartingPrice.innerHTML = "Starting Bid: $" + element.starting_price;
 
             if(element.high_bid_id !== null ) {
-                itemCurrentPrice.innerHTML = "Current Bid: $";
-
-                let amount = getItemCurrentPrice(element.high_bid_id);
-                console.log("Came back with an amount of " + amount);
                 let itemCurrentPrice = document.createElement('p');
                 itemCurrentPrice.setAttribute('class', 'item__current-price');
+                itemCurrentPrice.innerHTML = "Current Bid: $";
+                
+                let amount = getItemCurrentPrice(element.high_bid_id);
+                console.log("Came back with an amount of " + amount);
             }
 
             itemData.appendChild(itemName);
