@@ -118,9 +118,11 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemDescription);
             itemData.appendChild(itemStartingPrice);
 
+            // If this item has a high_bid_id filled, it means someone has bid on it, display the current bid on the card
             if(element.high_bid_id !== null ) {
                 let itemCurrentPrice = document.createElement('p');
                 itemCurrentPrice.setAttribute('class', 'item__current-price');
+                //Call a function that searches the high_bid_id on this item and retrieve the bid amount
                 itemCurrentPrice.innerHTML = "Current Bid: $" + getItemCurrentPrice(element.high_bid_id);
 
                 itemData.appendChild(itemCurrentPrice);
@@ -234,12 +236,17 @@ checkBid = function(item) {
             console.log("This is NOT the first bid on this item");
 
             // Get the amount associated with the current high_bid_id 
-            // (AJAX HERE)
+            let currentHighBid = getItemCurrentPrice(highBidId);
 
-            // If biddingValue > [highBidAmount] -- MAKE SURE NOT TO USE "resultObject" since that was used earlier
-            // placeBid(... ... ...)
-            // Else
-            // alert('You must enter a value greater than then current bid of $' + [highBidAmount])
+            if(biddingValue > currentHighBid) {
+                console.log("biddingValue > currentHighBid --- This bid is valid!");
+                // Place bid into bids table
+                placeBid(biddingItemId, biddingUserId, biddingValue);
+            } else {
+                console.log("Bid value not greater than current price --- Invalid bid");
+                alert("You must enter a bid greater than the current bid of $" + currentHighBid);
+            }
+
         }
     });
 }
