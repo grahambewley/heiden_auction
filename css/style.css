@@ -121,6 +121,11 @@ body {
     font-weight: 400;
     margin-bottom: 1rem; }
   .item__starting-price {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 400; }
+  .item__current-price {
+    text-transform: uppercase;
     font-size: 1.6rem;
     font-weight: 700; }
 
