@@ -44,16 +44,20 @@ getCurrentAuctionMetadata = function () {
 
         url: "/auction/resources/getCurrentAuctionMetadata.php",
         type: "POST",
+<<<<<<< HEAD
 
     }).done(function (result) {
         console.log("Data returned from getCurrentAuctionMetadata: " + result);
+=======
+
+    }).done(function(result) {
+>>>>>>> origin/master
 
         // Convert the result returned from PHP, from JSON to JavaScript object
         let resultObject = JSON.parse(result);
 
         const selectedAuctionName = resultObject.name;
         const selectedAuctionId = resultObject.id;
-        console.log('Just set selectedAuctionId to ' + selectedAuctionId);
 
         //Convert the start_date_time epoch time from the database into a JavaScript Date object
         var startUtcSeconds = resultObject.start_date_time;
@@ -73,8 +77,12 @@ getCurrentAuctionMetadata = function () {
     });
 }
 
+<<<<<<< HEAD
 getSelectedAuctionItems = function (selectedAuctionId) {
     console.log('selectedAuctionId = ' + selectedAuctionId);
+=======
+getSelectedAuctionItems = function(selectedAuctionId ) {
+>>>>>>> origin/master
 
     $.ajax({
         url: "/auction/resources/getSelectedAuctionItems.php",
@@ -85,9 +93,13 @@ getSelectedAuctionItems = function (selectedAuctionId) {
 
     }).done(function (result) {
         let resultArray = JSON.parse(result);
+<<<<<<< HEAD
 
         console.log("Items from the selected Auction: " + result);
 
+=======
+
+>>>>>>> origin/master
         const items = document.getElementById('items');
 
         resultArray.forEach(function (element) {
@@ -148,7 +160,7 @@ getSelectedAuctionItems = function (selectedAuctionId) {
             let bidButton = document.createElement('input');
             bidButton.setAttribute('type', 'submit');
             bidButton.setAttribute('class', 'bid__button');
-            bidButton.innerHTML = "Bid";
+            bidButton.setAttribute('value', 'Bid');
 
             bid.appendChild(bidAmount);
             bid.appendChild(bidButton);
@@ -169,12 +181,13 @@ checkBid = function (item) {
 
     const biddingItemId = item.getAttribute('item_id');
     const biddingUserId = localStorage.getItem('user_id');
-    const biddingValue = item.firstElementChild.value;
+    const biddingValue = parseInt(item.firstElementChild.value);
 
     console.log("Attempting to bid on item ID " + biddingItemId);
-    console.log("Current User ID is " + biddingUserId);
-    console.log("Bid value entered is " + biddingValue);
+    console.log("My User ID is " + biddingUserId);
+    console.log("Bid amount entered is " + biddingValue);
 
+    console.log("Getting bid data on this item...");
     // Query item based on item id -- return result
     $.ajax({
         url: "/auction/resources/getItemBidData.php",
@@ -186,21 +199,38 @@ checkBid = function (item) {
 
         // Get data on this item after clicking the bid button
         let resultObject = JSON.parse(result);
-        console.log("Starting price we got for this item: " + resultObject.starting_price);
-        console.log("Current high_bid_id we got for this item: " + resultObject.high_bid_id);
+
+        let startingPrice = parseInt(resultObject.starting_price);
+        let highBidId = resultObject.high_bid_id;
+
+        console.log("This item's Starting Price: " + startingPrice);
+        console.log("This item's current High Bid ID: " + highBidId);
+        console.log("TYPEOF startingPrice = " + typeof startingPrice);
+        console.log("TYPEOF highBidId = " + typeof highBidId);
+        console.log("and TYPEOF biddingValue = " + typeof biddingValue);
+
 
         // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
+<<<<<<< HEAD
         if (resultObject.high_bid_id === null) {
             console.log("This is the first bid on this item");
             // If the value entered by the user is greater than the starting price of the item
             if (biddingValue > resultObject.starting_price) {
                 console.log("Bid beats starting price, so this is a good bid");
+=======
+        if(resultObject.high_bid_id === null) {
+            console.log('high_bid_id is set to null on this item, so this is the first bid');
+            // If the value entered by the user is greater than the starting price of the item
+            if(biddingValue > startingPrice) {
+                console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
+>>>>>>> origin/master
                 // Place bid into bids table
                 placeBid(biddingItemId, biddingUserId, biddingValue);
             }
             // If the value entered is not greater than the starting price, let the user know
             else {
-                alert("You must enter a bid greater than the starting price of $" + resultObject.starting_price);
+                console.log("Bid value not greater than starting price --- Invalid bid");
+                alert("You must enter a bid greater than the starting price of $" + startingPrice);
             }
         }
 
