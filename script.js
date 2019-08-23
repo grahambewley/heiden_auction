@@ -71,7 +71,7 @@ getCurrentAuctionMetadata = function () {
     });
 }
 
-getSelectedAuctionItems = function(selectedAuctionId ) {
+getSelectedAuctionItems = function(selectedAuctionId) {
 
     $.ajax({
         url: "/auction/resources/getSelectedAuctionItems.php",
@@ -114,6 +114,12 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
             itemStartingPrice.setAttribute('class', 'item__starting-price');
             itemStartingPrice.innerHTML = "Starting Bid: $" + element.starting_price;
 
+            if(element.high_bid_id !== null ) {
+                let itemCurrentPrice = document.createElement('p');
+                itemCurrentPrice.setAttribute('class', 'item__current-price');
+                itemCurrentPrice.innerHTML = "Current Bid: $" + getItemCurrentPrice(element.high_bid_id);
+            }
+            
             // >> GRAHAM
             // >> This is all you my friend!
             // THIS IS WHERE THE "CURRENT BID" STUFF WILL GO??
@@ -159,7 +165,21 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
     });
 }
 
-checkBid = function (item) {
+getItemCurrentPrice = function(bid_id) {
+    // Query bids for this bid, return its amount
+    $.ajax({
+        url: "/auction/resources/getItemCurrentPrice.php",
+        type: "POST",
+        data: {
+            "id": bid_id
+        }
+    }).done(function (result) {
+        let resultObject = JSON.parse(result);
+        return resultObject.amount;
+    });
+}
+
+checkBid = function(item) {
 
     const biddingItemId = item.getAttribute('item_id');
     const biddingUserId = localStorage.getItem('user_id');
