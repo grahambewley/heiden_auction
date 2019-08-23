@@ -119,10 +119,9 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemStartingPrice);
 
             if(element.high_bid_id !== null ) {
-                let amount = getItemCurrentPrice(element.high_bid_id);
                 let itemCurrentPrice = document.createElement('p');
                 itemCurrentPrice.setAttribute('class', 'item__current-price');
-                itemCurrentPrice.innerHTML = "Current Bid: $" + amount;
+                itemCurrentPrice.innerHTML = "Current Bid: $" + getItemCurrentPrice(element.high_bid_id);
 
                 itemData.appendChild(itemCurrentPrice);
             }
