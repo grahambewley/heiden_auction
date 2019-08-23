@@ -1,5 +1,5 @@
 // onload function for index.html page
-window.onload = function() {
+window.onload = function () {
     /*  -- This is causing a loop with the window.onload script from the login page... commenting out for now
     // If no token is stored, boot to login screen
     if (localStorage.getItem("token") === null) {
@@ -10,17 +10,17 @@ window.onload = function() {
     getUserName();
 
     getCurrentAuctionMetadata();
-    
+
 }
 
 // Gets user's name from localStorage and displays it on screen OR display Login button
-getUserName = function() {
+getUserName = function () {
     const name = localStorage.getItem('name');
 
     const auctionInfo = document.getElementById('auction-info');
 
     //If name in localStorage is set to null then create Login button and append it
-    if(name === null) {        
+    if (name === null) {
         let loginButton = document.createElement('a');
         loginButton.setAttribute('href', '/auction/login.html');
         loginButton.setAttribute('class', 'btn');
@@ -29,7 +29,7 @@ getUserName = function() {
         auctionInfo.appendChild(loginButton);
     }
     // Or if name is set (user is logged in), display a "Welcome" message instead
-    else {        
+    else {
         let welcomeText = document.createElement('h3');
         welcomeText.setAttribute('class', 'auction-info__welcome');
         welcomeText.innerHTML = "Welcome, " + name;
@@ -39,13 +39,13 @@ getUserName = function() {
 
 }
 
-getCurrentAuctionMetadata = function() {
-    $.ajax({      
-    
+getCurrentAuctionMetadata = function () {
+    $.ajax({
+
         url: "/auction/resources/getCurrentAuctionMetadata.php",
         type: "POST",
-    
-    }).done(function(result) {
+
+    }).done(function (result) {
         console.log("Data returned from getCurrentAuctionMetadata: " + result);
 
         // Convert the result returned from PHP, from JSON to JavaScript object
@@ -64,7 +64,7 @@ getCurrentAuctionMetadata = function() {
         var endUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
         let formattedEndDateTime = moment.unix(endUtcSeconds).format('MM/DD/YY h:mm A');
-        
+
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
 
@@ -73,33 +73,35 @@ getCurrentAuctionMetadata = function() {
     });
 }
 
-getSelectedAuctionItems = function(selectedAuctionId ) {
+getSelectedAuctionItems = function (selectedAuctionId) {
     console.log('selectedAuctionId = ' + selectedAuctionId);
 
-    $.ajax({      
+    $.ajax({
         url: "/auction/resources/getSelectedAuctionItems.php",
         type: "POST",
-        data: { "id": selectedAuctionId }
-    
-    }).done(function(result) {
+        data: {
+            "id": selectedAuctionId
+        }
+
+    }).done(function (result) {
         let resultArray = JSON.parse(result);
 
         console.log("Items from the selected Auction: " + result);
-        
+
         const items = document.getElementById('items');
 
-        resultArray.forEach(function(element) {
+        resultArray.forEach(function (element) {
 
             // Create item container div
             let item = document.createElement('div');
             item.setAttribute('class', 'item');
-            
+
             // Create image that goes at the top of the item card
             let itemImg = document.createElement('img');
-            itemImg.setAttribute('src', 'img/'+element.image_filename);
+            itemImg.setAttribute('src', 'img/' + element.image_filename);
             itemImg.setAttribute('alt', 'Auction item image');
             itemImg.setAttribute('class', 'item__img');
-            
+
             // Create item__data container, plus the name and description that go within
             let itemData = document.createElement('div');
             itemData.setAttribute('class', 'item__data');
@@ -112,17 +114,21 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
             itemDescription.setAttribute('class', 'item__description');
             itemDescription.innerHTML = element.description;
 
-            // STAN:
-            // THIS IS WHERE THE "STARTING BID" STUFF WOULD GO
-            // letItemStartingBid = ......... AND SO ON
+            // >> I used startingPrice as it's the same name as the property
+            // >> in the items table...
+            let itemStartingPrice = document.createElement('div');
+            itemStartingPrice.setAttribute('class', 'starting__price');
+            itemStartingPrice.innerHTML = element.startingPrice;
 
+            // >> GRAHAM
+            // >> This is all you my friend!
             // THIS IS WHERE THE "CURRENT BID" STUFF WILL GO??
             // IF high_bid_id !== null then create + append "Current Bid"
 
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
+            itemData.appendChild(itemStartingPrice);
             // APPEND STARTING / CURRENT BIDS HERE
-
 
             // Create bid container form, plus the input and button that go within
             let bid = document.createElement('form');
@@ -155,11 +161,11 @@ getSelectedAuctionItems = function(selectedAuctionId ) {
             // Append item card to items
             items.appendChild(item);
         });
-        
+
     });
 }
 
-checkBid = function(item) {
+checkBid = function (item) {
 
     const biddingItemId = item.getAttribute('item_id');
     const biddingUserId = localStorage.getItem('user_id');
@@ -170,11 +176,13 @@ checkBid = function(item) {
     console.log("Bid value entered is " + biddingValue);
 
     // Query item based on item id -- return result
-    $.ajax({      
+    $.ajax({
         url: "/auction/resources/getItemBidData.php",
         type: "POST",
-        data: { "id": biddingItemId }
-    }).done(function(result) {
+        data: {
+            "id": biddingItemId
+        }
+    }).done(function (result) {
 
         // Get data on this item after clicking the bid button
         let resultObject = JSON.parse(result);
@@ -182,10 +190,10 @@ checkBid = function(item) {
         console.log("Current high_bid_id we got for this item: " + resultObject.high_bid_id);
 
         // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
-        if(resultObject.high_bid_id === null) {
+        if (resultObject.high_bid_id === null) {
             console.log("This is the first bid on this item");
             // If the value entered by the user is greater than the starting price of the item
-            if(biddingValue > resultObject.starting_price) {
+            if (biddingValue > resultObject.starting_price) {
                 console.log("Bid beats starting price, so this is a good bid");
                 // Place bid into bids table
                 placeBid(biddingItemId, biddingUserId, biddingValue);
@@ -195,28 +203,32 @@ checkBid = function(item) {
                 alert("You must enter a bid greater than the starting price of $" + resultObject.starting_price);
             }
         }
-        
+
         // Otherwise, this is not the first bid on this item
         else {
             console.log("This is NOT the first bid on this item");
-            
+
             // Get the amount associated with the current high_bid_id 
             // (AJAX HERE)
 
             // If biddingValue > [highBidAmount] -- MAKE SURE NOT TO USE "resultObject" since that was used earlier
-                // placeBid(... ... ...) 
+            // placeBid(... ... ...)
             // Else
-                // alert('You must enter a value greater than then current bid of $' + [highBidAmount])
+            // alert('You must enter a value greater than then current bid of $' + [highBidAmount])
         }
     });
 }
 
-placeBid = function(biddingItemId, biddingUserId, biddingValue) {
-    $.ajax({      
+placeBid = function (biddingItemId, biddingUserId, biddingValue) {
+    $.ajax({
         url: "/auction/resources/addBidToBids.php",
         type: "POST",
-        data: { "biddingItemId": biddingItemId, "biddingUserId": biddingUserId, "biddingValue": biddingValue }
-    }).done(function(result) {
+        data: {
+            "biddingItemId": biddingItemId,
+            "biddingUserId": biddingUserId,
+            "biddingValue": biddingValue
+        }
+    }).done(function (result) {
         //let resultObject = JSON.parse(result);
         console.log("Bid result: " + result);
     });
