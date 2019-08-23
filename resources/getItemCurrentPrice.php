@@ -4,10 +4,9 @@
 include('dbConnect.php');
 
 // SQL query for returning an item based on the id passed in 
-$result = mysqli_query($conn, "SELECT * from bids WHERE id = ".$_REQUEST['bid_id']);
+$result = mysqli_query($conn, "SELECT * from bids WHERE id = 12");
 
 if ($result->num_rows > 0) {
-
     while($row = $result->fetch_assoc()) {
         $jsonResult = json_encode($row);
         echo $jsonResult;
