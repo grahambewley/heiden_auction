@@ -114,17 +114,19 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemStartingPrice.setAttribute('class', 'item__starting-price');
             itemStartingPrice.innerHTML = "Starting Bid: $" + element.starting_price;
 
+            itemData.appendChild(itemName);
+            itemData.appendChild(itemDescription);
+            itemData.appendChild(itemStartingPrice);
+            
             if(element.high_bid_id !== null ) {
                 let amount = getItemCurrentPrice(element.high_bid_id);
                 let itemCurrentPrice = document.createElement('p');
                 itemCurrentPrice.setAttribute('class', 'item__current-price');
                 itemCurrentPrice.innerHTML = "Current Bid: $" + amount;
+
+                itemData.appendChild(itemCurrentPrice);
             }
 
-            itemData.appendChild(itemName);
-            itemData.appendChild(itemDescription);
-            itemData.appendChild(itemStartingPrice);
-            itemData.appendChild(itemCurrentPrice);
             // APPEND STARTING / CURRENT BIDS HERE
 
             // Create bid container form, plus the input and button that go within
