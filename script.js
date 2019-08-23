@@ -166,6 +166,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
 }
 
 getItemCurrentPrice = function(bid_id) {
+    console.log("Querying bids for bid id: " + bid_id);
     // Query bids for this bid, return its amount
     $.ajax({
         url: "/auction/resources/getItemCurrentPrice.php",
@@ -174,6 +175,7 @@ getItemCurrentPrice = function(bid_id) {
             "id": bid_id
         }
     }).done(function (result) {
+        console.log("Result from getItemCurrentPrice: " + result);
         let resultObject = JSON.parse(result);
         return resultObject.amount;
     });
