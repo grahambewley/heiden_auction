@@ -205,6 +205,8 @@ checkBid = function(item) {
                 console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
                 // Place bid into bids table
                 placeBid(biddingItemId, biddingUserId, biddingValue);
+                // Reload page so we can see bid
+                location.reload();
             }
             // If the value entered is not greater than the starting price, let the user know
             else {
@@ -231,6 +233,8 @@ checkBid = function(item) {
                     console.log("biddingValue > currentHighBid --- This bid is valid!");
                     // Place bid into bids table
                     placeBid(biddingItemId, biddingUserId, biddingValue);
+                    // Reload page so we can see new bid
+                    location.reload();
                 } else {
                     console.log("Bid value not greater than current price --- Invalid bid");
                     alert("You must enter a bid greater than the current bid of $" + resultObject.amount);
@@ -239,7 +243,6 @@ checkBid = function(item) {
         }
         
     });
-    location.reload();
 }
 
 placeBid = function (biddingItemId, biddingUserId, biddingValue) {
