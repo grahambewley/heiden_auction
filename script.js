@@ -78,17 +78,20 @@ getSelectedAuctionItems = function(selectedAuctionId) {
 
         resultArray.forEach(function (element) {
 
-            // Create item container div
+            // CREATE ITEM CONTAINER      
+
             let item = document.createElement('div');
             item.setAttribute('class', 'item');
 
-            // Create image that goes at the top of the item card
+            // CREATE ITEM IMAGE ELEMENT
+
             let itemImg = document.createElement('img');
             itemImg.setAttribute('src', 'img/' + element.image_filename);
             itemImg.setAttribute('alt', 'Auction item image');
             itemImg.setAttribute('class', 'item__img');
 
-            // Create item__data container, plus the name and description that go within
+            // CREATE ITEM DATA SECTION (NAME AND DESCRIPTION)
+
             let itemData = document.createElement('div');
             itemData.setAttribute('class', 'item__data');
 
@@ -103,13 +106,21 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
 
-            // Create item__data container, plus the name and description that go within
+            // CREATE ITEM PRICING SECTION 
+
             let itemPrice = document.createElement('div');
             itemPrice.setAttribute('class', 'item__price');
 
             let itemStartingPrice = document.createElement('div');
             itemStartingPrice.setAttribute('class', 'item__starting-price');
-            itemStartingPrice.innerHTML = "Starting Bid: $" + element.starting_price;
+            
+            let itemStartingPriceLabel = document.createElement('span')
+            itemStartingPriceLabel.innerHTML = "Starting Bid:" ;
+            let itemStartingPriceAmount = document.createElement('span');
+            itemStartingPriceAmount.innerHTML = "$" + element.starting_price;
+
+            itemStartingPrice.appendChild(itemStartingPriceLabel);
+            itemStartingPrice.appendChild(itemStartingPriceAmount);
 
             itemPrice.appendChild(itemStartingPrice);
 
@@ -128,8 +139,15 @@ getSelectedAuctionItems = function(selectedAuctionId) {
                     
                     let itemCurrentPrice = document.createElement('p');
                     itemCurrentPrice.setAttribute('class', 'item__current-price');
+
+                    let itemCurrentPriceLabel = document.createElement('span')
+                    itemCurrentPriceLabel.innerHTML = "Current Bid:" ;
+                    let itemCurrentPriceAmount = document.createElement('span');
+                    itemCurrentPriceAmount.innerHTML = "$" + resultObject.amount;
                     
-                    itemCurrentPrice.innerHTML = "Current Bid: $" + resultObject.amount;
+                    itemCurrentPrice.appendChild(itemCurrentPriceLabel);
+                    itemCurrentPrice.appendChild(itemCurrentPriceAmount);
+
                     itemPrice.appendChild(itemCurrentPrice);
                });
             }
