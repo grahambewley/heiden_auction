@@ -135,7 +135,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             // Set custom attribute that holds this auction item's unique id
             bid.setAttribute('item_id', element.id);
             // The 'return false' acts like an event.preventDefuault(), which keeps the page from reloading
-            bid.setAttribute('onsubmit', 'checkBid(this);return false');
+            bid.setAttribute('onsubmit', 'checkBid(this);');
 
             let bidAmount = document.createElement('input');
             bidAmount.setAttribute('type', 'number');
