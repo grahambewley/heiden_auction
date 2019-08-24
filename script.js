@@ -120,12 +120,36 @@ getSelectedAuctionItems = function(selectedAuctionId) {
 
             // If this item has a high_bid_id filled, it means someone has bid on it, display the current bid on the card
             if(element.high_bid_id !== null ) {
+
+                /*
                 let itemCurrentPrice = document.createElement('p');
                 itemCurrentPrice.setAttribute('class', 'item__current-price');
                 //Call a function that searches the high_bid_id on this item and retrieve the bid amount
+                
                 itemCurrentPrice.innerHTML = "Current Bid: $" + getItemCurrentPrice(element.high_bid_id);
-
                 itemData.appendChild(itemCurrentPrice);
+                */
+
+               console.log("Querying bids for bid id: " + bid_id);
+               // Query bids for this bid, return its amount
+               $.ajax({
+                   url: "/auction/resources/getItemCurrentPrice.php",
+                   type: "POST",
+                   data: {
+                       "id": bid_id
+                   }
+               }).done(function (result) {
+                    console.log("Result from getItemCurrentPrice: " + result);
+                    let resultObject = JSON.parse(result);
+                    console.log("Resulting amount is " + resultObject.amount);
+                    
+                    let itemCurrentPrice = document.createElement('p');
+                    itemCurrentPrice.setAttribute('class', 'item__current-price');
+                    //Call a function that searches the high_bid_id on this item and retrieve the bid amount
+                    
+                    itemCurrentPrice.innerHTML = "Current Bid: $" + resultObject.amount;
+                    itemData.appendChild(itemCurrentPrice);
+               });
             }
 
             // APPEND STARTING / CURRENT BIDS HERE
@@ -166,6 +190,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
 }
 
 getItemCurrentPrice = function(bid_id) {
+ 
     console.log("Querying bids for bid id: " + bid_id);
     // Query bids for this bid, return its amount
     $.ajax({
@@ -180,6 +205,7 @@ getItemCurrentPrice = function(bid_id) {
         console.log("Resulting amount is " + resultObject.amount);
         return resultObject.amount;
     });
+    
 }
 
 function ajax(options) {
@@ -198,12 +224,14 @@ checkBid = function(item) {
     console.log("My User ID is " + biddingUserId);
     console.log("Bid amount entered is " + biddingValue);
 
-    // WELCOME TO THE PROMISED LAND
+    // WELCOME TO THE PROMISE LAND
+    /*
     ajax({ url: "/auction/resources/getItemBidData.php", type: "POST", data: {"id": biddingItemId } }).then(function(result) {
         console.log("Nifty new Promise version of the getItemBidData call results in: " + result);
     });
+    */
 
-    console.log("Getting bid data on this item... (again -- promise version already triggered)");
+    console.log("Getting bid data on this item...");
     // Query item based on item id -- return result
     $.ajax({
         url: "/auction/resources/getItemBidData.php",
