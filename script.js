@@ -182,6 +182,12 @@ getItemCurrentPrice = function(bid_id) {
     });
 }
 
+function ajax(options) {
+    return new Promise(function(resolve, reject) {
+      $.ajax(options).done(resolve).fail(reject);
+    });
+}
+
 checkBid = function(item) {
 
     const biddingItemId = item.getAttribute('item_id');
@@ -192,7 +198,12 @@ checkBid = function(item) {
     console.log("My User ID is " + biddingUserId);
     console.log("Bid amount entered is " + biddingValue);
 
-    console.log("Getting bid data on this item...");
+    // WELCOME TO THE PROMISED LAND
+    ajax({ url: "/auction/resources/getItemBidData.php", type: "POST", data: {"id": biddingItemId } }).then(function(result) {
+        console.log("Nifty new Promise version of the getItemBidData call results in: " + result);
+    });
+
+    console.log("Getting bid data on this item... (again -- promise version already triggered)");
     // Query item based on item id -- return result
     $.ajax({
         url: "/auction/resources/getItemBidData.php",
