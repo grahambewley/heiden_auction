@@ -140,16 +140,14 @@ body {
   .item__starting-price {
     font-family: 'Lexend Deca', sans-serif;
     text-transform: uppercase;
-    font-size: 1.6rem;
-    font-weight: 400; }
+    font-size: 1.6rem; }
     @media only screen and (max-width: 50em) {
       .item__starting-price {
         font-size: 2.2rem; } }
   .item__current-price {
     font-family: 'Lexend Deca', sans-serif;
     text-transform: uppercase;
-    font-size: 1.6rem;
-    font-weight: 700; }
+    font-size: 1.6rem; }
     @media only screen and (max-width: 50em) {
       .item__current-price {
         font-size: 2.2rem; } }

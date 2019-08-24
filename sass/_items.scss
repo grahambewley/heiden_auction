@@ -54,9 +54,10 @@
 
     &__starting-price {
         font-family: 'Lexend Deca', sans-serif;
+        $color-grey-dark-2: #5D5D5D;
         text-transform: uppercase;
         font-size: 1.6rem;
-        font-weight: 400;
+        //font-weight: 400;
 
         @media only screen and (max-width: $bp-medium) {
             font-size: 2.2rem;
@@ -67,7 +68,7 @@
         font-family: 'Lexend Deca', sans-serif;
         text-transform: uppercase;
         font-size: 1.6rem;
-        font-weight: 700;
+        //font-weight: 700;
 
         @media only screen and (max-width: $bp-medium) {
             font-size: 2.2rem;
