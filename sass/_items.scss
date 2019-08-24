@@ -55,12 +55,13 @@
     &__starting-price {
         display: flex;
         justify-content: space-between;
-        
+
         font-family: 'Lexend Deca', sans-serif;
+        
         color: $color-grey-dark-2;
         text-transform: uppercase;
         font-size: 1.6rem;
-        //font-weight: 400;
+        font-weight: 400;
 
         @media only screen and (max-width: $bp-medium) {
             font-size: 2.2rem;

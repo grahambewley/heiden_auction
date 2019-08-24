@@ -115,7 +115,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemStartingPrice.setAttribute('class', 'item__starting-price');
             
             let itemStartingPriceLabel = document.createElement('span')
-            itemStartingPriceLabel.innerHTML = "Starting Bid:" ;
+            itemStartingPriceLabel.innerHTML = "Starting Price:" ;
             let itemStartingPriceAmount = document.createElement('span');
             itemStartingPriceAmount.innerHTML = "$" + element.starting_price;
 
@@ -141,7 +141,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
                     itemCurrentPrice.setAttribute('class', 'item__current-price');
 
                     let itemCurrentPriceLabel = document.createElement('span')
-                    itemCurrentPriceLabel.innerHTML = "Current Bid:" ;
+                    itemCurrentPriceLabel.innerHTML = "Current Price:" ;
                     let itemCurrentPriceAmount = document.createElement('span');
                     itemCurrentPriceAmount.innerHTML = "$" + resultObject.amount;
                     
@@ -206,8 +206,6 @@ checkBid = function(item) {
     console.log("Bid amount entered is " + biddingValue);
 
     ajax({ url: "/auction/resources/getItemBidData.php", type: "POST", data: {"id": biddingItemId } }).then(function(result) {
-        
-        console.log("Nifty new Promise version of the getItemBidData call results in: " + result);
         // Get data on this item after clicking the bid button
         let resultObject = JSON.parse(result);
 
@@ -217,27 +215,26 @@ checkBid = function(item) {
         console.log("This item's Starting Price: " + startingPrice);
         console.log("This item's current High Bid ID: " + highBidId);
 
-        // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
+        // If the returned item has no current high_bid_id -- it hasn't been bid on yet
         if(resultObject.high_bid_id === null) {
-            console.log('high_bid_id is set to null on this item, so this is the first bid');
-            // If the value entered by the user is greater than the starting price of the item
+            // Check that the amount the user submitted is greater than the item's starting price
             if(biddingValue > startingPrice) {
-                console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
-                // Place bid into bids table
-                placeBid(biddingItemId, biddingUserId, biddingValue);
-                // Reload page so we can see bid
-                location.reload();
+                //Confirm that user wants to place this bid
+                var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + resultObject.name) + "?"
+                if(bidCheck) {
+                    // Place bid into bids table
+                    placeBid(biddingItemId, biddingUserId, biddingValue);
+                    // Reload page so we can see bid
+                    location.reload();
+                }
             }
             // If the value entered is not greater than the starting price, let the user know
             else {
-                console.log("Bid value not greater than starting price --- Invalid bid");
                 alert("You must enter a bid greater than the starting price of $" + startingPrice);
             }
         }
 
-        // Otherwise, this is not the first bid on this item
         else {
-            console.log("This is NOT the first bid on this item");
 
             // Query bids for this bid, return its amount
             $.ajax({
@@ -251,12 +248,15 @@ checkBid = function(item) {
                 
                 if(biddingValue > resultObject.amount) {
                     console.log("biddingValue > currentHighBid --- This bid is valid!");
-                    // Place bid into bids table
-                    placeBid(biddingItemId, biddingUserId, biddingValue);
-                    // Reload page so we can see new bid
-                    location.reload();
+                    //Confirm that user wants to place this bid
+                    var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + resultObject.name) + "?"
+                    if(bidCheck) {
+                        // Place bid into bids table
+                        placeBid(biddingItemId, biddingUserId, biddingValue);
+                        // Reload page so we can see new bid
+                        location.reload();
+                    }
                 } else {
-                    console.log("Bid value not greater than current price --- Invalid bid");
                     alert("You must enter a bid greater than the current bid of $" + resultObject.amount);
                 }
             });
