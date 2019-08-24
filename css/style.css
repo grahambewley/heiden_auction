@@ -133,7 +133,8 @@ body {
       .item__description {
         font-size: 2rem; } }
   .item__price {
-    background-color: #ddd; }
+    background-color: #ddd;
+    padding: 1rem 1.5rem; }
   .item__starting-price {
     text-transform: uppercase;
     font-size: 1.6rem;
