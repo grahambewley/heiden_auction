@@ -16,6 +16,9 @@ body {
 .container {
   display: grid;
   grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
+  @media only screen and (max-width: 37.5em) {
+    .container {
+      grid-template-columns: [full-start] minmax(2rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; } }
 
 .btn {
   color: white;
@@ -77,14 +80,14 @@ body {
     margin-bottom: 1rem; }
     @media only screen and (max-width: 75em) {
       .auction-info__name {
-        font-size: 3rem; } }
+        font-size: 2rem; } }
   .auction-info__date-span {
     font-size: 2.5rem;
     font-weight: 300;
     color: #5D5D5D; }
     @media only screen and (max-width: 75em) {
       .auction-info__date-span {
-        font-size: 2rem; } }
+        font-size: 1.4rem; } }
     @media only screen and (max-width: 62.5em) {
       .auction-info__date-span {
         margin-bottom: 1rem; } }
