@@ -29,18 +29,34 @@
     &__name {  
         font-size: 2rem;
         margin-bottom: 1rem;
+
+        @media only screen and (max-width: $bp-medium) {
+            font-size: 3rem;
+        }
     }
 
     &__description {
         font-size: 1.4rem;
         font-weight: 400;
         margin-bottom: 1rem;
+
+        @media only screen and (max-width: $bp-medium) {
+            font-size: 2rem;
+        }
+    }
+
+    &__price {
+        background-color: $color-grey-light-1;
     }
 
     &__starting-price {
         text-transform: uppercase;
         font-size: 1.6rem;
         font-weight: 400;
+
+        @media only screen and (max-width: $bp-medium) {
+            font-size: 2.2rem;
+        }
     }
 
     &__current-price {

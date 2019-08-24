@@ -100,13 +100,18 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemDescription.setAttribute('class', 'item__description');
             itemDescription.innerHTML = element.description;
 
+            itemData.appendChild(itemName);
+            itemData.appendChild(itemDescription);
+
+            // Create item__data container, plus the name and description that go within
+            let itemPrice = document.createElement('div');
+            itemPrice.setAttribute('class', 'item__price');
+
             let itemStartingPrice = document.createElement('div');
             itemStartingPrice.setAttribute('class', 'item__starting-price');
             itemStartingPrice.innerHTML = "Starting Bid: $" + element.starting_price;
 
-            itemData.appendChild(itemName);
-            itemData.appendChild(itemDescription);
-            itemData.appendChild(itemStartingPrice);
+            itemPrice.appendChild(itemStartingPrice);
 
             // If this item has a high_bid_id filled, it means someone has bid on it, display the current bid on the card
             if(element.high_bid_id !== null ) {
@@ -125,7 +130,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
                     itemCurrentPrice.setAttribute('class', 'item__current-price');
                     
                     itemCurrentPrice.innerHTML = "Current Bid: $" + resultObject.amount;
-                    itemData.appendChild(itemCurrentPrice);
+                    itemPrice.appendChild(itemCurrentPrice);
                });
             }
 
@@ -155,6 +160,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             // Append all the stuff we made to the item card
             item.appendChild(itemImg);
             item.appendChild(itemData);
+            item.appendChild(itemPrice);
             item.appendChild(bid);
 
             // Append item card to items
@@ -192,10 +198,6 @@ checkBid = function(item) {
 
         console.log("This item's Starting Price: " + startingPrice);
         console.log("This item's current High Bid ID: " + highBidId);
-        console.log("TYPEOF startingPrice = " + typeof startingPrice);
-        console.log("TYPEOF highBidId = " + typeof highBidId);
-        console.log("and TYPEOF biddingValue = " + typeof biddingValue);
-
 
         // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
         if(resultObject.high_bid_id === null) {
