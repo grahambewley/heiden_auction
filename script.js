@@ -273,7 +273,7 @@ checkBid = function(item) {
                         placeBid(biddingItemId, biddingUserId, biddingValue);
                     } else {
                         console.log("Bid value not greater than current price --- Invalid bid");
-                        alert("You must enter a bid greater than the current bid of $" + currentHighBid);
+                        alert("You must enter a bid greater than the current bid of $" + resultObject.amount);
                     }
                });
 
