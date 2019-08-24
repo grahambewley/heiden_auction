@@ -22,6 +22,10 @@
         margin-bottom: 1rem;
 
         @media only screen and (max-width: $bp-largest) {
+            font-size: 3rem;
+        }
+
+        @media only screen and (max-width: $bp-medium) {
             font-size: 2rem;
         }
     }
@@ -35,7 +39,7 @@
             font-size: 1.4rem;
         }
 
-        @media only screen and (max-width: $bp-large) {
+        @media only screen and (max-width: $bp-medium) {
             margin-bottom: 1rem;
         }
     }

@@ -80,6 +80,9 @@ body {
     margin-bottom: 1rem; }
     @media only screen and (max-width: 75em) {
       .auction-info__name {
+        font-size: 3rem; } }
+    @media only screen and (max-width: 50em) {
+      .auction-info__name {
         font-size: 2rem; } }
   .auction-info__date-span {
     font-size: 2.5rem;
@@ -88,7 +91,7 @@ body {
     @media only screen and (max-width: 75em) {
       .auction-info__date-span {
         font-size: 1.4rem; } }
-    @media only screen and (max-width: 62.5em) {
+    @media only screen and (max-width: 50em) {
       .auction-info__date-span {
         margin-bottom: 1rem; } }
   .auction-info__welcome {
@@ -142,7 +145,7 @@ body {
     font-size: 1.4rem;
     padding: .5rem;
     flex-shrink: 1;
-    width: 4rem; }
+    width: 12rem; }
   .bid__button {
     color: white;
     font-size: 1.4rem;
