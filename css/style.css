@@ -68,7 +68,7 @@ body {
   border-bottom: 1px solid #aaa;
   padding-bottom: 2rem;
   margin-bottom: 8rem; }
-  @media only screen and (max-width: 62.5em) {
+  @media only screen and (max-width: 50em) {
     .auction-info {
       flex-direction: column;
       align-items: flex-start; } }
