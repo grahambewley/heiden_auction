@@ -120,16 +120,6 @@ getSelectedAuctionItems = function(selectedAuctionId) {
 
             // If this item has a high_bid_id filled, it means someone has bid on it, display the current bid on the card
             if(element.high_bid_id !== null ) {
-
-                /*
-                let itemCurrentPrice = document.createElement('p');
-                itemCurrentPrice.setAttribute('class', 'item__current-price');
-                //Call a function that searches the high_bid_id on this item and retrieve the bid amount
-                
-                itemCurrentPrice.innerHTML = "Current Bid: $" + getItemCurrentPrice(element.high_bid_id);
-                itemData.appendChild(itemCurrentPrice);
-                */
-
                console.log("Querying bids for bid id: " + element.high_bid_id);
                // Query bids for this bid, return its amount
                $.ajax({
@@ -225,12 +215,59 @@ checkBid = function(item) {
     console.log("Bid amount entered is " + biddingValue);
 
     // WELCOME TO THE PROMISE LAND
-    /*
     ajax({ url: "/auction/resources/getItemBidData.php", type: "POST", data: {"id": biddingItemId } }).then(function(result) {
+        
         console.log("Nifty new Promise version of the getItemBidData call results in: " + result);
-    });
-    */
+        // Get data on this item after clicking the bid button
+        let resultObject = JSON.parse(result);
 
+        let startingPrice = parseInt(resultObject.starting_price);
+        let highBidId = resultObject.high_bid_id;
+
+        console.log("This item's Starting Price: " + startingPrice);
+        console.log("This item's current High Bid ID: " + highBidId);
+        console.log("TYPEOF startingPrice = " + typeof startingPrice);
+        console.log("TYPEOF highBidId = " + typeof highBidId);
+        console.log("and TYPEOF biddingValue = " + typeof biddingValue);
+
+
+        // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
+        if(resultObject.high_bid_id === null) {
+            console.log('high_bid_id is set to null on this item, so this is the first bid');
+            // If the value entered by the user is greater than the starting price of the item
+            if(biddingValue > startingPrice) {
+                console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
+                // Place bid into bids table
+                placeBid(biddingItemId, biddingUserId, biddingValue);
+            }
+            // If the value entered is not greater than the starting price, let the user know
+            else {
+                console.log("Bid value not greater than starting price --- Invalid bid");
+                alert("You must enter a bid greater than the starting price of $" + startingPrice);
+            }
+        }
+
+        // Otherwise, this is not the first bid on this item
+        else {
+            console.log("This is NOT the first bid on this item");
+
+            // Get the amount associated with the current high_bid_id 
+            let currentHighBid = getItemCurrentPrice(highBidId);
+
+            if(biddingValue > currentHighBid) {
+                console.log("biddingValue > currentHighBid --- This bid is valid!");
+                // Place bid into bids table
+                placeBid(biddingItemId, biddingUserId, biddingValue);
+            } else {
+                console.log("Bid value not greater than current price --- Invalid bid");
+                alert("You must enter a bid greater than the current bid of $" + currentHighBid);
+            }
+
+        }
+
+    });
+    
+    /*
     console.log("Getting bid data on this item...");
     // Query item based on item id -- return result
     $.ajax({
@@ -288,6 +325,7 @@ checkBid = function(item) {
 
         }
     });
+    */
 }
 
 placeBid = function (biddingItemId, biddingUserId, biddingValue) {
