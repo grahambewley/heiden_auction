@@ -61,6 +61,7 @@
     &__amount {
         font-size: 1.4rem;
         padding: .5rem;
+        flex-shrink: 1;
     }
 
     &__button {

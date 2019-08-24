@@ -1,11 +1,4 @@
-// onload function for index.html page
 window.onload = function () {
-    /*  -- This is causing a loop with the window.onload script from the login page... commenting out for now
-    // If no token is stored, boot to login screen
-    if (localStorage.getItem("token") === null) {
-        window.location.href = "http://heiden.tech/auction/login.html";
-    }
-    */
 
     getUserName();
 
@@ -19,7 +12,7 @@ getUserName = function () {
 
     const auctionInfo = document.getElementById('auction-info');
 
-    //If name in localStorage is set to null then create Login button and append it
+    //If name in localStorage is not set then create Login button and append it
     if (name === null) {
         let loginButton = document.createElement('a');
         loginButton.setAttribute('href', '/auction/login.html');
@@ -36,7 +29,6 @@ getUserName = function () {
 
         auctionInfo.appendChild(welcomeText);
     }
-
 }
 
 getCurrentAuctionMetadata = function () {
@@ -108,8 +100,6 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemDescription.setAttribute('class', 'item__description');
             itemDescription.innerHTML = element.description;
 
-            // >> I used startingPrice as it's the same name as the property
-            // >> in the items table...
             let itemStartingPrice = document.createElement('div');
             itemStartingPrice.setAttribute('class', 'item__starting-price');
             itemStartingPrice.innerHTML = "Starting Bid: $" + element.starting_price;
@@ -128,21 +118,16 @@ getSelectedAuctionItems = function(selectedAuctionId) {
                    data: {
                        "id": element.high_bid_id
                    }
-               }).done(function (result) {
-                    console.log("Result from getItemCurrentPrice: " + result);
+               }).done(function (result) {                    
                     let resultObject = JSON.parse(result);
-                    console.log("Resulting amount is " + resultObject.amount);
                     
                     let itemCurrentPrice = document.createElement('p');
                     itemCurrentPrice.setAttribute('class', 'item__current-price');
-                    //Call a function that searches the high_bid_id on this item and retrieve the bid amount
                     
                     itemCurrentPrice.innerHTML = "Current Bid: $" + resultObject.amount;
                     itemData.appendChild(itemCurrentPrice);
                });
             }
-
-            // APPEND STARTING / CURRENT BIDS HERE
 
             // Create bid container form, plus the input and button that go within
             let bid = document.createElement('form');
@@ -179,25 +164,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
     });
 }
 
-getItemCurrentPrice = function(bid_id) {
- 
-    console.log("Querying bids for bid id: " + bid_id);
-    // Query bids for this bid, return its amount
-    $.ajax({
-        url: "/auction/resources/getItemCurrentPrice.php",
-        type: "POST",
-        data: {
-            "id": bid_id
-        }
-    }).done(function (result) {
-        console.log("Result from getItemCurrentPrice: " + result);
-        let resultObject = JSON.parse(result);
-        console.log("Resulting amount is " + resultObject.amount);
-        return resultObject.amount;
-    });
-    
-}
-
+// Wrapper for ajax call that supports promises
 function ajax(options) {
     return new Promise(function(resolve, reject) {
       $.ajax(options).done(resolve).fail(reject);
@@ -214,7 +181,6 @@ checkBid = function(item) {
     console.log("My User ID is " + biddingUserId);
     console.log("Bid amount entered is " + biddingValue);
 
-    // WELCOME TO THE PROMISE LAND
     ajax({ url: "/auction/resources/getItemBidData.php", type: "POST", data: {"id": biddingItemId } }).then(function(result) {
         
         console.log("Nifty new Promise version of the getItemBidData call results in: " + result);
@@ -251,10 +217,6 @@ checkBid = function(item) {
         else {
             console.log("This is NOT the first bid on this item");
 
-            // Get the amount associated with the current high_bid_id 
-            //let currentHighBid = getItemCurrentPrice(highBidId);
-
-            console.log("Querying bids for bid id: " + highBidId);
                // Query bids for this bid, return its amount
                $.ajax({
                    url: "/auction/resources/getItemCurrentPrice.php",
@@ -263,9 +225,7 @@ checkBid = function(item) {
                        "id": highBidId
                    }
                }).done(function (result) {
-                    console.log("Result from getItemCurrentPrice: " + result);
                     let resultObject = JSON.parse(result);
-                    console.log("Resulting amount is " + resultObject.amount);
                     
                     if(biddingValue > resultObject.amount) {
                         console.log("biddingValue > currentHighBid --- This bid is valid!");
@@ -280,66 +240,6 @@ checkBid = function(item) {
         }
 
     });
-    
-    /*
-    console.log("Getting bid data on this item...");
-    // Query item based on item id -- return result
-    $.ajax({
-        url: "/auction/resources/getItemBidData.php",
-        type: "POST",
-        data: {
-            "id": biddingItemId
-        }
-    }).done(function (result) {
-
-        // Get data on this item after clicking the bid button
-        let resultObject = JSON.parse(result);
-
-        let startingPrice = parseInt(resultObject.starting_price);
-        let highBidId = resultObject.high_bid_id;
-
-        console.log("This item's Starting Price: " + startingPrice);
-        console.log("This item's current High Bid ID: " + highBidId);
-        console.log("TYPEOF startingPrice = " + typeof startingPrice);
-        console.log("TYPEOF highBidId = " + typeof highBidId);
-        console.log("and TYPEOF biddingValue = " + typeof biddingValue);
-
-
-        // If the returned item has no current high_bid_id -- means it hasn't been bid on yet
-        if(resultObject.high_bid_id === null) {
-            console.log('high_bid_id is set to null on this item, so this is the first bid');
-            // If the value entered by the user is greater than the starting price of the item
-            if(biddingValue > startingPrice) {
-                console.log("biddingValue > resultObject.startingPrice --- This will work for initial bid");
-                // Place bid into bids table
-                placeBid(biddingItemId, biddingUserId, biddingValue);
-            }
-            // If the value entered is not greater than the starting price, let the user know
-            else {
-                console.log("Bid value not greater than starting price --- Invalid bid");
-                alert("You must enter a bid greater than the starting price of $" + startingPrice);
-            }
-        }
-
-        // Otherwise, this is not the first bid on this item
-        else {
-            console.log("This is NOT the first bid on this item");
-
-            // Get the amount associated with the current high_bid_id 
-            let currentHighBid = getItemCurrentPrice(highBidId);
-
-            if(biddingValue > currentHighBid) {
-                console.log("biddingValue > currentHighBid --- This bid is valid!");
-                // Place bid into bids table
-                placeBid(biddingItemId, biddingUserId, biddingValue);
-            } else {
-                console.log("Bid value not greater than current price --- Invalid bid");
-                alert("You must enter a bid greater than the current bid of $" + currentHighBid);
-            }
-
-        }
-    });
-    */
 }
 
 placeBid = function (biddingItemId, biddingUserId, biddingValue) {
@@ -352,7 +252,6 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
             "biddingValue": biddingValue
         }
     }).done(function (result) {
-        //let resultObject = JSON.parse(result);
         console.log("Bid result: " + result);
     });
 }
