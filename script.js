@@ -254,13 +254,13 @@ checkBid = function(item) {
             // Get the amount associated with the current high_bid_id 
             //let currentHighBid = getItemCurrentPrice(highBidId);
 
-            console.log("Querying bids for bid id: " + element.high_bid_id);
+            console.log("Querying bids for bid id: " + highBidId);
                // Query bids for this bid, return its amount
                $.ajax({
                    url: "/auction/resources/getItemCurrentPrice.php",
                    type: "POST",
                    data: {
-                       "id": element.high_bid_id
+                       "id": highBidId
                    }
                }).done(function (result) {
                     console.log("Result from getItemCurrentPrice: " + result);
