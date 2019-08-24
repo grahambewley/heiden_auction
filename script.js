@@ -135,7 +135,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             // Set custom attribute that holds this auction item's unique id
             bid.setAttribute('item_id', element.id);
             // The 'return false' acts like an event.preventDefuault(), which keeps the page from reloading
-            bid.setAttribute('onsubmit', 'checkBid(this);');
+            bid.setAttribute('onsubmit', 'checkBid(this);return false');
 
             let bidAmount = document.createElement('input');
             bidAmount.setAttribute('type', 'number');
@@ -217,29 +217,29 @@ checkBid = function(item) {
         else {
             console.log("This is NOT the first bid on this item");
 
-               // Query bids for this bid, return its amount
-               $.ajax({
-                   url: "/auction/resources/getItemCurrentPrice.php",
-                   type: "POST",
-                   data: {
-                       "id": highBidId
-                   }
-               }).done(function (result) {
-                    let resultObject = JSON.parse(result);
-                    
-                    if(biddingValue > resultObject.amount) {
-                        console.log("biddingValue > currentHighBid --- This bid is valid!");
-                        // Place bid into bids table
-                        placeBid(biddingItemId, biddingUserId, biddingValue);
-                    } else {
-                        console.log("Bid value not greater than current price --- Invalid bid");
-                        alert("You must enter a bid greater than the current bid of $" + resultObject.amount);
-                    }
-               });
-
+            // Query bids for this bid, return its amount
+            $.ajax({
+                url: "/auction/resources/getItemCurrentPrice.php",
+                type: "POST",
+                data: {
+                    "id": highBidId
+                }
+            }).done(function (result) {
+                let resultObject = JSON.parse(result);
+                
+                if(biddingValue > resultObject.amount) {
+                    console.log("biddingValue > currentHighBid --- This bid is valid!");
+                    // Place bid into bids table
+                    placeBid(biddingItemId, biddingUserId, biddingValue);
+                } else {
+                    console.log("Bid value not greater than current price --- Invalid bid");
+                    alert("You must enter a bid greater than the current bid of $" + resultObject.amount);
+                }
+            });
         }
-
+        
     });
+    location.reload();
 }
 
 placeBid = function (biddingItemId, biddingUserId, biddingValue) {
