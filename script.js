@@ -252,16 +252,30 @@ checkBid = function(item) {
             console.log("This is NOT the first bid on this item");
 
             // Get the amount associated with the current high_bid_id 
-            let currentHighBid = getItemCurrentPrice(highBidId);
+            //let currentHighBid = getItemCurrentPrice(highBidId);
 
-            if(biddingValue > currentHighBid) {
-                console.log("biddingValue > currentHighBid --- This bid is valid!");
-                // Place bid into bids table
-                placeBid(biddingItemId, biddingUserId, biddingValue);
-            } else {
-                console.log("Bid value not greater than current price --- Invalid bid");
-                alert("You must enter a bid greater than the current bid of $" + currentHighBid);
-            }
+            console.log("Querying bids for bid id: " + element.high_bid_id);
+               // Query bids for this bid, return its amount
+               $.ajax({
+                   url: "/auction/resources/getItemCurrentPrice.php",
+                   type: "POST",
+                   data: {
+                       "id": element.high_bid_id
+                   }
+               }).done(function (result) {
+                    console.log("Result from getItemCurrentPrice: " + result);
+                    let resultObject = JSON.parse(result);
+                    console.log("Resulting amount is " + resultObject.amount);
+                    
+                    if(biddingValue > resultObject.amount) {
+                        console.log("biddingValue > currentHighBid --- This bid is valid!");
+                        // Place bid into bids table
+                        placeBid(biddingItemId, biddingUserId, biddingValue);
+                    } else {
+                        console.log("Bid value not greater than current price --- Invalid bid");
+                        alert("You must enter a bid greater than the current bid of $" + currentHighBid);
+                    }
+               });
 
         }
 
