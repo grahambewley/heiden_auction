@@ -65,7 +65,8 @@
     }
 
     &__won {
-        background-color: rgba($color-heiden-blue, .5);
+        background-color: $color-heiden-blue;
+        filter: brightness(150%);
         padding: 1rem 1.5rem;
         font-family: 'Lexend Deca', sans-serif;
         text-transform: uppercase;
