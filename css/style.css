@@ -86,7 +86,8 @@ body {
 .return-to-auction-button {
   grid-column: center-start / center-end;
   justify-self: start;
-  margin-top: 10rem; }
+  margin-top: 10rem;
+  margin-bottom: 2rem; }
 
 .bids-container {
   grid-column: center-start / center-end; }
