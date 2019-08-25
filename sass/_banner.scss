@@ -36,4 +36,5 @@
 .auction-ended-banner {
     //display: none;
     background-color: rgba(red, .5);
+    grid-column: center-start / center-end;
 }
