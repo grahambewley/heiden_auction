@@ -1,17 +1,12 @@
 window.onload = function () {
 
-    getUserName();
-    getCurrentAuctionMetadata();
-
+    displayUserName();
+    displaySelectedAuctionInfo();
 }
 
-let selectedAuctionId = '';
-let selectedAuctionName = '';
-let selectedAuctionStartUtcSeconds = '';
-let selectedAuctionEndUtcSeconds = '';
-
 // Gets user's name from localStorage and displays it on screen OR display Login button
-getUserName = function () {
+displayUserName = function () {
+    // Grab user's name, set during login
     const name = localStorage.getItem('name');
 
     const auctionInfo = document.getElementById('auction-info');
@@ -35,46 +30,43 @@ getUserName = function () {
     }
 }
 
-getCurrentAuctionMetadata = function () {
-    const currentEpochTime = new Date().getTime() / 1000;
-
+displaySelectedAuctionInfo = function () {
     $.ajax({
-
         url: "/auction/resources/getCurrentAuctionMetadata.php",
         type: "POST",
-
     }).done(function(result) {
 
         // Convert the result returned from PHP, from JSON to JavaScript object
         let resultObject = JSON.parse(result);
 
-        selectedAuctionName = resultObject.name;
-        selectedAuctionId = resultObject.id;
+        const selectedAuctionName = resultObject.name;
+        const selectedAuctionId = resultObject.id;
 
-        selectedAuctionStartUtcSeconds = resultObject.start_date_time;
-        // Use moment.js to convert Epoch times to readable date
-        let formattedStartDateTime = moment.unix(selectedAuctionStartUtcSeconds).format('MM/DD/YY h:mm A');
+        //Put up appropriate banner if auction has not started or has ended
+        var aucStatus = getSelectedAuctionStatus();
+        if (aucStatus == 0) {
+            document.getElementById('auction-not-started-banner').style.display = "block";
+        } else if (aucStatus == 2) {
+            document.getElementById('auction-ended-banner').style.display = "block";
+        }
 
-        selectedAuctionEndUtcSeconds = resultObject.end_date_time;
+        const selectedAuctionStartUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
-        let formattedEndDateTime = moment.unix(selectedAuctionEndUtcSeconds).format('MM/DD/YY h:mm A');
+        const formattedStartDateTime = moment.unix(selectedAuctionStartUtcSeconds).format('MM/DD/YY h:mm A');
+
+        const selectedAuctionEndUtcSeconds = resultObject.end_date_time;
+        // Use moment.js to convert Epoch times to readable date
+        const formattedEndDateTime = moment.unix(selectedAuctionEndUtcSeconds).format('MM/DD/YY h:mm A');
 
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
 
-        //Determine if this auction has ended or not started, if so then display a banner, hide bid buttons
-        if(currentEpochTime > selectedAuctionEndUtcSeconds) {
-            document.getElementById('auction-ended-banner').style.display = "block";
-        } else if (currentEpochTime <= selectedAuctionStartUtcSeconds) {
-            document.getElementById('auction-not-started-banner').style.display = "block";
-        }
-
         //Once we've got the correct auction selected we can fill in the auction items
-        getSelectedAuctionItems(selectedAuctionId);
+        displaySelectedAuctionItems(selectedAuctionId);
     });
 }
 
-getSelectedAuctionItems = function(selectedAuctionId) {
+displaySelectedAuctionItems = function(selectedAuctionId) {
 
     $.ajax({
         url: "/auction/resources/getSelectedAuctionItems.php",
@@ -101,7 +93,7 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemImg.setAttribute('alt', 'Auction item image');
             itemImg.setAttribute('class', 'item__img');
 
-            // CREATE ITEM DATA SECTION (NAME AND DESCRIPTION)
+            // CREATE ITEM DATA SECTION (ITEM NAME AND DESCRIPTION)
 
             let itemData = document.createElement('div');
             itemData.setAttribute('class', 'item__data');
@@ -117,10 +109,9 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
 
-            // Get current date, compare to selectedAuction's time
-            const currentEpochTime = new Date().getTime() / 1000;
+            const aucStatus = getSelectedAuctionStatus();
             // If auction has not started or is in progress...
-            if(currentEpochTime <= selectedAuctionEndUtcSeconds) {
+            if(aucStatus == 0 || aucStatus == 1) { 
                 // CREATE ITEM PRICING SECTION 
                 let itemPrice = document.createElement('div');
                 itemPrice.setAttribute('class', 'item__price');
@@ -205,11 +196,12 @@ getSelectedAuctionItems = function(selectedAuctionId) {
                             itemWinner.setAttribute('class', 'item__winner');
 
                             // TODO query users for user_id 
-                            
+
                             itemWinner.innerHTML = "Item won by " + resultObject.user_id + " for $" + resultObject.amount;
 
                             itemWon.appendChild(itemWinner);
                     });
+                }
             }
             
 
@@ -247,6 +239,27 @@ getSelectedAuctionItems = function(selectedAuctionId) {
         });
 
     });
+}
+
+// Gets current epoch time from browser, returns 'status' of auction
+// 0 = auction not yet started
+// 1 = auction in progress
+// 2 = auction has ended
+function getSelectedAuctionStatus() {
+    const currentEpochTime = new Date().getTime() / 1000;
+
+    // If current time is less than auction's start time, auction has not started
+    if(currentEpochTime < selectedAuctionStartUtcSeconds) {
+        return 0;
+    }
+    // If current time is between auction's start time and end time, auction is in progress
+    else if(currentEpochTime >= selectedAuctionStartUtcSeconds && currentEpochTime <= selectedAuctionEndUtcSeconds) {
+        return 1;
+    }
+    // If current time is after auction's end time, auction has ended
+    else {
+        return 2;
+    }
 }
 
 // Wrapper for ajax call that supports promises
@@ -331,10 +344,11 @@ checkBid = function(item) {
 
 placeBid = function (biddingItemId, biddingUserId, biddingValue) {
 
-    //Get current date, compare to selectedAuction 
-    const currentEpochTime = new Date().getTime() / 1000;
+    // Get the selected auction's status
+    const aucStatus = getSelectedAuctionStatus();
 
-    if(currentEpochTime <= selectedAuctionEndUtcSeconds && currentEpochTime > selectedAuctionStartUtcSeconds) {
+    // If the auction is ongoing, allow a bid
+    if(aucStatus == 1) {
         $.ajax({
             url: "/auction/resources/addBidToBids.php",
             type: "POST",
@@ -346,7 +360,9 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
         }).done(function (result) {
             console.log("Bid result: " + result);
         });
-    } else {
+    } 
+    // Otherwise display a message
+    else {
         alert("Sorry, this auction is not accepting bids at this time.")
     }
 }
