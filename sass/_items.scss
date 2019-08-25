@@ -47,7 +47,7 @@
     }
 
     &__price {
-        background-color: $color-grey-light-1;
+        background-color: rgba($color-heiden-orange, 0.4);
         padding: 1rem 1.5rem;
 
     }
@@ -85,7 +85,7 @@
 
 .bid {
 
-    background-color: rgba($color-heiden-orange, 0.4);
+    background-color: rgba($color-heiden-orange, 0.15);
     padding: 1.5rem 1rem;
     display: flex;
     justify-content: space-between;
