@@ -165,7 +165,7 @@ body {
     text-transform: uppercase;
     font-size: 1.6rem; }
   .item__won {
-    background-color: #709AC5;
+    background-color: rgba(112, 154, 197, 0.5);
     padding: 1rem 1.5rem;
     font-family: 'Lexend Deca', sans-serif;
     text-transform: uppercase;
