@@ -82,13 +82,19 @@ body {
     @media only screen and (max-width: 75em) {
       .auction-info__name {
         font-size: 3rem; } }
+    @media only screen and (max-width: 50em) {
+      .auction-info__name {
+        font-size: 2.4rem; } }
   .auction-info__date-span {
     font-size: 2.5rem;
     font-weight: 300;
     color: #5D5D5D; }
     @media only screen and (max-width: 75em) {
       .auction-info__date-span {
-        font-size: 1.4rem; } }
+        font-size: 1.8rem; } }
+    @media only screen and (max-width: 50em) {
+      .auction-info__date-span {
+        font-size: 1.5rem; } }
   .auction-info__welcome {
     font-size: 1.6rem;
     font-style: italic;

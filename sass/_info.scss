@@ -25,6 +25,10 @@
         @media only screen and (max-width: $bp-largest) {
             font-size: 3rem;
         }
+
+        @media only screen and (max-width: $bp-medium) {
+            font-size: 2.4rem;
+        }
     }
 
     &__date-span {
@@ -33,7 +37,11 @@
         color: $color-grey-dark-2;
 
         @media only screen and (max-width: $bp-largest) {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+            font-size: 1.5rem;
         }
     }
 
