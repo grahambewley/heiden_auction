@@ -55,6 +55,7 @@ body {
         width: 16rem; } }
   .banner__sub-title {
     margin-bottom: 2rem;
+    margin-right: -1.1rem;
     font-size: 3rem;
     font-weight: 400;
     text-transform: uppercase;
@@ -105,6 +106,9 @@ body {
     font-size: 2rem;
     text-align: left;
     padding: 1rem; }
+    @media only screen and (max-width: 50em) {
+      .bids-table table, .bids-table th, .bids-table td {
+        font-size: 3.5rem; } }
   .bids-table__head {
     padding: 1rem;
     font-size: 3rem;
