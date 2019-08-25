@@ -1,3 +1,8 @@
+.return-to-auction-button {
+    grid-column: center-start / center-end;
+    justify-items: start;
+}
+
 .bids-container {
     margin-top: 10rem;
     grid-column: center-start / center-end;
