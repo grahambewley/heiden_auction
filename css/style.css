@@ -155,12 +155,17 @@ body {
 .user {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; }
+  align-items: flex-end;
+  margin-bottom: 1rem; }
+  @media only screen and (max-width: 50em) {
+    .user {
+      flex-direction: row;
+      justify-content: center;
+      align-items: inherit; } }
   .user__welcome {
     font-size: 1.6rem;
     font-style: italic;
-    font-weight: 300;
-    margin-bottom: 1rem; }
+    font-weight: 300; }
 
 .items {
   grid-column: center-start / center-end;
