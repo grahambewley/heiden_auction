@@ -165,8 +165,11 @@ body {
     text-transform: uppercase;
     font-size: 1.6rem; }
   .item__won {
-    background-color: rgba(249, 175, 94, 0.5);
-    padding: 1rem 1.5rem; }
+    background-color: #709AC5;
+    padding: 1rem 1.5rem;
+    font-family: 'Lexend Deca', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.6rem; }
 
 .bid {
   padding: 1.5rem 1rem;
