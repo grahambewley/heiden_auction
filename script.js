@@ -199,7 +199,7 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                 // If this item has a high_bid_id filled, it means someone has bid on it, display winner on the card
                 if(element.high_bid_id !== null ) {
                     console.log("Querying bids for bid id: " + element.high_bid_id);
-                    // Query bids for this bid, return its amount
+                    // Query bids for this winning bid
                     $.ajax({
                         url: "/auction/resources/getItemCurrentPrice.php",
                         type: "POST",
@@ -207,14 +207,25 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                             "id": element.high_bid_id
                         }
                     }).done(function (result) {                    
-                            let resultObject = JSON.parse(result);
+                        let resultBid = JSON.parse(result);
+                        
+                        // Query users for the winner's user_id
+                        $.ajax({
+                            url: "/auction/resources/getUserDataById.php",
+                            type: "POST",
+                            data: {
+                                "id": resultBid.user_id
+                            }
+                        }).done(function (result) {
+                            let resultUser = JSON.parse(result);
                             
-                            //Create and append Item Winner
+                            //Create and append Item Winner name and bid amount
                             let itemWinner = document.createElement('p');
                             itemWinner.setAttribute('class', 'item__winner');
-                            itemWinner.innerHTML = "Item won by " + resultObject.user_id + " for $" + resultObject.amount;
+                            itemWinner.innerHTML = "Item won by " + resultUser.name + " for $" + resultBid.amount;
 
                             itemWon.appendChild(itemWinner);
+                        });
                     });
                 }
             }
