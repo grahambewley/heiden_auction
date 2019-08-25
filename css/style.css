@@ -94,7 +94,8 @@ body {
         font-size: 1.8rem; } }
     @media only screen and (max-width: 50em) {
       .auction-info__date-span {
-        font-size: 1.5rem; } }
+        font-size: 1.5rem;
+        margin-bottom: .5rem; } }
   .auction-info__welcome {
     font-size: 1.6rem;
     font-style: italic;
@@ -137,20 +138,13 @@ body {
     font-family: 'Lexend Deca', sans-serif;
     color: #5D5D5D;
     text-transform: uppercase;
-    font-size: 1.6rem;
-    font-weight: 400; }
-    @media only screen and (max-width: 50em) {
-      .item__starting-price {
-        font-size: 2.2rem; } }
+    font-size: 1.6rem; }
   .item__current-price {
     display: flex;
     justify-content: space-between;
     font-family: 'Lexend Deca', sans-serif;
     text-transform: uppercase;
     font-size: 1.6rem; }
-    @media only screen and (max-width: 50em) {
-      .item__current-price {
-        font-size: 2.2rem; } }
 
 .bid {
   padding: 1.5rem 1rem;
