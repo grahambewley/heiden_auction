@@ -10,7 +10,7 @@ function displayUserBids() {
 
     // Get list of bids from the logged in user (select from BIDS)
     $.ajax({
-        url: "/auction/resources/getUserDataById.php",
+        url: "/auction/resources/getBidDataByUserId.php",
         type: "POST",
         data: {
             "user_id": userID
