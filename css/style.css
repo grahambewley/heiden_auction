@@ -162,6 +162,7 @@ body {
   align-items: flex-end; }
   @media only screen and (max-width: 50em) {
     .user {
+      width: 100%;
       flex-direction: row;
       justify-content: space-between; } }
   .user__welcome {
