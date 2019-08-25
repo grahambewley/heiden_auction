@@ -34,12 +34,12 @@
 
 .auction-ended-banner {
     //display: none;
-    background-color: rgba(red, .4);
+    background-color: rgba(red, .3);
     grid-column: full-start / full-end;
     padding: 1.2rem;
 
 
-    span {
+    &__text {
         grid-column: center-start / center-end;
         font-size: 1.8rem;
         color: $color-grey-dark-1;
