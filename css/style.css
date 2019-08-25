@@ -34,12 +34,11 @@ body {
   .btn:hover {
     transform: scale(1.1);
     background-color: #e09e55; }
+  .btn:focus {
+    outline: none; }
   .btn--small {
     font-size: 1rem;
     padding: .5rem 1.5rem; }
-    .btn--small:hover {
-      transform: scale(1.1);
-      background-color: #e09e55; }
 
 .banner {
   grid-column: full-start / full-end;

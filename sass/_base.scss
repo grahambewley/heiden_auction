@@ -62,14 +62,12 @@ body {
         background-color: $color-heiden-orange-dark;
     }
 
-    &--small {
+    &:focus {
+        outline: none;
+    }
 
+    &--small {
         font-size: 1rem;
         padding: .5rem 1.5rem;
-
-        &:hover {
-            transform: scale(1.1);
-            background-color: $color-heiden-orange-dark;
-        }
     }
 }
