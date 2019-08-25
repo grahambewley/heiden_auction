@@ -46,14 +46,6 @@ displaySelectedAuctionInfo = function () {
         const selectedAuctionName = resultObject.name;
         const selectedAuctionId = resultObject.id;
 
-        //Put up appropriate banner if auction has not started or has ended
-        var aucStatus = getSelectedAuctionStatus();
-        if (aucStatus == 0) {
-            document.getElementById('auction-not-started-banner').style.display = "block";
-        } else if (aucStatus == 2) {
-            document.getElementById('auction-ended-banner').style.display = "block";
-        }
-
         selectedAuctionStartUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
         const formattedStartDateTime = moment.unix(selectedAuctionStartUtcSeconds).format('MM/DD/YY h:mm A');
@@ -64,6 +56,14 @@ displaySelectedAuctionInfo = function () {
 
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
+
+        //Put up appropriate banner if auction has not started or has ended
+        var aucStatus = getSelectedAuctionStatus();
+        if (aucStatus == 0) {
+            document.getElementById('auction-not-started-banner').style.display = "block";
+        } else if (aucStatus == 2) {
+            document.getElementById('auction-ended-banner').style.display = "block";
+        }
 
         //Once we've got the correct auction selected we can fill in the auction items
         displaySelectedAuctionItems(selectedAuctionId);
@@ -251,6 +251,9 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
 // 2 = auction has ended
 function getSelectedAuctionStatus() {
     const currentEpochTime = new Date().getTime() / 1000;
+    console.log("Current time: " + currentEpochTime);
+    console.log("Auction Start time: " + selectedAuctionStartUtcSeconds);
+    console.log("Auction End time: " + selectedAuctionEndUtcSeconds);
 
     // If current time is less than auction's start time, auction has not started
     if(currentEpochTime < selectedAuctionStartUtcSeconds) {
