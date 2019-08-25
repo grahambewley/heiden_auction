@@ -7,6 +7,12 @@
 
 .bids-container {
     grid-column: center-start / center-end;
+
+    span {
+        font-size: 1.2rem;
+        color: $color-grey-dark-2;
+        margin-bottom: .5rem;
+    }
 }
 
 .bids-table {
