@@ -182,20 +182,6 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                 // CREATE ITEM WINNER SECTION
                 itemWon.setAttribute('class', 'item__won');
 
-                // Create and append Starting Price
-                let itemStartingPrice = document.createElement('div');
-                itemStartingPrice.setAttribute('class', 'item__starting-price');
-                
-                let itemStartingPriceLabel = document.createElement('span')
-                itemStartingPriceLabel.innerHTML = "Starting Price:" ;
-                let itemStartingPriceAmount = document.createElement('span');
-                itemStartingPriceAmount.innerHTML = "$" + element.starting_price;
-
-                itemStartingPrice.appendChild(itemStartingPriceLabel);
-                itemStartingPrice.appendChild(itemStartingPriceAmount);
-
-                itemWon.appendChild(itemStartingPrice);
-
                 // If this item has a high_bid_id filled, it means someone has bid on it, display winner on the card
                 if(element.high_bid_id !== null ) {
                     console.log("Querying bids for bid id: " + element.high_bid_id);
