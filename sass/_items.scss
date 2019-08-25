@@ -30,20 +30,12 @@
         font-family: 'Lexend Deca', sans-serif;
         font-size: 2rem;
         margin-bottom: 1rem;
-
-        @media only screen and (max-width: $bp-medium) {
-            font-size: 3rem;
-        }
     }
 
     &__description {
         font-size: 1.4rem;
         font-weight: 400;
         margin-bottom: 1rem;
-
-        @media only screen and (max-width: $bp-medium) {
-            font-size: 2rem;
-        }
     }
 
     &__price {
