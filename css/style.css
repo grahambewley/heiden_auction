@@ -35,7 +35,7 @@ body {
     background-color: #e09e55; }
   .btn--small {
     font-size: 1rem;
-    padding: .75rem 2.25rem; }
+    padding: .75rem 1rem; }
     .btn--small:hover {
       transform: scale(1.1);
       background-color: #e09e55; }
@@ -127,7 +127,8 @@ body {
   .user__welcome {
     font-size: 1.6rem;
     font-style: italic;
-    font-weight: 300; }
+    font-weight: 300;
+    margin-bottom: 1rem; }
 
 .items {
   grid-column: center-start / center-end;
