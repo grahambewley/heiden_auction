@@ -3,10 +3,12 @@ window.onload = function() {
 }
 
 function displayUserBids() {
-    const userID = localStorage.getItem("user_id");
-    const bidsTable = document.getElementById('bids-table');
-    console.log("User ID we got was: " + userID + " -- TIME TO GET SOME BIDS!");
 
+    const userID = localStorage.getItem("user_id");
+
+    const bidsTable = document.getElementById('bids-table');
+
+    // Get list of bids from the logged in user (select from BIDS)
     $.ajax({
         url: "/auction/resources/getUserBids.php",
         type: "POST",
@@ -14,28 +16,46 @@ function displayUserBids() {
             "user_id": userID
         }
     }).done(function (result) {
+
         let resultArray = JSON.parse(result);
 
+        // For each bid from this user...
         resultArray.forEach(function (element) {
         
-            // Get info from item -- name and auction ID
-
-            // Get auction name from auction ID
-
             var bidRow = document.createElement('tr');
 
-            // Add auction
-            let bidAuction = document.createElement('td');
-            bidAuction.innerHTML = "Auction Name";
+            // Get info from item -- name and auction ID (select from ITEMS)
+            $.ajax({
+                url: "/auction/resources/getItemBidData.php",
+                type: "POST",
+                data: {
+                    "id": element.item_id
+                }
+            }).done(function (result) {
+                // Get item's name
+                let resultItem = JSON.parse(result);
+                let bidItem = document.createElement('td');
+                bidItem.innerHTML = resultItem.name;
 
-            // Add item
-            let bidItem = document.createElement('td');
-            bidItem.innerHTML = "Item";
+                $.ajax({
+                    url: "/auction/resources/getAuctionData.php",
+                    type: "POST",
+                    data: {
+                        "id": resultItem.auction_id
+                    }
+                }).done(function (result) {
+                    // Get auction's name
+                    let resultAuction = JSON.parse(result);
+                    let bidAuction = document.createElement('td');
+                    bidAuction.innerHTML = resultAuction.name;
+
+                });
+            });
 
             // Add bid amount
             let bidAmount = document.createElement('td');
-            bidAmount.innerHTML = "$ AMOUNT";
-
+            bidAmount.innerHTML = "$" + element.amount;
+ 
             bidRow.appendChild(bidAuction);
             bidRow.appendChild(bidItem);
             bidRow.appendChild(bidAmount);

@@ -4,7 +4,7 @@
 include('dbConnect.php');
 
 // SQL query for returning an item based on the id passed in 
-$result = mysqli_query($conn, "SELECT * from items WHERE id = ".$_REQUEST['id']);
+$result = mysqli_query($conn, "SELECT * from auctions WHERE id = ".$_REQUEST['id']);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {

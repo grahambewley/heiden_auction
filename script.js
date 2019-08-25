@@ -157,21 +157,21 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                             "id": element.high_bid_id
                         }
                     }).done(function (result) {                    
-                            let resultObject = JSON.parse(result);
-                            
-                            //Create and append Current Price
-                            let itemCurrentPrice = document.createElement('p');
-                            itemCurrentPrice.setAttribute('class', 'item__current-price');
+                        let resultObject = JSON.parse(result);
+                        
+                        //Create and append Current Price
+                        let itemCurrentPrice = document.createElement('p');
+                        itemCurrentPrice.setAttribute('class', 'item__current-price');
 
-                            let itemCurrentPriceLabel = document.createElement('span')
-                            itemCurrentPriceLabel.innerHTML = "Current Price:" ;
-                            let itemCurrentPriceAmount = document.createElement('span');
-                            itemCurrentPriceAmount.innerHTML = "$" + resultObject.amount;
-                            
-                            itemCurrentPrice.appendChild(itemCurrentPriceLabel);
-                            itemCurrentPrice.appendChild(itemCurrentPriceAmount);
+                        let itemCurrentPriceLabel = document.createElement('span')
+                        itemCurrentPriceLabel.innerHTML = "Current Price:" ;
+                        let itemCurrentPriceAmount = document.createElement('span');
+                        itemCurrentPriceAmount.innerHTML = "$" + resultObject.amount;
+                        
+                        itemCurrentPrice.appendChild(itemCurrentPriceLabel);
+                        itemCurrentPrice.appendChild(itemCurrentPriceAmount);
 
-                            itemPrice.appendChild(itemCurrentPrice);
+                        itemPrice.appendChild(itemCurrentPrice);
                     });
                 }
             }
