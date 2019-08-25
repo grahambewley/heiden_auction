@@ -211,6 +211,7 @@ checkBid = function(item) {
 
         let startingPrice = parseInt(resultObject.starting_price);
         let highBidId = resultObject.high_bid_id;
+        let itemName = resultObject.name;
 
         console.log("This item's Starting Price: " + startingPrice);
         console.log("This item's current High Bid ID: " + highBidId);
@@ -220,8 +221,8 @@ checkBid = function(item) {
             // Check that the amount the user submitted is greater than the item's starting price
             if(biddingValue > startingPrice) {
                 //Confirm that user wants to place this bid
-                var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + resultObject.name) + "?"
-                if(bidCheck) {
+                var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + itemName) + "?"
+                if(bidCheck == true) {
                     // Place bid into bids table
                     placeBid(biddingItemId, biddingUserId, biddingValue);
                     // Reload page so we can see bid
@@ -249,8 +250,8 @@ checkBid = function(item) {
                 if(biddingValue > resultObject.amount) {
                     console.log("biddingValue > currentHighBid --- This bid is valid!");
                     //Confirm that user wants to place this bid
-                    var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + resultObject.name) + "?"
-                    if(bidCheck) {
+                    var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + itemName) + "?"
+                    if(bidCheck == true) {
                         // Place bid into bids table
                         placeBid(biddingItemId, biddingUserId, biddingValue);
                         // Reload page so we can see new bid
