@@ -108,6 +108,7 @@ body {
   margin-bottom: 18rem; }
 
 .item {
+  background-color: rgba(249, 175, 94, 0.15);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   overflow: hidden;
