@@ -1,0 +1,11 @@
+.bids-table {
+    margin-top: 6rem;
+    grid-column: center-start / center-end;
+
+    &__head {
+        padding: 1rem;
+        font-size: 2rem;
+        font-weight: 700;
+        border-bottom: 1px solid $color-grey-dark-2;
+    }
+}
