@@ -49,10 +49,14 @@ function displayUserBids() {
                     let bidAuction = document.createElement('td');
                     bidAuction.innerHTML = resultAuction.name;
 
-
                     // Add bid amount
                     let bidAmount = document.createElement('td');
                     bidAmount.innerHTML = "$" + element.amount;
+
+                    //If this item's high_bid_id matches this bid's ID, apply special 'winning bid' style
+                    if(resultItem.high_bid_id == element.id) {
+                        bidRow.classList.add('winning-bid');
+                    }
 
                     bidRow.appendChild(bidAuction);
                     bidRow.appendChild(bidItem);

@@ -1,5 +1,5 @@
 .bids-container {
-    margin-top: 12rem;
+    margin-top: 10rem;
     grid-column: center-start / center-end;
 }
 
@@ -7,7 +7,7 @@
     width: 100%;
     border-collapse: collapse;
 
-    table, td {
+    table, th, td {
         border: 1px solid $color-grey-light-2;
         font-size: 2rem;
         text-align: left;
@@ -15,11 +15,13 @@
     }
 
     &__head {
-        border: 1px solid $color-grey-light-2;
-        text-align: left;
         padding: 1rem;
         font-size: 3rem;
         text-transform: uppercase;
         font-weight: 400;
     }
+}
+
+.winning-bid {
+    background-color: green;
 }
