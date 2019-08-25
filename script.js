@@ -216,10 +216,10 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                             data: {
                                 "user_id": resultBid.user_id
                             }
-                        }).done(function (result) {
-                            let resultUser = JSON.parse(result);
+                        }).done(function (userQueryResult) {
+                            let resultUser = JSON.parse(userQueryResult);
                             
-                            console.log("Resulting winning user that was returned is: " + result);
+                            console.log("Resulting winning user that was returned is: " + userQueryResult);
 
                             //Create and append Item Winner name and bid amount
                             let itemWinner = document.createElement('p');
