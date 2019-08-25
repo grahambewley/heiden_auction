@@ -26,11 +26,22 @@ displayUserName = function () {
     }
     // Or if name is set (user is logged in), display a "Welcome" message instead
     else {
+        let userInfo = document.createElement('div');
+        userInfo.setAttribute('class', 'user');
+
         let welcomeText = document.createElement('h3');
-        welcomeText.setAttribute('class', 'auction-info__welcome');
+        welcomeText.setAttribute('class', 'user__welcome');
         welcomeText.innerHTML = "Welcome, " + name;
 
-        auctionInfo.appendChild(welcomeText);
+        let viewBids = document.createElement('button');
+        viewBids.setAttribute('href', '#');
+        viewBids.setAttribute('class', 'btn btn--small');
+
+        userInfo.appendChild(welcomeText);
+        userInfo.appendChild(viewBids);
+
+        auctionInfo.appendChild(userInfo);
+        
     }
 }
 

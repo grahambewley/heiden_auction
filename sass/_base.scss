@@ -61,4 +61,14 @@ body {
         transform: scale(1.1);
         background-color: $color-heiden-orange-dark;
     }
+
+    &--small {
+        font-size: 1rem;
+        padding: .75rem 2.25rem;
+
+        &:hover {
+            transform: scale(1.1);
+            background-color: $color-heiden-orange-dark;
+        }
+    }
 }

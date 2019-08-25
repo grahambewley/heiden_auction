@@ -33,6 +33,12 @@ body {
   .btn:hover {
     transform: scale(1.1);
     background-color: #e09e55; }
+  .btn--small {
+    font-size: 1rem;
+    padding: .75rem 2.25rem; }
+    .btn--small:hover {
+      transform: scale(1.1);
+      background-color: #e09e55; }
 
 .banner {
   grid-column: full-start / full-end;
@@ -114,7 +120,11 @@ body {
       .auction-info__date-span {
         font-size: 1.5rem;
         margin-bottom: .5rem; } }
-  .auction-info__welcome {
+
+.user {
+  display: flex;
+  flex-direction: column; }
+  .user__welcome {
     font-size: 1.6rem;
     font-style: italic;
     font-weight: 300; }
@@ -166,7 +176,7 @@ body {
     font-size: 1.6rem; }
   .item__won {
     background-color: #709AC5;
-    filter: brightness(150%);
+    filter: brightness(120%);
     padding: 1rem 1.5rem;
     font-family: 'Lexend Deca', sans-serif;
     text-transform: uppercase;
