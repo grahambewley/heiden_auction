@@ -88,14 +88,16 @@ body {
   grid-column: center-start / center-end; }
 
 .bids-table {
+  width: 100%;
   border-collapse: collapse; }
   .bids-table table, .bids-table th, .bids-table td {
     border: 1px solid #5D5D5D;
-    font-size: 1.6rem;
-    text-align: left; }
+    font-size: 2rem;
+    text-align: left;
+    padding: 1rem; }
   .bids-table__head {
     padding: 1rem;
-    font-size: 2rem;
+    font-size: 3rem;
     text-transform: uppercase;
     font-weight: 400; }
 
