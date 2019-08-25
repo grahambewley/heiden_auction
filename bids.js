@@ -4,7 +4,7 @@ window.onload = function() {
 
 function displayUserBids() {
     const userID = localStorage.getItem("user_id");
-
+    const bidsTable = document.getElementById('bids-table');
     console.log("User ID we got was: " + userID + " -- TIME TO GET SOME BIDS!");
 
     $.ajax({
@@ -30,11 +30,17 @@ function displayUserBids() {
 
             // Add item
             let bidItem = document.createElement('td');
-            bidAuction.innerHTML = "Item";
+            bidItem.innerHTML = "Item";
 
             // Add bid amount
             let bidAmount = document.createElement('td');
             bidAmount.innerHTML = "$ AMOUNT";
+
+            bidRow.appendChild(bidAuction);
+            bidRow.appendChild(bidItem);
+            bidRow.appendChild(bidAmount);
+
+            bidsTable.appendChild(bidRow);
         });
 
     });
