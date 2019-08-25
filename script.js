@@ -117,51 +117,101 @@ getSelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
 
-            // CREATE ITEM PRICING SECTION 
+            // Get current date, compare to selectedAuction's time
+            const currentEpochTime = new Date().getTime() / 1000;
+            // If auction has not started or is in progress...
+            if(currentEpochTime <= selectedAuctionEndUtcSeconds) {
+                // CREATE ITEM PRICING SECTION 
+                let itemPrice = document.createElement('div');
+                itemPrice.setAttribute('class', 'item__price');
 
-            let itemPrice = document.createElement('div');
-            itemPrice.setAttribute('class', 'item__price');
+                // Create and append Starting Price
+                let itemStartingPrice = document.createElement('div');
+                itemStartingPrice.setAttribute('class', 'item__starting-price');
+                
+                let itemStartingPriceLabel = document.createElement('span')
+                itemStartingPriceLabel.innerHTML = "Starting Price:" ;
+                let itemStartingPriceAmount = document.createElement('span');
+                itemStartingPriceAmount.innerHTML = "$" + element.starting_price;
 
-            let itemStartingPrice = document.createElement('div');
-            itemStartingPrice.setAttribute('class', 'item__starting-price');
-            
-            let itemStartingPriceLabel = document.createElement('span')
-            itemStartingPriceLabel.innerHTML = "Starting Price:" ;
-            let itemStartingPriceAmount = document.createElement('span');
-            itemStartingPriceAmount.innerHTML = "$" + element.starting_price;
+                itemStartingPrice.appendChild(itemStartingPriceLabel);
+                itemStartingPrice.appendChild(itemStartingPriceAmount);
 
-            itemStartingPrice.appendChild(itemStartingPriceLabel);
-            itemStartingPrice.appendChild(itemStartingPriceAmount);
+                itemPrice.appendChild(itemStartingPrice);
 
-            itemPrice.appendChild(itemStartingPrice);
+                // If this item has a high_bid_id filled, it means someone has bid on it, display the current bid on the card
+                if(element.high_bid_id !== null ) {
+                    console.log("Querying bids for bid id: " + element.high_bid_id);
+                    // Query bids for this bid, return its amount
+                    $.ajax({
+                        url: "/auction/resources/getItemCurrentPrice.php",
+                        type: "POST",
+                        data: {
+                            "id": element.high_bid_id
+                        }
+                    }).done(function (result) {                    
+                            let resultObject = JSON.parse(result);
+                            
+                            //Create and append Current Price
+                            let itemCurrentPrice = document.createElement('p');
+                            itemCurrentPrice.setAttribute('class', 'item__current-price');
 
-            // If this item has a high_bid_id filled, it means someone has bid on it, display the current bid on the card
-            if(element.high_bid_id !== null ) {
-               console.log("Querying bids for bid id: " + element.high_bid_id);
-               // Query bids for this bid, return its amount
-               $.ajax({
-                   url: "/auction/resources/getItemCurrentPrice.php",
-                   type: "POST",
-                   data: {
-                       "id": element.high_bid_id
-                   }
-               }).done(function (result) {                    
-                    let resultObject = JSON.parse(result);
-                    
-                    let itemCurrentPrice = document.createElement('p');
-                    itemCurrentPrice.setAttribute('class', 'item__current-price');
+                            let itemCurrentPriceLabel = document.createElement('span')
+                            itemCurrentPriceLabel.innerHTML = "Current Price:" ;
+                            let itemCurrentPriceAmount = document.createElement('span');
+                            itemCurrentPriceAmount.innerHTML = "$" + resultObject.amount;
+                            
+                            itemCurrentPrice.appendChild(itemCurrentPriceLabel);
+                            itemCurrentPrice.appendChild(itemCurrentPriceAmount);
 
-                    let itemCurrentPriceLabel = document.createElement('span')
-                    itemCurrentPriceLabel.innerHTML = "Current Price:" ;
-                    let itemCurrentPriceAmount = document.createElement('span');
-                    itemCurrentPriceAmount.innerHTML = "$" + resultObject.amount;
-                    
-                    itemCurrentPrice.appendChild(itemCurrentPriceLabel);
-                    itemCurrentPrice.appendChild(itemCurrentPriceAmount);
-
-                    itemPrice.appendChild(itemCurrentPrice);
-               });
+                            itemPrice.appendChild(itemCurrentPrice);
+                    });
+                }
             }
+            // If auction is over...
+            else {
+                // CREATE ITEM WINNER SECTION
+                let itemWon = document.createElement('div');
+                itemWon.setAttribute('class', 'item__won');
+
+                let itemStartingPrice = document.createElement('div');
+                itemStartingPrice.setAttribute('class', 'item__starting-price');
+                
+                let itemStartingPriceLabel = document.createElement('span')
+                itemStartingPriceLabel.innerHTML = "Starting Price:" ;
+                let itemStartingPriceAmount = document.createElement('span');
+                itemStartingPriceAmount.innerHTML = "$" + element.starting_price;
+
+                itemStartingPrice.appendChild(itemStartingPriceLabel);
+                itemStartingPrice.appendChild(itemStartingPriceAmount);
+
+                itemWon.appendChild(itemStartingPrice);
+
+                // If this item has a high_bid_id filled, it means someone has bid on it, display winner on the card
+                if(element.high_bid_id !== null ) {
+                    console.log("Querying bids for bid id: " + element.high_bid_id);
+                    // Query bids for this bid, return its amount
+                    $.ajax({
+                        url: "/auction/resources/getItemCurrentPrice.php",
+                        type: "POST",
+                        data: {
+                            "id": element.high_bid_id
+                        }
+                    }).done(function (result) {                    
+                            let resultObject = JSON.parse(result);
+                            
+                            //Create and append Item Winner
+                            let itemWinner = document.createElement('p');
+                            itemWinner.setAttribute('class', 'item__winner');
+
+                            // TODO query users for user_id 
+                            
+                            itemWinner.innerHTML = "Item won by " + resultObject.user_id + " for $" + resultObject.amount;
+
+                            itemWon.appendChild(itemWinner);
+                    });
+            }
+            
 
             // Create bid container form, plus the input and button that go within
             let bid = document.createElement('form');
@@ -284,7 +334,6 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
     //Get current date, compare to selectedAuction 
     const currentEpochTime = new Date().getTime() / 1000;
 
-    console.log("Current epoch time: " + currentEpochTime + " and this auction's end epoch time: " + selectedAuctionEndUtcSeconds);
     if(currentEpochTime <= selectedAuctionEndUtcSeconds && currentEpochTime > selectedAuctionStartUtcSeconds) {
         $.ajax({
             url: "/auction/resources/addBidToBids.php",
