@@ -57,7 +57,7 @@ getCurrentAuctionMetadata = function () {
 
         selectedAuctionEndUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
-        let formattedEndDateTime = moment.unix(endUtcSeconds).format('MM/DD/YY h:mm A');
+        let formattedEndDateTime = moment.unix(selectedAuctionEndUtcSeconds).format('MM/DD/YY h:mm A');
 
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
