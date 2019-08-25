@@ -1,12 +1,13 @@
-.bids-table {
+.bids-container {
     margin-top: 6rem;
     grid-column: center-start / center-end;
+}
 
+.bids-table {
     &__head {
         padding: 1rem;
         font-size: 2rem;
         text-transform: uppercase;
         font-weight: 400;
-        border-bottom: 1px solid $color-grey-dark-2;
     }
 }

@@ -83,15 +83,15 @@ body {
     font-size: 1.8rem;
     color: #222; }
 
-.bids-table {
+.bids-container {
   margin-top: 6rem;
   grid-column: center-start / center-end; }
-  .bids-table__head {
-    padding: 1rem;
-    font-size: 2rem;
-    text-transform: uppercase;
-    font-weight: 400;
-    border-bottom: 1px solid #5D5D5D; }
+
+.bids-table__head {
+  padding: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 400; }
 
 .auction-info {
   grid-column: center-start / center-end;
