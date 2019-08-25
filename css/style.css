@@ -36,7 +36,7 @@ body {
     background-color: #e09e55; }
   .btn--small {
     font-size: 1rem;
-    padding: .75rem 1rem; }
+    padding: .5rem 1.5rem; }
     .btn--small:hover {
       transform: scale(1.1);
       background-color: #e09e55; }
@@ -124,7 +124,8 @@ body {
 
 .user {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: flex-end; }
   .user__welcome {
     font-size: 1.6rem;
     font-style: italic;
