@@ -254,14 +254,17 @@ function getSelectedAuctionStatus() {
 
     // If current time is less than auction's start time, auction has not started
     if(currentEpochTime < selectedAuctionStartUtcSeconds) {
+        console.log("Auction not let started, returning 0")
         return 0;
     }
     // If current time is between auction's start time and end time, auction is in progress
     else if(currentEpochTime >= selectedAuctionStartUtcSeconds && currentEpochTime <= selectedAuctionEndUtcSeconds) {
+        console.log("Auction not in progress, returning 1")
         return 1;
     }
     // If current time is after auction's end time, auction has ended
     else {
+        console.log("Auction has ended, returning 2")
         return 2;
     }
 }
