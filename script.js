@@ -4,6 +4,10 @@ window.onload = function () {
     displaySelectedAuctionInfo();
 }
 
+let selectedAuctionStartUtcSeconds = '';
+let selectedAuctionEndUtcSeconds = '';
+
+
 // Gets user's name from localStorage and displays it on screen OR display Login button
 displayUserName = function () {
     // Grab user's name, set during login
@@ -50,11 +54,11 @@ displaySelectedAuctionInfo = function () {
             document.getElementById('auction-ended-banner').style.display = "block";
         }
 
-        const selectedAuctionStartUtcSeconds = resultObject.start_date_time;
+        selectedAuctionStartUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
         const formattedStartDateTime = moment.unix(selectedAuctionStartUtcSeconds).format('MM/DD/YY h:mm A');
 
-        const selectedAuctionEndUtcSeconds = resultObject.end_date_time;
+        selectedAuctionEndUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
         const formattedEndDateTime = moment.unix(selectedAuctionEndUtcSeconds).format('MM/DD/YY h:mm A');
 
