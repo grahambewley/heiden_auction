@@ -92,15 +92,16 @@ body {
 .bids-container {
   grid-column: center-start / center-end; }
   .bids-container__green-info {
-    font-size: 1.2rem;
+    display: block;
+    font-size: 1.8rem;
     color: #5D5D5D;
-    margin-bottom: .5rem; }
+    margin-bottom: 1rem; }
 
 .bids-table {
   width: 100%;
   border-collapse: collapse; }
   .bids-table table, .bids-table th, .bids-table td {
-    border: 1px solid #aaa;
+    border: 1px solid #ddd;
     font-size: 2rem;
     text-align: left;
     padding: 1rem; }
