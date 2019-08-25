@@ -5,6 +5,11 @@ window.onload = function () {
 
 }
 
+const selectedAuctionId = '';
+const selectedAuctionName = '';
+const selectedAuctionStartUtcSeconds = '';
+const selectedAuctionEndUtcSeconds = '';
+
 // Gets user's name from localStorage and displays it on screen OR display Login button
 getUserName = function () {
     const name = localStorage.getItem('name');
@@ -43,14 +48,14 @@ getCurrentAuctionMetadata = function () {
         // Convert the result returned from PHP, from JSON to JavaScript object
         let resultObject = JSON.parse(result);
 
-        const selectedAuctionName = resultObject.name;
-        const selectedAuctionId = resultObject.id;
+        selectedAuctionName = resultObject.name;
+        selectedAuctionId = resultObject.id;
 
-        var startUtcSeconds = resultObject.start_date_time;
+        selectedAuctionStartUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
         let formattedStartDateTime = moment.unix(startUtcSeconds).format('MM/DD/YY h:mm A');
 
-        var endUtcSeconds = resultObject.end_date_time;
+        selectedAuctionEndUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
         let formattedEndDateTime = moment.unix(endUtcSeconds).format('MM/DD/YY h:mm A');
 
@@ -58,8 +63,8 @@ getCurrentAuctionMetadata = function () {
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
 
         //Determine if this auction has ended, if so then display a banner, hide bid buttons
-        console.log("Current epoch time: " + currentEpochTime + " and this auction's end epoch time: " + endUtcSeconds);
-        if(currentEpochTime > endUtcSeconds) {
+        console.log("Current epoch time: " + currentEpochTime + " and this auction's end epoch time: " + selectedAuctionEndUtcSeconds);
+        if(currentEpochTime > selectedAuctionEndUtcSeconds) {
             document.getElementById('auction-ended-banner').style.display = "block";
         }
 
@@ -274,6 +279,8 @@ checkBid = function(item) {
 }
 
 placeBid = function (biddingItemId, biddingUserId, biddingValue) {
+
+    //Get current date, compare to selectedAuction 
     $.ajax({
         url: "/auction/resources/addBidToBids.php",
         type: "POST",
