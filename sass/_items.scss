@@ -14,7 +14,7 @@
     border-radius: 2px;
     overflow: hidden;
     display: grid;
-    align-items: start;
+    justify-items: start;
 
     &__img {
         grid-row: 1 / 2;

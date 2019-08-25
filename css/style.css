@@ -123,7 +123,7 @@ body {
   border-radius: 2px;
   overflow: hidden;
   display: grid;
-  align-items: start; }
+  justify-items: start; }
   .item__img {
     grid-row: 1 / 2;
     grid-column: 1 / -1;
