@@ -113,12 +113,16 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
 
+            // Create divs for both item price (displayed before/during auction) and item winner (displayed after auction)
+            let itemPrice = document.createElement('div');
+            itemPrice.setAttribute('class', 'item__price');
+            let itemWon = document.createElement('div');
+            itemWon.setAttribute('class', 'item__won');
+
             const aucStatus = getSelectedAuctionStatus();
             // If auction has not started or is in progress...
             if(aucStatus == 0 || aucStatus == 1) { 
                 // CREATE ITEM PRICING SECTION 
-                let itemPrice = document.createElement('div');
-                itemPrice.setAttribute('class', 'item__price');
 
                 // Create and append Starting Price
                 let itemStartingPrice = document.createElement('div');
@@ -166,8 +170,6 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             // If auction is over...
             else {
                 // CREATE ITEM WINNER SECTION
-                let itemWon = document.createElement('div');
-                itemWon.setAttribute('class', 'item__won');
 
                 let itemStartingPrice = document.createElement('div');
                 itemStartingPrice.setAttribute('class', 'item__starting-price');
