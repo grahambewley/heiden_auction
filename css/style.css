@@ -84,18 +84,20 @@ body {
     color: #222; }
 
 .bids-container {
-  margin-top: 6rem;
+  margin-top: 12rem;
   grid-column: center-start / center-end; }
 
 .bids-table {
   width: 100%;
   border-collapse: collapse; }
-  .bids-table table, .bids-table th, .bids-table td {
-    border: 1px solid #5D5D5D;
+  .bids-table table, .bids-table td {
+    border: 1px solid #aaa;
     font-size: 2rem;
     text-align: left;
     padding: 1rem; }
   .bids-table__head {
+    border: 1px solid #aaa;
+    text-align: left;
     padding: 1rem;
     font-size: 3rem;
     text-transform: uppercase;
