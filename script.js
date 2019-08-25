@@ -208,13 +208,13 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                         }
                     }).done(function (result) {                    
                         let resultBid = JSON.parse(result);
-                        
+    
                         // Query users for the winner's user_id
                         $.ajax({
                             url: "/auction/resources/getUserDataById.php",
                             type: "POST",
                             data: {
-                                "id": resultBid.user_id
+                                "user_id": resultBid.user_id
                             }
                         }).done(function (result) {
                             let resultUser = JSON.parse(result);
