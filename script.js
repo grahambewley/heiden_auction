@@ -65,10 +65,8 @@ getCurrentAuctionMetadata = function () {
         //Determine if this auction has ended or not started, if so then display a banner, hide bid buttons
         if(currentEpochTime > selectedAuctionEndUtcSeconds) {
             document.getElementById('auction-ended-banner').style.display = "block";
-            document.getElementById('auction-ended-banner__text').innerHTML = "&#9888; This auction has ended.";
         } else if (currentEpochTime <= selectedAuctionStartUtcSeconds) {
-            document.getElementById('auction-ended-banner').style.display = "block";
-            document.getElementById('auction-ended-banner__text').innerHTML = "&#9888; This auction has not yet started."
+            document.getElementById('auction-not-started-banner').style.display = "block";
         }
 
         //Once we've got the correct auction selected we can fill in the auction items
