@@ -114,13 +114,14 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
 
+            const aucStatus = getSelectedAuctionStatus();
+
             // Create divs for both item price (displayed before/during auction) and item winner (displayed after auction)
             let itemPrice = document.createElement('div');
             itemPrice.setAttribute('class', 'item__price');
             let itemWon = document.createElement('div');
             itemWon.setAttribute('class', 'item__won');
 
-            const aucStatus = getSelectedAuctionStatus();
             // If auction has not started or is in progress...
             if(aucStatus == 0 || aucStatus == 1) { 
                 console.log("Creating item Pricing section");
