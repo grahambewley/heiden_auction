@@ -88,14 +88,16 @@ body {
   grid-column: center-start / center-end; }
 
 .bids-table {
-  border: 1px solid #5D5D5D; }
+  border-collapse: collapse; }
+  .bids-table table, .bids-table th, .bids-table td {
+    border: 1px solid #5D5D5D;
+    font-size: 1.6rem;
+    text-align: left; }
   .bids-table__head {
     padding: 1rem;
     font-size: 2rem;
     text-transform: uppercase;
     font-weight: 400; }
-  .bids-table td {
-    font-size: 1.6rem; }
 
 .auction-info {
   grid-column: center-start / center-end;

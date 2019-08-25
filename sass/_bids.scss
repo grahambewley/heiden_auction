@@ -4,16 +4,18 @@
 }
 
 .bids-table {
-    border: 1px solid $color-grey-dark-2;
-    
+    border-collapse: collapse;
+
+    table, th, td {
+        border: 1px solid $color-grey-dark-2;
+        font-size: 1.6rem;
+        text-align: left;
+    }
+
     &__head {
         padding: 1rem;
         font-size: 2rem;
         text-transform: uppercase;
         font-weight: 400;
-    }
-
-    td {
-        font-size: 1.6rem;
     }
 }
