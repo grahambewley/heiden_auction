@@ -281,15 +281,22 @@ checkBid = function(item) {
 placeBid = function (biddingItemId, biddingUserId, biddingValue) {
 
     //Get current date, compare to selectedAuction 
-    $.ajax({
-        url: "/auction/resources/addBidToBids.php",
-        type: "POST",
-        data: {
-            "biddingItemId": biddingItemId,
-            "biddingUserId": biddingUserId,
-            "biddingValue": biddingValue
-        }
-    }).done(function (result) {
-        console.log("Bid result: " + result);
-    });
+    const currentEpochTime = new Date().getTime() / 1000;
+
+    console.log("Current epoch time: " + currentEpochTime + " and this auction's end epoch time: " + selectedAuctionEndUtcSeconds);
+    if(currentEpochTime <= selectedAuctionEndUtcSeconds && currentEpochTime > selectedAuctionStartUtcSeconds) {
+        $.ajax({
+            url: "/auction/resources/addBidToBids.php",
+            type: "POST",
+            data: {
+                "biddingItemId": biddingItemId,
+                "biddingUserId": biddingUserId,
+                "biddingValue": biddingValue
+            }
+        }).done(function (result) {
+            console.log("Bid result: " + result);
+        });
+    } else {
+        alert("Sorry, this auction is not accepting bids at this time.")
+    }
 }
