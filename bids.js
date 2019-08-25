@@ -49,18 +49,18 @@ function displayUserBids() {
                     let bidAuction = document.createElement('td');
                     bidAuction.innerHTML = resultAuction.name;
 
+
+                    // Add bid amount
+                    let bidAmount = document.createElement('td');
+                    bidAmount.innerHTML = "$" + element.amount;
+
+                    bidRow.appendChild(bidAuction);
+                    bidRow.appendChild(bidItem);
+                    bidRow.appendChild(bidAmount);
+
+                    bidsTable.appendChild(bidRow);
                 });
             });
-
-            // Add bid amount
-            let bidAmount = document.createElement('td');
-            bidAmount.innerHTML = "$" + element.amount;
- 
-            bidRow.appendChild(bidAuction);
-            bidRow.appendChild(bidItem);
-            bidRow.appendChild(bidAmount);
-
-            bidsTable.appendChild(bidRow);
         });
 
     });
