@@ -104,7 +104,7 @@ body {
   grid-column: center-start / center-end;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  grid-gap: 7rem;
+  grid-gap: 5rem;
   margin-bottom: 18rem; }
 
 .item {
@@ -135,7 +135,7 @@ body {
       .item__description {
         font-size: 2rem; } }
   .item__price {
-    background-color: rgba(249, 175, 94, 0.4);
+    background-color: rgba(249, 175, 94, 0.3);
     padding: 1rem 1.5rem; }
   .item__starting-price {
     display: flex;
