@@ -5,10 +5,10 @@ window.onload = function () {
 
 }
 
-const selectedAuctionId = '';
-const selectedAuctionName = '';
-const selectedAuctionStartUtcSeconds = '';
-const selectedAuctionEndUtcSeconds = '';
+let selectedAuctionId = '';
+let selectedAuctionName = '';
+let selectedAuctionStartUtcSeconds = '';
+let selectedAuctionEndUtcSeconds = '';
 
 // Gets user's name from localStorage and displays it on screen OR display Login button
 getUserName = function () {
