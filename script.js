@@ -60,9 +60,7 @@ getCurrentAuctionMetadata = function () {
         //Determine if this auction has ended, if so then display a banner, hide bid buttons
         console.log("Current epoch time: " + currentEpochTime + " and this auction's end epoch time: " + endUtcSeconds);
         if(currentEpochTime > endUtcSeconds) {
-            console.log("This auction has ended");
-        } else {
-            console.log("This auction is ongoing");
+            document.getElementById('auction-ended-banner').style.display = "block";
         }
 
         //Once we've got the correct auction selected we can fill in the auction items
