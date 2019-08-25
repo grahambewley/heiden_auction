@@ -83,6 +83,7 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
         let resultArray = JSON.parse(result);
         const items = document.getElementById('items');
 
+
         resultArray.forEach(function (element) {
 
             // CREATE ITEM CONTAINER      
@@ -122,6 +123,7 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             const aucStatus = getSelectedAuctionStatus();
             // If auction has not started or is in progress...
             if(aucStatus == 0 || aucStatus == 1) { 
+                console.log("Creating item Pricing section");
                 // CREATE ITEM PRICING SECTION 
 
                 // Create and append Starting Price
@@ -169,6 +171,8 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             }
             // If auction is over...
             else {
+                console.log("Creating item WINNER section");
+
                 // CREATE ITEM WINNER SECTION
 
                 let itemStartingPrice = document.createElement('div');
@@ -259,12 +263,12 @@ function getSelectedAuctionStatus() {
 
     // If current time is less than auction's start time, auction has not started
     if(currentEpochTime < selectedAuctionStartUtcSeconds) {
-        console.log("Auction not let started, returning 0")
+        console.log("Auction not yet started, returning 0")
         return 0;
     }
     // If current time is between auction's start time and end time, auction is in progress
     else if(currentEpochTime >= selectedAuctionStartUtcSeconds && currentEpochTime <= selectedAuctionEndUtcSeconds) {
-        console.log("Auction not in progress, returning 1")
+        console.log("Auction in progress, returning 1")
         return 1;
     }
     // If current time is after auction's end time, auction has ended
