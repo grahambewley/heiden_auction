@@ -214,7 +214,7 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                             url: "/auction/resources/getUserDataById.php",
                             type: "POST",
                             data: {
-                                "user_id": resultBid.user_id
+                                "id": resultBid.user_id
                             }
                         }).done(function (userQueryResult) {
                             let resultUser = JSON.parse(userQueryResult);
