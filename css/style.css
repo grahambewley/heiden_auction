@@ -119,8 +119,7 @@ body {
     width: 100%;
     z-index: 1; }
   .item__data {
-    padding: 1rem 1.5rem;
-    background-color: rgba(249, 175, 94, 0.15); }
+    padding: 1rem 1.5rem; }
   .item__name {
     font-family: 'Lexend Deca', sans-serif;
     font-size: 2rem;
@@ -160,7 +159,6 @@ body {
         font-size: 2.2rem; } }
 
 .bid {
-  background-color: rgba(249, 175, 94, 0.15);
   padding: 1.5rem 1rem;
   display: flex;
   justify-content: space-between;
