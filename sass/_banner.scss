@@ -43,3 +43,15 @@
         color: $color-grey-dark-1;
     }
 }
+
+.auction-not-started-banner {
+    display: none;
+    background-color: rgba(yellow, .4);
+    grid-column: full-start / full-end;
+    padding: 1.2rem 4rem;
+
+    &__text {
+        font-size: 1.8rem;
+        color: $color-grey-dark-1;
+    }
+}
