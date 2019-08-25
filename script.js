@@ -216,6 +216,15 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                         });
                     });
                 }
+                // ...Else, the item was not bid on during the auction
+                else {
+                    //Create and append Item Winner name and bid amount
+                    let itemWinner = document.createElement('p');
+                    itemWinner.setAttribute('class', 'item__winner');
+                    itemWinner.innerHTML = "No bids on this item";
+
+                    itemWon.appendChild(itemWinner);
+                }
             }
             
 
