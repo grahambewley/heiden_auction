@@ -33,7 +33,7 @@ displayUserName = function () {
         welcomeText.setAttribute('class', 'user__welcome');
         welcomeText.innerHTML = "Welcome, " + name;
 
-        let viewBids = document.createElement('button');
+        let viewBids = document.createElement('a');
         viewBids.setAttribute('href', '/auction/bids.html');
         viewBids.setAttribute('class', 'btn btn--small');
         viewBids.innerHTML = "View Bids";

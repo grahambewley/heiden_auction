@@ -203,6 +203,7 @@ body {
     background-color: #F9AF5E;
     border-radius: 100px;
     cursor: pointer;
+    outline: none;
     transition: all .2s; }
     .bid__button:hover {
       transform: scale(1.1);
