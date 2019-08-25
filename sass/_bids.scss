@@ -4,10 +4,16 @@
 }
 
 .bids-table {
+    border: 1px solid $color-grey-dark-2;
+    
     &__head {
         padding: 1rem;
         font-size: 2rem;
         text-transform: uppercase;
         font-weight: 400;
+    }
+
+    td {
+        font-size: 1.6rem;
     }
 }
