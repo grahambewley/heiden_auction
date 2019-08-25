@@ -36,6 +36,7 @@ displayUserName = function () {
         let viewBids = document.createElement('button');
         viewBids.setAttribute('href', '#');
         viewBids.setAttribute('class', 'btn btn--small');
+        viewBids.innerHTML = "View Bids";
 
         userInfo.appendChild(welcomeText);
         userInfo.appendChild(viewBids);
