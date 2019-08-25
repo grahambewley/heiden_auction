@@ -1,7 +1,6 @@
 window.onload = function () {
 
     getUserName();
-
     getCurrentAuctionMetadata();
 
 }
@@ -32,6 +31,8 @@ getUserName = function () {
 }
 
 getCurrentAuctionMetadata = function () {
+    const currentEpochTime = new Date().getTime() / 1000;
+
     $.ajax({
 
         url: "/auction/resources/getCurrentAuctionMetadata.php",
@@ -45,18 +46,24 @@ getCurrentAuctionMetadata = function () {
         const selectedAuctionName = resultObject.name;
         const selectedAuctionId = resultObject.id;
 
-        //Convert the start_date_time epoch time from the database into a JavaScript Date object
         var startUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
         let formattedStartDateTime = moment.unix(startUtcSeconds).format('MM/DD/YY h:mm A');
 
-        //Convert the end_date_time epoch time from the database into a JavaScript Date object
         var endUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
         let formattedEndDateTime = moment.unix(endUtcSeconds).format('MM/DD/YY h:mm A');
 
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;
+
+        //Determine if this auction has ended, if so then display a banner, hide bid buttons
+        console.log("Current epoch time: " + currentEpochTime + " and this auction's end epoch time: " + endUtcSeconds);
+        if(currentEpochTime > endUtcSeconds) {
+            console.log("This auction has ended");
+        } else {
+            console.log("This auction is ongoing");
+        }
 
         //Once we've got the correct auction selected we can fill in the auction items
         getSelectedAuctionItems(selectedAuctionId);
