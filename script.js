@@ -112,11 +112,13 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
 
+            let itemPrice = document.createElement('div');
+            let itemWon = document.createElement('div');
+
             // If auction has not started or is in progress...
             if(aucStatus == 0 || aucStatus == 1) { 
                 console.log("Creating item Pricing section");
                 // CREATE ITEM PRICING SECTION 
-                let itemPrice = document.createElement('div');
                 itemPrice.setAttribute('class', 'item__price');
 
                 // Create and append Starting Price
@@ -167,7 +169,6 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                 console.log("Creating item WINNER section");
 
                 // CREATE ITEM WINNER SECTION
-                let itemWon = document.createElement('div');
                 itemWon.setAttribute('class', 'item__won');
 
                 // Create and append Starting Price
@@ -234,8 +235,13 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             // Append all the stuff we made to the item card
             item.appendChild(itemImg);
             item.appendChild(itemData);
-            item.appendChild(itemPrice);
-            item.appendChild(itemWon);
+            if(aucStatus == 0 || aucStatus == 1) { 
+                item.appendChild(itemPrice); 
+            }
+            else { 
+                item.appendChild(itemWon);
+            }
+            
             item.appendChild(bid);
 
             // Append item card to items
