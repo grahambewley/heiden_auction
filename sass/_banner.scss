@@ -6,7 +6,6 @@
     flex-direction: column;
     align-items: center;
     //box-shadow: 0 .5rem .5rem rgba(#444, 0.05);
-    margin-bottom: 6rem;
 
     &__logo {
         width: 22rem;
@@ -35,6 +34,8 @@
 
 .auction-ended-banner {
     //display: none;
-    background-color: rgba(red, .5);
+    background-color: rgba(red, .4);
     grid-column: center-start / center-end;
+    padding: 2rem;
+    font-size: 2rem;
 }
