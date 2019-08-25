@@ -60,6 +60,9 @@ body {
       .banner__sub-title {
         font-size: 2rem; } }
 
+.auction-ended-banner {
+  background-color: rgba(255, 0, 0, 0.5); }
+
 .auction-info {
   grid-column: center-start / center-end;
   display: flex;
