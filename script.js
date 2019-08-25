@@ -71,18 +71,16 @@ displaySelectedAuctionInfo = function () {
 }
 
 displaySelectedAuctionItems = function(selectedAuctionId) {
-
+    const aucStatus = getSelectedAuctionStatus();
     $.ajax({
         url: "/auction/resources/getSelectedAuctionItems.php",
         type: "POST",
         data: {
             "id": selectedAuctionId
         }
-
     }).done(function (result) {
         let resultArray = JSON.parse(result);
         const items = document.getElementById('items');
-
 
         resultArray.forEach(function (element) {
 
@@ -114,18 +112,12 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             itemData.appendChild(itemName);
             itemData.appendChild(itemDescription);
 
-            const aucStatus = getSelectedAuctionStatus();
-
-            // Create divs for both item price (displayed before/during auction) and item winner (displayed after auction)
-            let itemPrice = document.createElement('div');
-            itemPrice.setAttribute('class', 'item__price');
-            let itemWon = document.createElement('div');
-            itemWon.setAttribute('class', 'item__won');
-
             // If auction has not started or is in progress...
             if(aucStatus == 0 || aucStatus == 1) { 
                 console.log("Creating item Pricing section");
                 // CREATE ITEM PRICING SECTION 
+                let itemPrice = document.createElement('div');
+                itemPrice.setAttribute('class', 'item__price');
 
                 // Create and append Starting Price
                 let itemStartingPrice = document.createElement('div');
@@ -175,7 +167,10 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                 console.log("Creating item WINNER section");
 
                 // CREATE ITEM WINNER SECTION
+                let itemWon = document.createElement('div');
+                itemWon.setAttribute('class', 'item__won');
 
+                // Create and append Starting Price
                 let itemStartingPrice = document.createElement('div');
                 itemStartingPrice.setAttribute('class', 'item__starting-price');
                 
@@ -205,9 +200,6 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                             //Create and append Item Winner
                             let itemWinner = document.createElement('p');
                             itemWinner.setAttribute('class', 'item__winner');
-
-                            // TODO query users for user_id 
-
                             itemWinner.innerHTML = "Item won by " + resultObject.user_id + " for $" + resultObject.amount;
 
                             itemWon.appendChild(itemWinner);
@@ -243,6 +235,7 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             item.appendChild(itemImg);
             item.appendChild(itemData);
             item.appendChild(itemPrice);
+            item.appendChild(itemWon);
             item.appendChild(bid);
 
             // Append item card to items

@@ -64,7 +64,10 @@
         font-size: 1.6rem;
     }
 
-    &__
+    &__won {
+        background-color: rgba($color-heiden-orange, 0.5);
+        padding: 1rem 1.5rem;
+    }
 }
 
 .bid {
