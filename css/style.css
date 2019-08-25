@@ -102,7 +102,7 @@ body {
     font-weight: 400; }
 
 .winning-bid {
-  background-color: green; }
+  background-color: #00e673; }
 
 .auction-info {
   grid-column: center-start / center-end;
