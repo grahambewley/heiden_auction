@@ -35,7 +35,13 @@
 .auction-ended-banner {
     //display: none;
     background-color: rgba(red, .4);
-    grid-column: center-start / center-end;
-    padding: 2rem;
-    font-size: 2rem;
+    grid-column: full-start / full-end;
+    padding: 2rem 0;
+
+
+    span {
+        grid-column: center-start / center-end;
+        font-size: 1.4rem;
+        color: $color-grey-dark-1;
+    }
 }
