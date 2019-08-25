@@ -122,7 +122,8 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   overflow: hidden;
-  display: grid; }
+  display: grid;
+  align-items: start; }
   .item__img {
     grid-row: 1 / 2;
     grid-column: 1 / -1;
