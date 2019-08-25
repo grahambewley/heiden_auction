@@ -224,6 +224,7 @@ checkBid = function(item) {
                 var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + itemName) + "?";
                 console.log ("bidCheck = " + bidCheck);
                 if(bidCheck == true) {
+                    console.log('Time to place a bid!');
                     // Place bid into bids table
                     placeBid(biddingItemId, biddingUserId, biddingValue);
                     // Reload page so we can see bid
@@ -254,6 +255,7 @@ checkBid = function(item) {
                     var bidCheck = confirm("Are you ure you'd like to bid " + biddingValue + " on " + itemName) + "?";
                     console.log ("bidCheck = " + bidCheck);
                     if(bidCheck == true) {
+                        console.log('Time to place a bid!');
                         // Place bid into bids table
                         placeBid(biddingItemId, biddingUserId, biddingValue);
                         // Reload page so we can see new bid
