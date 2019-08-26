@@ -46,8 +46,8 @@ body {
     background-color: #ddd !important;
     color: #5D5D5D !important; }
     .btn--disabled:hover {
-      transform: none;
-      background-color: currentColor; }
+      transform: none !important;
+      background-color: currentColor !important; }
 
 .banner {
   grid-column: full-start / full-end;
