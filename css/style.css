@@ -47,7 +47,7 @@ body {
     color: #5D5D5D !important; }
     .btn--disabled:hover {
       transform: none !important;
-      background-color: currentColor !important; }
+      background-color: #ddd !important; }
 
 .banner {
   grid-column: full-start / full-end;

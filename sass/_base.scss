@@ -81,7 +81,7 @@ body {
 
         &:hover {
             transform: none !important;
-            background-color: currentColor !important;
+            background-color: $color-grey-light-1 !important;
         }
     }
 }
