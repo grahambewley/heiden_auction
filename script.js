@@ -386,7 +386,6 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
     if(aucStatus == 1) {
         let biddingEpoch = new Date().getTime() / 1000;
         biddingEpoch = parseInt(biddingEpoch);
-        alert('Bid will have epoch: ' + biddingEpoch);
 
         $.ajax({
             url: "/auction/resources/addBidToBids.php",
