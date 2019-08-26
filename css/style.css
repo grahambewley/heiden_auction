@@ -42,6 +42,9 @@ body {
     @media only screen and (max-width: 50em) {
       .btn--small {
         padding: 1rem 2rem; } }
+  .btn--disabled {
+    background-color: #ddd;
+    color: #5D5D5D; }
 
 .banner {
   grid-column: full-start / full-end;

@@ -74,4 +74,9 @@ body {
             padding: 1rem 2rem;
         }
     }
+
+    &--disabled {
+        background-color: $color-grey-light-1;
+        color: $color-grey-dark-2;
+    }
 }
