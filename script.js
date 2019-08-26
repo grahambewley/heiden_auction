@@ -336,7 +336,7 @@ checkBid = function(item) {
                     // Place bid into bids table
                     placeBid(biddingItemId, biddingUserId, biddingValue);
                     // Reload page so we can see bid
-                    location.reload();
+                    //location.reload();
                 }
             }
             // If the value entered is not greater than the starting price, let the user know
@@ -366,7 +366,7 @@ checkBid = function(item) {
                         // Place bid into bids table
                         placeBid(biddingItemId, biddingUserId, biddingValue);
                         // Reload page so we can see new bid
-                        location.reload();
+                        //location.reload();
                     }
                 } else {
                     alert("You must enter a bid greater than the current bid of $" + resultObject.amount);
