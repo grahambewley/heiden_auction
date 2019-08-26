@@ -336,7 +336,7 @@ checkBid = function(item) {
                     // Place bid into bids table
                     placeBid(biddingItemId, biddingUserId, biddingValue);
                     // Reload page so we can see bid
-                    //location.reload();
+                    location.reload();
                 }
             }
             // If the value entered is not greater than the starting price, let the user know
@@ -366,7 +366,7 @@ checkBid = function(item) {
                         // Place bid into bids table
                         placeBid(biddingItemId, biddingUserId, biddingValue);
                         // Reload page so we can see new bid
-                        //location.reload();
+                        location.reload();
                     }
                 } else {
                     alert("You must enter a bid greater than the current bid of $" + resultObject.amount);
@@ -384,7 +384,7 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
 
     // If the auction is ongoing, allow a bid
     if(aucStatus == 1) {
-        let biddingEpoch = new Date().getTime() / 1000;
+        let biddingEpoch = parseInt(new Date().getTime() / 1000);
         alert('Bid will have epoch: ' + biddingEpoch);
 
         $.ajax({
@@ -394,7 +394,7 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
                 "biddingItemId": biddingItemId,
                 "biddingUserId": biddingUserId,
                 "biddingValue": biddingValue,
-                //"biddingEpoch": biddingEpoch
+                "biddingEpoch": biddingEpoch
             }
         }).done(function (result) {
             console.log("Bid result: " + result);
