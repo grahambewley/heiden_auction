@@ -4,7 +4,7 @@
 include('dbConnect.php');
 
 // SQL query for Inserting bid into bids table 
-mysqli_query($conn, "INSERT INTO bids (item_id, user_id, amount, epoch) VALUES(".$_REQUEST['biddingItemId'].", ".$_REQUEST['biddingUserId'].", ".$_REQUEST['biddingValue'].", ".$_REQUEST['biddingEpoch']."); ");
+mysqli_query($conn, "INSERT INTO bids (item_id, user_id, amount) VALUES(".$_REQUEST['biddingItemId'].", ".$_REQUEST['biddingUserId'].", ".$_REQUEST['biddingValue']."); ");
 
 // mysqui_insert_id gets the id created in the last query
 $bid_id = mysqli_insert_id($conn);
