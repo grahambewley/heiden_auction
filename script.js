@@ -384,7 +384,8 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
 
     // If the auction is ongoing, allow a bid
     if(aucStatus == 1) {
-        let biddingEpoch = parseInt(new Date().getTime() / 1000);
+        let biddingEpoch = new Date().getTime() / 1000;
+        biddingEpoch = parseInt(biddingEpoch);
         alert('Bid will have epoch: ' + biddingEpoch);
 
         $.ajax({
