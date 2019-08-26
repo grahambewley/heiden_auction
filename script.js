@@ -384,8 +384,7 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
 
     // If the auction is ongoing, allow a bid
     if(aucStatus == 1) {
-
-        // TODO Add epoch timestamp to bids
+        const currentEpochTime = new Date().getTime() / 1000;
 
         $.ajax({
             url: "/auction/resources/addBidToBids.php",
@@ -393,7 +392,8 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
             data: {
                 "biddingItemId": biddingItemId,
                 "biddingUserId": biddingUserId,
-                "biddingValue": biddingValue
+                "biddingValue": biddingValue,
+                "biddingEpoch": currentEpochTime
             }
         }).done(function (result) {
             console.log("Bid result: " + result);

@@ -24,6 +24,10 @@ function displayUserBids() {
         
             var bidRow = document.createElement('tr');
 
+            let bidEpoch = document.createElement('td');
+            const formattedBidEpoch = moment.unix(element.epoch).format('MM/DD/YY h:mm A');
+            bidEpoch.innerHTML = formattedBidEpoch;
+
             // Get info from item -- name and auction ID (select from ITEMS)
             $.ajax({
                 url: "/auction/resources/getItemBidData.php",
@@ -61,6 +65,7 @@ function displayUserBids() {
                     bidRow.appendChild(bidAuction);
                     bidRow.appendChild(bidItem);
                     bidRow.appendChild(bidAmount);
+                    bidRow.appendChild(bidEpoch);
 
                     bidsTable.appendChild(bidRow);
                 });
