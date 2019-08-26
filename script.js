@@ -384,7 +384,7 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
 
     // If the auction is ongoing, allow a bid
     if(aucStatus == 1) {
-        const currentEpochTime = new Date().getTime() / 1000;
+        let currentEpochTime = new Date().getTime() / 1000;
 
         $.ajax({
             url: "/auction/resources/addBidToBids.php",
