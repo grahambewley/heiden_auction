@@ -7,7 +7,6 @@ window.onload = function () {
 let selectedAuctionStartUtcSeconds = '';
 let selectedAuctionEndUtcSeconds = '';
 
-
 // Gets user's name from localStorage and displays it on screen OR display Login button
 displayUserName = function () {
     // Grab user's name, set during login
@@ -227,7 +226,6 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                 }
             }
             
-
             // Create bid container form, plus the input and button that go within
             let bid = document.createElement('form');
             bid.setAttribute('class', 'bid');
@@ -247,6 +245,14 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             bidButton.setAttribute('type', 'submit');
             bidButton.setAttribute('class', 'bid__button');
             bidButton.setAttribute('value', 'Bid');
+
+            // If user is not logged in, bid button and input should be disabled
+            // Grab user's name, set during login
+            const name = localStorage.getItem('name');
+            if(name === null) {
+                bidAmount.setAttribute('disabled', 'true');
+                bidButton.setAttribute('disabled', 'true');
+            }
 
             bid.appendChild(bidAmount);
             bid.appendChild(bidButton);
