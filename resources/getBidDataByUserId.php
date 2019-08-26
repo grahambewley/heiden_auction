@@ -3,7 +3,7 @@
 // Include a file hidden from Github that contains database connection settings and connects to the database
 include('dbConnect.php');
 
-$result = mysqli_query($conn, "SELECT * from bids WHERE user_id = ".$_REQUEST['user_id']." ORDER BY id ASC");
+$result = mysqli_query($conn, "SELECT * from bids WHERE user_id = ".$_REQUEST['user_id']." ORDER BY id DESC");
 
 if ($result->num_rows > 0) {
 
