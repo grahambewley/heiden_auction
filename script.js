@@ -251,6 +251,7 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
             const name = localStorage.getItem('name');
             if(name === null) {
                 bidAmount.setAttribute('disabled', 'true');
+                bidButton.setAttribute('disabled', 'true');
                 bidButton.classList.add('btn--disabled');
             }
 
