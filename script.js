@@ -164,7 +164,7 @@ displaySelectedAuctionItems = function(selectedAuctionId) {
                         itemCurrentPrice.setAttribute('class', 'item__current-price');
 
                         let itemCurrentPriceLabel = document.createElement('span')
-                        itemCurrentPriceLabel.innerHTML = "Current Price:" ;
+                        itemCurrentPriceLabel.innerHTML = "Current Bid:" ;
                         let itemCurrentPriceAmount = document.createElement('span');
                         itemCurrentPriceAmount.innerHTML = "$" + resultObject.amount;
                         
