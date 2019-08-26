@@ -384,6 +384,9 @@ placeBid = function (biddingItemId, biddingUserId, biddingValue) {
 
     // If the auction is ongoing, allow a bid
     if(aucStatus == 1) {
+
+        // TODO Add epoch timestamp to bids
+
         $.ajax({
             url: "/auction/resources/addBidToBids.php",
             type: "POST",
