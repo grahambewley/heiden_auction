@@ -59,11 +59,11 @@ displaySelectedAuctionInfo = function () {
 
         selectedAuctionStartUtcSeconds = resultObject.start_date_time;
         // Use moment.js to convert Epoch times to readable date
-        const formattedStartDateTime = moment.unix(selectedAuctionStartUtcSeconds).format('MM/DD/YY h:mm A');
+        const formattedStartDateTime = moment.unix(selectedAuctionStartUtcSeconds).format('M/D/YY h:mm A');
 
         selectedAuctionEndUtcSeconds = resultObject.end_date_time;
         // Use moment.js to convert Epoch times to readable date
-        const formattedEndDateTime = moment.unix(selectedAuctionEndUtcSeconds).format('MM/DD/YY h:mm A');
+        const formattedEndDateTime = moment.unix(selectedAuctionEndUtcSeconds).format('M/D/YY h:mm A');
 
         document.getElementById('auction-info__name').innerHTML = selectedAuctionName;
         document.getElementById('auction-info__date-span').innerHTML = formattedStartDateTime + " &mdash; " + formattedEndDateTime;

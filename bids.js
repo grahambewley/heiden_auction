@@ -25,7 +25,7 @@ function displayUserBids() {
             var bidRow = document.createElement('tr');
 
             let bidEpoch = document.createElement('td');
-            const formattedBidEpoch = moment.unix(element.epoch).format('MM/DD/YY h:mm A');
+            const formattedBidEpoch = moment.unix(element.epoch).format('M/D/YY h:mm A');
             bidEpoch.innerHTML = formattedBidEpoch;
 
             // Get info from item -- name and auction ID (select from ITEMS)
