@@ -330,7 +330,7 @@ checkBid = function(item) {
             // Check that the amount the user submitted is greater than the item's starting price
             if(biddingValue > startingPrice) {
                 //Confirm that user wants to place this bid
-                var bidCheck = confirm("Confirm bid of $" + biddingValue + " on " + itemName);
+                var bidCheck = confirm("Are you sure you want to bid $" + biddingValue + " on " + itemName + "?");
                 console.log ("bidCheck = " + bidCheck);
                 if(bidCheck == true) {
                     // Place bid into bids table
@@ -360,7 +360,7 @@ checkBid = function(item) {
                 if(biddingValue > resultObject.amount) {
                     console.log("biddingValue > currentHighBid --- This bid is valid!");
                     //Confirm that user wants to place this bid
-                    var bidCheck = confirm("Confirm bid of $" + biddingValue + " on " + itemName);
+                    var bidCheck = confirm("Are you sure you want to bid $" + biddingValue + " on " + itemName + "?");
                     console.log ("bidCheck = " + bidCheck);
                     if(bidCheck == true) {
                         // Place bid into bids table
