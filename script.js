@@ -328,7 +328,7 @@ checkBid = function(item) {
         // If the returned item has no current high_bid_id -- it hasn't been bid on yet
         if(resultObject.high_bid_id === null) {
             // Check that the amount the user submitted is greater than the item's starting price
-            if(biddingValue > startingPrice) {
+            if(biddingValue >= startingPrice) {
                 //Confirm that user wants to place this bid
                 var bidCheck = confirm("Are you sure you want to bid $" + biddingValue + " on " + itemName + "?");
                 console.log ("bidCheck = " + bidCheck);
