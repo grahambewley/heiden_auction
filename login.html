@@ -18,10 +18,12 @@
     <!-- GRAHAM - I will update this to a form so people can submit via Enter key press -->
     <div id="login">
         <!-- Test input fields for login credentials -- these can be moved or done whatever with, as long as they keep their IDs -->
-        <input type="text" id="loginUsername" class="loginInput" placeholder="Username" />
-        <input type="password" id="loginPassword" class="loginInput" placeholder="Password" />
-        <!-- Button that triggers the JavaScript function for checking credentials -->
-        <button onclick="checkLoginCreds()" id="checkCredentials">sign-in</button>
+        <form onsubmit="checkLoginCreds()">
+            <input type="text" id="loginUsername" class="loginInput" placeholder="Username" />
+            <input type="password" id="loginPassword" class="loginInput" placeholder="Password" />
+            <input type="submit" id="checkCredentials" value="sign-in" />
+<!--<button onclick="checkLoginCreds()" id="checkCredentials">sign-in</button>        -->
+        </form>
     </div>
     
     <!-- Load jQuery -- used for AJAX calls to PHP scripts -->
