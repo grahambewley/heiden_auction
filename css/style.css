@@ -39,6 +39,9 @@ body {
   .btn--small {
     font-size: 1rem;
     padding: .5rem 1.5rem; }
+    @media only screen and (max-width: 50em) {
+      .btn--small {
+        padding: 1rem 2rem; } }
 
 .banner {
   grid-column: full-start / full-end;
@@ -131,7 +134,10 @@ body {
   @media only screen and (max-width: 50em) {
     .auction-info {
       flex-direction: column;
-      align-items: flex-start; } }
+      align-items: flex-start;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem; } }
   .auction-info__name {
     font-family: 'Lexend Deca', sans-serif;
     font-size: 4rem;
@@ -165,11 +171,16 @@ body {
     .user {
       width: 100%;
       flex-direction: row;
-      justify-content: space-between; } }
+      justify-content: space-between;
+      align-items: center; } }
   .user__welcome {
     font-size: 1.6rem;
     font-style: italic;
-    font-weight: 300; }
+    font-weight: 300;
+    margin-bottom: .5rem; }
+    @media only screen and (max-width: 50em) {
+      .user__welcome {
+        margin-bottom: 0; } }
 
 .items {
   grid-column: center-start / center-end;
