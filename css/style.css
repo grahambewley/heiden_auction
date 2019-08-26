@@ -43,8 +43,11 @@ body {
       .btn--small {
         padding: 1rem 2rem; } }
   .btn--disabled {
-    background-color: #ddd;
-    color: #5D5D5D; }
+    background-color: #ddd !important;
+    color: #5D5D5D !important; }
+    .btn--disabled:hover {
+      transform: none;
+      background-color: currentColor; }
 
 .banner {
   grid-column: full-start / full-end;

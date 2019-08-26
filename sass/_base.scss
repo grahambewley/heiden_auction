@@ -76,7 +76,12 @@ body {
     }
 
     &--disabled {
-        background-color: $color-grey-light-1;
-        color: $color-grey-dark-2;
+        background-color: $color-grey-light-1 !important;
+        color: $color-grey-dark-2 !important;
+
+        &:hover {
+            transform: none;
+            background-color: currentColor;
+        }
     }
 }
