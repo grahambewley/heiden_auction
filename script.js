@@ -39,11 +39,14 @@ displayUserName = function () {
 
         let logOff = document.createElement('button');
         logOff.setAttribute('class', 'btn btn--small');
-        logOff.setAttribute('onclick', '(function() {
+        logOff.setAttribute('onclick', 'logOffUser()');
+        logOff.innerHTML = "Log Off";
+
+        function logOffUser() {
             localStorage.clear();
             window.location.href = "/auction/login.html";
-        })())=;'
-        logOff.innerHTML = "Log Off";
+        };
+
 
         userInfo.appendChild(welcomeText);
         userInfo.appendChild(viewBids);
