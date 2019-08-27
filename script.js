@@ -7,10 +7,10 @@ window.onload = function () {
 let selectedAuctionStartUtcSeconds = '';
 let selectedAuctionEndUtcSeconds = '';
 
-        function logOffUser() {
-            localStorage.clear();
-            window.location.href = "/auction/login.html";
-        };
+function logOffUser() {
+    localStorage.clear();
+    window.location.href = "/auction/login.html";
+};
 
 
 // Gets user's name from localStorage and displays it on screen OR display Login button
