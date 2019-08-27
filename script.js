@@ -37,8 +37,17 @@ displayUserName = function () {
         viewBids.setAttribute('class', 'btn btn--small');
         viewBids.innerHTML = "View Bids";
 
+        let logOff = document.createElement('button');
+        logOff.setAttribute('class', 'btn btn--small');
+        logOff.setAttribute('onclick', function() {
+            localStorage.clear();
+            window.location.href = "/auction/login.html";
+        });
+        logOff.innerHTML = "Log Off";
+
         userInfo.appendChild(welcomeText);
         userInfo.appendChild(viewBids);
+        userInfo.appendChild(logOff);
 
         auctionInfo.appendChild(userInfo);
     }
