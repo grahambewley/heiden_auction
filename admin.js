@@ -40,6 +40,7 @@ function loadAdminTableData() {
             auctionEndCell.innerHTML = auctionEnd;
             auctionRow.appendChild(auctionEndCell);
             
+            console.log("Appending row to table");
             auctionsTable.appendChild(auctionRow);
         });
 
