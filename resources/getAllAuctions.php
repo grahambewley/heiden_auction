@@ -7,10 +7,15 @@ include('dbConnect.php');
 $result = mysqli_query($conn, "SELECT * from auctions");
 
 if ($result->num_rows > 0) {
+
+    $resultArray = array();
+
     while($row = $result->fetch_assoc()) {
-        $jsonResult = json_encode($row);
-        echo $jsonResult;
+        $resultArray[] = $row;
     }
+
+    echo json_encode($resultArray);
+
 } else {
     echo "0 results";
 }
