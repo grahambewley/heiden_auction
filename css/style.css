@@ -30,7 +30,8 @@ body {
   background-color: #F9AF5E;
   border-radius: 100px;
   cursor: pointer;
-  transition: all .2s; }
+  transition: all .2s;
+  margin-bottom: 0.5rem; }
   .btn:hover {
     transform: scale(1.1);
     background-color: #e09e55; }
@@ -311,8 +312,7 @@ body {
     border-radius: 100px;
     cursor: pointer;
     outline: none;
-    transition: all .2s;
-    margin: 3rem; }
+    transition: all .2s; }
     .bid__button:hover {
       transform: scale(1.1);
       background-color: #e09e55; }
