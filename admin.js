@@ -24,11 +24,21 @@ function loadAdminTableData() {
             let auctionStart = moment.unix(element.start_date_time).format('M/D/YY h:mm A');
             let auctionEnd = moment.unix(element.end_date_time).format('M/D/YY h:mm A');
 
-            auctionRow.appendChild(document.createElement('td').innerHTML = auctionId);
-            auctionRow.appendChild(document.createElement('td').innerHTML = auctionName);
-            auctionRow.appendChild(document.createElement('td').innerHTML = auctionStart);
-            auctionRow.appendChild(document.createElement('td').innerHTML = auctionEnd);
-        
+            let auctionIdCell = document.createElement('td');
+            auctionIdCell.innerHTML = auctionId;
+            auctionRow.appendChild(auctionIdCell);
+
+            let auctionNameCell = document.createElement('td');
+            auctionNameCell.innerHTML = auctionName;
+            auctionRow.appendChild(auctionNameCell);
+
+            let auctionStartCell = document.createElement('td');
+            auctionStartCell.innerHTML = auctionStart;
+            auctionRow.appendChild(auctionStartCell);
+
+            let auctionEndCell = document.createElement('td');
+            auctionEndCell.innerHTML = auctionEnd;
+            auctionRow.appendChild(auctionEndCell);
             
         });
 
