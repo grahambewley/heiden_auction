@@ -56,14 +56,18 @@ body {
   margin-bottom: 2rem; }
 
 .admin-section {
-  margin-top: 6rem;
+  margin-bottom: 6rem;
   grid-column: center-start / center-end; }
   .admin-section__header {
+    color: #222;
     font-size: 3rem;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    margin-bottom: 3.5rem; }
   .admin-section__subhead {
+    color: #5D5D5D;
     font-size: 2rem;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    margin-bottom: 2rem; }
 
 .admin-table {
   width: 100%;
@@ -77,6 +81,8 @@ body {
 .admin-form__input {
   font-size: 1.4rem;
   padding: .5rem; }
+  .admin-form__input--long {
+    width: 32rem; }
 
 .admin-form__button {
   color: white;

@@ -6,17 +6,21 @@
 }
 
 .admin-section {
-    margin-top: 6rem;
+    margin-bottom: 6rem;
     grid-column: center-start / center-end;
 
     &__header {
+        color: $color-grey-dark-1;
         font-size: 3rem;
         text-transform: uppercase;
+        margin-bottom: 3.5rem;
     }
 
     &__subhead {
+        color: $color-grey-dark-2;
         font-size: 2rem;
         text-transform: uppercase;
+        margin-bottom: 2rem;
     }
 }
 
@@ -40,6 +44,10 @@
     &__input {
         font-size: 1.4rem;
         padding: .5rem;
+
+        &--long {
+            width: 32rem;
+        }
     }
 
     &__button {
