@@ -19,10 +19,13 @@
         <h1 class="banner__sub-title">Auction House</h1>
     </div> 
 
+    <a href="/auction/index.html" class="btn return-to-auction-button">&larr; Return to Auction</a>
+
     <section class="admin-section">
         <h2 class="admin-section__header">Auctions Administration</h2>
+        
         <h3 class="admin-section__subhead">Current Auctions</h3>
-        <table class="admin-table auction-table">
+        <table class="admin-table">
             <tr class="admin-table__head">
                 <th>ID</th>
                 <th>Name</th>
@@ -30,10 +33,12 @@
                 <th>End Date/Time</th>
             </tr>
         </table>
+        
         <h3 class="admin-section__subhead">Create an Auction</h3>
         <form onsubmit="createAuction();return false" class="admin-form">
-            <input type="text" class="admin-form__input" placeholder="Auction Name (e.g. 'Holiday Auction')">
+            <input type="text" class="admin-form__input" placeholder="Auction Name (e.g. 'Holiday Auction')" required>
             
+            <input type="submit" class="admin-form__button" value="Create">
         </form>
 
     </section>
