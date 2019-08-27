@@ -56,6 +56,8 @@ body {
     border-radius: 100px;
     cursor: pointer;
     transition: all .2s;
+    margin: auto;
+    margin-bottom: 0.5rem;
 
     &:hover {
         transform: scale(1.1);
