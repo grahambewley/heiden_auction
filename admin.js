@@ -40,6 +40,7 @@ function loadAdminTableData() {
             auctionEndCell.innerHTML = auctionEnd;
             auctionRow.appendChild(auctionEndCell);
             
+            auctionsTable.appendChild(auctionRow);
         });
 
     });
