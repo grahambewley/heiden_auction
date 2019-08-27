@@ -14,6 +14,12 @@ window.onload = function() {
     }
 }
 
+function logOffUser() {
+    localStorage.clear();
+    window.location.href = "/auction/login.html";
+};
+
+
 // Function triggered by login button on login.html
 checkLoginCreds = function() {
     // Get username and password from input fields on login.html page
