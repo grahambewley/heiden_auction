@@ -311,7 +311,8 @@ body {
     border-radius: 100px;
     cursor: pointer;
     outline: none;
-    transition: all .2s; }
+    transition: all .2s;
+    margin: 3rem; }
     .bid__button:hover {
       transform: scale(1.1);
       background-color: #e09e55; }
