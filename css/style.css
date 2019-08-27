@@ -49,6 +49,50 @@ body {
       transform: none !important;
       background-color: #ddd !important; }
 
+.return-to-auction-button {
+  grid-column: center-start / center-end;
+  justify-self: start;
+  margin-top: 10rem;
+  margin-bottom: 2rem; }
+
+.admin-section {
+  margin-top: 6rem;
+  grid-column: center-start / center-end; }
+  .admin-section__header {
+    font-size: 3rem;
+    text-transform: uppercase; }
+  .admin-section__subhead {
+    font-size: 2rem;
+    text-transform: uppercase; }
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse; }
+  .admin-table table, .admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    font-size: 2rem;
+    text-align: left;
+    padding: 1rem; }
+
+.admin-form__input {
+  font-size: 1.4rem;
+  padding: .5rem; }
+
+.admin-form__button {
+  color: white;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  border: none;
+  padding: 1rem 3rem;
+  background-color: #F9AF5E;
+  border-radius: 100px;
+  cursor: pointer;
+  outline: none;
+  transition: all .2s; }
+  .admin-form__button:hover {
+    transform: scale(1.1);
+    background-color: #e09e55; }
+
 .banner {
   grid-column: full-start / full-end;
   background-color: #ddd;
