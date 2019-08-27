@@ -22,7 +22,7 @@
     <a href="/auction/index.html" class="btn return-to-auction-button">&larr; Return to Auction</a>
 
     <section class="admin-section">
-        <h2 class="admin-section__header">Auctions Administration</h2>
+        <h2 class="admin-section__header">Auctions</h2>
         
         <h3 class="admin-section__subhead">Current Auctions</h3>
         <table class="admin-table" id="auctionsTable">
@@ -43,7 +43,37 @@
 
     </section>
 
+    <section class="admin-section">
+        <h2 class="admin-section__header">Items</h2>
+        
+        <p>Select an Auction:</p>
+        <select name="auctionSelector" id="auctionSelector">
 
+
+        </select>
+
+        <h3 class="admin-section__subhead">Items in Auction</h3>
+        <table class="admin-table" id="itemsTable">
+            <tr class="admin-table__head">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image Filename</th>
+                <th>Auction</th>
+                <th>Starting Price</th>
+                <th>Current High Bid</th>
+            </tr>
+        </table>
+        
+        <h3 class="admin-section__subhead">Add an Item</h3>
+        <form onsubmit="" class="admin-form">
+            <input type="text" class="admin-form__input admin-form__input--long" placeholder="Item Name" required>
+            <input type="number" class="admin-form__input" placeholder="Starting Price" required>
+
+
+            <input type="submit" class="admin-form__button" value="Add">
+        </form>
+
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="moment.js"></script>

@@ -2,6 +2,8 @@ window.onload = function() {
     loadAdminTableData();
 }
 
+let auctionsArray = [];
+
 function loadAdminTableData() {
 
     const auctionsTable = document.getElementById('auctionsTable');
@@ -16,13 +18,16 @@ function loadAdminTableData() {
 
         // For each auction...
         resultArray.forEach(function (element) {
-        
+
             let auctionRow = document.createElement('tr');
 
             let auctionId = element.id;
             let auctionName = element.name;
             let auctionStart = moment.unix(element.start_date_time).format('M/D/YY h:mm A');
             let auctionEnd = moment.unix(element.end_date_time).format('M/D/YY h:mm A');
+
+            //Push id and name into auctions array for later
+            auctionsArray.push({id: auctionId, name: auctionName});
 
             let auctionIdCell = document.createElement('td');
             auctionIdCell.innerHTML = auctionId;
