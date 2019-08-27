@@ -46,6 +46,7 @@ displayUserName = function () {
 
         let logOff = document.createElement('button');
         logOff.setAttribute('class', 'btn btn--small');
+        logOff.setAttribute('id', 'logOffBtn');
         logOff.setAttribute('onclick', 'logOffUser()');
         logOff.innerHTML = " Log Off ";
 
