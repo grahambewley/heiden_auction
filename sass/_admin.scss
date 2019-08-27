@@ -13,7 +13,7 @@
         color: $color-grey-dark-1;
         font-size: 3rem;
         text-transform: uppercase;
-        margin-bottom: 3.5rem;
+        margin-bottom: 2.5rem;
     }
 
     &__subhead {
@@ -28,6 +28,7 @@
 
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 2rem;
 
     table, th, td {
         border: 1px solid $color-grey-light-1;
