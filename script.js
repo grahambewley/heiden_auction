@@ -14,7 +14,10 @@ function logOffUser() {
     window.location.href = "/auction/login.html";
 };
 
-// checkForNewBids();
+// checkForNewBids() {
+//   ajax for bids table changes in # of bids
+//   if true > displaySelectedAuctionInfo
+// }
 
 // Gets user's name from localStorage and displays it on screen OR display Login button
 displayUserName = function () {
