@@ -2,7 +2,8 @@ window.onload = function () {
 
     displayUserName();
     displaySelectedAuctionInfo();
-
+    // setInterval(checkForNewBids, 10000);
+   
 }
 
 let selectedAuctionStartUtcSeconds = '';
@@ -13,6 +14,7 @@ function logOffUser() {
     window.location.href = "/auction/login.html";
 };
 
+// checkForNewBids();
 
 // Gets user's name from localStorage and displays it on screen OR display Login button
 displayUserName = function () {
