@@ -15,15 +15,21 @@
         <h1 class="banner__sub-title">Auction House</h1>
     </div>
 
-    <!-- GRAHAM - I will update this to a form so people can submit via Enter key press -->
-    <div id="login">
-        <!-- Test input fields for login credentials -- these can be moved or done whatever with, as long as they keep their IDs -->
+	<form action="resources/checkLoginCreds.php" method="post" id="form">
+			<input type="text" id="loginUsername" class="loginInput" placeholder="Username" name="usr">
+			<input type="password" id="loginPassword" class="loginInput" placeholder="Password"name="pw">
+			<input type="submit" name="submit" id="checkCredentials">
+	</form>
+<!--  <div id="login">
+        <!-- Test input fields for login credentials -- these can be moved or done whatever with, as long as they keep their IDs
         <input type="text" id="loginUsername" class="loginInput" placeholder="Username" />
         <input type="password" id="loginPassword" class="loginInput" placeholder="Password" />
-        <!-- Button that triggers the JavaScript function for checking credentials -->
+        <!-- Button that triggers the JavaScript function for checking credentials
         <button onclick="checkLoginCreds()" id="checkCredentials">sign-in</button>
     </div>
-    <!-- Load jQuery -- used for AJAX calls to PHP scripts -->
+-->
+
+	<!-- Load jQuery -- used for AJAX calls to PHP scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="login.js"></script>
 </body>
